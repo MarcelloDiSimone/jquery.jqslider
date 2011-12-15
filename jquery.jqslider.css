@@ -1,0 +1,196 @@
+.jqslider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.jqslider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.jqslider-list {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 200%;
+    height: 100%;
+}
+
+.jqslider-list-before {
+    left: -100%;
+}
+
+.jqslider-slide {
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.jqslider-next {
+    float: right;
+}
+
+.jqslider-current {
+    float: left;
+}
+
+.jqslider-initialiced .jqslider-slide {
+	width: 0;
+    height: 0;
+    visibility: visible;
+    display: block;
+    opacity: 1;/**/
+}
+
+.jqslider-initialiced .jqslider-slide.jqslider-current,
+.jqslider-initialiced .jqslider-slide.jqslider-next {
+    float: left;
+    position: relative;
+    top: auto;
+    left: auto;
+	width: 50%;
+    height: 100%;
+    visibility: visible;
+    display: block;
+    opacity: 1;/**/
+}
+
+.jqslider-initialiced .jqslider-slide.jqslider-current {
+    float: left;
+}
+
+.jqslider-initialiced .jqslider-slide.jqslider-next {
+    float: right;
+}
+
+.jqslider-initialiced .jqslider-list-before .jqslider-current {
+    float: right;
+}
+
+.jqslider-initialiced .jqslider-list-before .jqslider-next {
+    float: left;
+}
+
+.jqslider-vertical.jqslider-initialiced .jqslider-container {
+    height: 100%;
+    width: 100%;
+}
+
+.jqslider-vertical.jqslider-initialiced .jqslider-list {
+    height: 200%;
+    width: 100%;
+}
+
+
+.jqslider-vertical.jqslider-initialiced .jqslider-list {
+    left: 0;
+}
+
+
+.jqslider-vertical.jqslider-initialiced .jqslider-list.jqslider-list-before {
+    top: -100%;
+}
+
+
+.jqslider-vertical.jqslider-initialiced .jqslider-slide {
+}
+
+.jqslider-vertical.jqslider-initialiced .jqslider-slide.jqslider-current,
+.jqslider-vertical.jqslider-initialiced .jqslider-slide.jqslider-next {
+    width: 100%;
+    height: 50%;
+}
+
+.jqslider-vertical.jqslider-initialiced .jqslider-slide.jqslider-next {
+    /*top: 50%;*/
+}
+
+.jqslider-vertical.jqslider-initialiced .jqslider-list-before .jqslider-slide.jqslider-current {
+    /*top: 50%;*/
+}
+
+.jqslider-vertical.jqslider-initialiced .jqslider-list-before .jqslider-slide.jqslider-next {
+    top: 0;
+}
+
+/*************************/
+/******* CONTROLS ********/
+/*************************/
+
+.jqslider-handler {
+    position: absolute;
+    display: block;
+    z-index: 10000;
+    cursor: pointer;
+    height: 10%;
+    width: 10%;
+    background-color: #bbb;
+}
+
+.jqslider-inactive {
+    opacity: .5;
+	cursor: auto;
+}
+
+.jqslider-horizontal > .jqslider-handler {
+    top: 50%;
+    margin-top: -10px;
+}
+
+.jqslider-horizontal > .jqslider-handler-prev {
+    left: 0;
+}
+
+.jqslider-horizontal > .jqslider-handler-next {
+    right: 0;
+}
+
+.jqslider-vertical > .jqslider-handler {
+    left: 50%;
+    margin-left: -10px;
+}
+
+.jqslider-vertical > .jqslider-handler-prev {
+    top: 0;
+}
+
+.jqslider-vertical > .jqslider-handler-next {
+    bottom: 0;
+}
+
+/**************************/
+/********* DEBUG **********/
+/**************************/
+
+
+.debug #dummy-cover {
+    overflow: visible;
+    border: 1px solid #000;
+}
+
+.debug .jqslider {
+    overflow: visible;
+}
+
+.debug .jqslider-container {
+    overflow: visible;
+    zoom: 1;
+}
+
+.debug .jqslider-container:before,
+.debug .jqslider-container:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+
+.debug .jqslider-container:after { clear: both; }
+
+.debug .jqslider-list {
+    background: #666;
+    overflow: visible;
+}
+
+.debug .jqslider-slide {
+    background: #eee;
+}
