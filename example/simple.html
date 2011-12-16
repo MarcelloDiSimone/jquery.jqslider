@@ -4,12 +4,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>jQuery jQSlider :: Example Slimple</title>
-        <link rel="stylesheet" href="../jquery.jqslider.css"/>
+        <link rel="stylesheet" href="../jquery.jqslider.min.css"/>
+        <link rel="stylesheet" href="../skin/default/jquery.jqslider.skin.css"/>
         <style type="text/css">
             html,
             body{
                 height: 100%;
-                width: 100%; 
+                width: 100%;
             }
 
             body {
@@ -40,10 +41,23 @@
                 width: 100%;
             }
 
-
-            .jqslider {
-                border-radius: 10px;
-                box-shadow: 10px 10px 10px rgba( 125, 125, 125, .5 );
+            .slider-content {
+                padding: 20px 80px;
+                font-family: Verdana, Helvetica, "sans serif";
+                font-size: 12px;
+                color: #eee;
+            }
+            .slider-content h1,
+            .slider-content h2 {
+                text-shadow: 0px 2px 0px #111;
+            }
+            .slider-content .text {
+                -moz-column-count: 3;
+                -moz-column-gap: 1em;
+                -moz-column-rule: 1px dotted #eee;
+                -webkit-column-count: 3;
+                -webkit-column-gap: 3em;
+                -webkit-column-rule: 1px dotted #999;
             }
         </style>
     </head>
@@ -51,32 +65,61 @@
         <div id="dummy-cover">
 
             <div class="jqslider">
-                <ul>
-                    <li>
+                <div class="jqslider-container">
+                    <ul>
+                        <li>
 
-                        <!-- START: SLIDE CONTENT -->
-                        <h1 class="headline">Slide 1</h1>
-                        <img src="images/dummy.jpg" alt="" />
-                        <!-- END: SLIDE CONTENT -->
+                            <div class="slider-content">
+                                <hgroup>
+                                    <h1>Headline</h1>
+                                    <h2>Subheadline</h2>
+                                </hgroup>
+                                <div class="text">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                    <h4>Subheadline 4</h4>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                    <h4>Subheadline 4</h4>
+                                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
 
-                    </li>
-                    <li>
+                        </li>
+                        <li>
 
-                        <!-- START: SLIDE CONTENT -->
-                        <h1 class="headline">Slide 2</h1>
-                        <img src="images/dummy.jpg" alt="" />
-                        <!-- END: SLIDE CONTENT -->
-    
-                    </li>
-                    <li>
+                            <div class="slider-content">
+                                <hgroup>
+                                    <h1>Headline</h1>
+                                    <h2>Subheadline</h2>
+                                </hgroup>
+                                <div class="text">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                    <h4>Subheadline 4</h4>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                    <h4>Subheadline 4</h4>
+                                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
 
-                        <!-- START: SLIDE CONTENT -->
-                        <h1 class="headline">Slide 3</h1>
-                        <img src="images/dummy.jpg" alt="" />
-                        <!-- END: SLIDE CONTENT -->
+                        </li>
+                        <li>
 
-                    </li>
-                </ul>
+                            <div class="slider-content">
+                                <hgroup>
+                                    <h1>Headline</h1>
+                                    <h2>Subheadline</h2>
+                                </hgroup>
+                                <div class="text">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                    <h4>Subheadline 4</h4>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                    <h4>Subheadline 4</h4>
+                                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
                 <a href="#" class="jqslider-handler-next jqslider-handler"></a>
                 <a href="#" class="jqslider-handler-prev jqslider-handler"></a>
             </div>
@@ -89,6 +132,9 @@
             var slider = $('.jqslider').jqslider({
                 circular:true,
                 animationSpeed:1000
+            }).bind('swipe', function(){
+                window.console.debug('swipe');
+                $(this).data('jqslider').gotoNextSlide();
             });
         </script>
     </body>

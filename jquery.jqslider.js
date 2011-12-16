@@ -48,7 +48,20 @@
         // <div class=item' data-plugin-options='{"message":"Goodbye World!"}'></div>
         this.metadata = this.$el.data( 'plugin-options' );
 
-        if( this.options.autosetup !== false ) this.init();
+        this.o = $.extend({}, this.defaults, this.options, this.metadata);
+
+        this.namespace = this.$el.attr( 'id' ) || this.o.namespace || 'jqgrid-' + this.getUID();
+
+        this.isVertical = this.$el.hasClass( 'jqslider-vertical' );
+
+        this.currentSlide = ( this.o.startSlide != this.currentSlide )? this.o.startSlide:this.currentSlide;
+
+        this.container = this.$el.children( this.o.containerSelector );
+        this.list = this.container.children( this.o.listSelector );
+        this.children = this.list.children( this.o.slideSelector );
+        window.console.debug(this.children)
+        
+        if( this.options.autosetup !== false ) this.setup();
     };
 
     // the plugin prototype
@@ -59,8 +72,10 @@
             startSlide: 0,
             animationSpeed:500,
             easingFunction:'linear',
-            listElement:'ul',
-            slideElement:'li'
+            containerSelector:'.jqslider-container',
+            listSelector:'ul',
+            slideSelector:'li',
+            slideTemplate:'<li />'
         },
 
         /**
@@ -152,6 +167,11 @@
 			return this.currentSlide;
 		},
 
+        switchOrientation:function(){
+            this.$el.toggleClass( 'jqslider-vertical' );
+            this.isVertical = !this.isVertical;
+        },
+
         /**
          * Adds a new slide node to the slider, if slidePosition is passed the new slide node will be added at a designated position
          * @public
@@ -159,7 +179,7 @@
          * @return {jQuery}                    returns the jquery object of the created slide
          */
         addSlide:function( slidePosition ){
-            var newSlide = $('<' + this.o.slideElement + '/>');
+            var newSlide = $( this.o.slideTemplate );
             if( undefined !== slidePosition && slidePosition < this.children.length - 1 ){
                 $( this.children[ slidePosition ] ).before( newSlide );
             } else {
@@ -221,23 +241,6 @@
         },
 
         /**
-         * Initialises the Slider
-         * @public
-         */
-        initSlider:function(){
-            var self = this;
-            $( this.children[ this.currentSlide ] ).addClass('jqslider-current');
-            this.initControls();
-
-            this.$el.bind('gotoprevslide.' + this.namespace, function( e ){ if( e.namespace != self.namespace ) return; self.gotoPrevSlide();});
-            this.$el.bind('gotonextslide.' + this.namespace, function( e ){ if( e.namespace != self.namespace ) return; self.gotoNextSlide();});
-
-            this.$el.addClass('jqslider-initialiced');
-
-            this.$el.trigger('init.' + this.namespace );
-        },
-
-        /**
          * returns a random number to create an unique namespace if no namespace is defined and no id is set on the jqgrid element
          * @public
          * @returns {Number}
@@ -249,19 +252,21 @@
         /**
          * @public
          */
-        init:function(){
-            this.o = $.extend({}, this.defaults, this.options, this.metadata);
+        setup:function(){
             //sets the namespace to the element ID or the namespace defined by the options, if neither is defined a unique namespace name is created
-            this.namespace = this.$el.attr( 'id' ) || this.o.namespace || 'jqgrid-' + this.getUID();
+            var self = this;
 
-            this.isVertical = this.$el.hasClass( 'jqslider-vertical' );
+            $( this.children[ this.currentSlide ] ).addClass('jqslider-current');
 
-            this.currentSlide = ( this.o.startSlide != this.currentSlide )? this.o.startSlide:this.currentSlide;
+            this.initControls();
 
-            this.list = $( '>' + this.o.listElement ,this.$el);
-            this.children = this.list.children( this.o.slideElement );
-            this.initSlider();
+            this.$el.bind('gotoprevslide.' + this.namespace, function( e ){ if( e.namespace != self.namespace ) return; self.gotoPrevSlide();});
+            this.$el.bind('gotonextslide.' + this.namespace, function( e ){ if( e.namespace != self.namespace ) return; self.gotoNextSlide();});
 
+            this.$el.addClass('jqslider-initialiced');
+
+            this.$el.trigger('init.' + this.namespace );
+            
             return this;
         }
 

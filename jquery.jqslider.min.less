@@ -1,84 +1,91 @@
 .jqslider {
-    position: relative;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    ul {
-        position: relative;
+    .jqslider-container{
         overflow: hidden;
-        margin: 0;
-        padding: 0;
-        width: 200%;
+        width: 100%;
         height: 100%;
-        li {
-            float: left;
+        ul {
             position: relative;
-            overflow: hidden;
-            width: 0;
-            height: 0;
-            visibility: visible;
-            display: block;
-            opacity: 1;/**/
-            &.jqslider-current,
-            &.jqslider-next {
-                float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200%;
+            height: 100%;
+            li {
                 position: relative;
-                top: auto;
-                left: auto;
-                width: 50%;
-                height: 100%;
-                visibility: visible;
-                display: block;
-                opacity: 1;/**/
-            }
-            &.jqslider-current {
+                overflow: hidden;
                 float: left;
+                width: 0;
+                height: 0;
+                visibility: hidden;
+                display: none;
+                opacity: 0;
+                &.jqslider-current,
+                &.jqslider-next {
+                    float: left;
+                    position: relative;
+                    top: auto;
+                    left: auto;
+                    width: 50%;
+                    height: 100%;
+                    visibility: visible;
+                    display: block;
+                    opacity: 1;/**/
+                }
+                &.jqslider-next {
+                    float: right;
+                }
             }
-            &.jqslider-next {
-                float: right;
-            }
-        }
-        &.jqslider-list-before {
-            left: -100%;
-            &.jqslider-current {
-                float: right;
-            }
-            &.jqslider-next {
-                float: left;
+            &.jqslider-list-before {
+                left: -100%;
+                .jqslider-current {
+                    float: right;
+                }
+                .jqslider-next {
+                    float: left;
+                }
             }
         }
     }
     &.jqslider-vertical {
-         ul {
-            height: 200%;
-            width: 100%;
-            left: 0;
-         }
-         .jqslider-list-before {
-            top: -100%;
-            .jqslider-current {
-                bottom: 0;
-                top: auto;
+        .jqslider-container{
+            ul {
+                height: 200%;
+                width: 100%;
+                li {
+                    position: absolute;
+                    &.jqslider-current,
+                    &.jqslider-next {
+                        width: 100%;
+                        height: 50%;
+                        top: 0;
+                        bottom: auto;
+                    }
+                    &.jqslider-next {
+                        bottom: 0;
+                        top: auto;
+                    }
+                }
+                &.jqslider-list-before {
+                    left: auto;
+                    top: -100%;
+                    li {
+                        &.jqslider-current {
+                            bottom: 0;
+                            top: auto;
+                        }
+                        &.jqslider-next {
+                            top: 0;
+                            bottom: auto;
+                        }
+                    }
+                }
             }
-            .jqslider-next {
-                top: 0;
-                bottom: auto;
-            }
-        }
-        .jqslider-current,
-        .jqslider-next {
-            position: absolute;
-            width: 100%;
-            height: 50%;
-            top: 0;
-            bottom: auto;
-        }
-        .jqslider-next {
-            bottom: 0;
-            top: auto;
         }
     }
 }
+
 
 /*************************/
 /******* CONTROLS ********/
@@ -91,7 +98,6 @@
     cursor: pointer;
     height: 10%;
     width: 10%;
-    background-color: #bbb;
     top: 50%;
     margin-top: -10px;
 
@@ -110,37 +116,15 @@
 
 }
 
-.jqslider-vertical {
-    > .jqslider-handler {
+.jqslider.jqslider-vertical {
+    .jqslider-handler {
         left: 50%;
         margin-left: -10px;
         top: 0;
         bottom: auto;
     }
-    > .jqslider-handler-next {
+    .jqslider-handler-next {
         top: auto;
         bottom: 0;
-    }
-}
-
-/**************************/
-/********* DEBUG **********/
-/**************************/
-
-
-.debug {
-    #dummy-cover {
-        overflow: visible;
-        border: 1px solid #000;
-    }
-    .jqslider {
-        overflow: visible;
-        ul {
-            background: #666;
-            overflow: visible;
-            li {
-                background: #eee;
-            }
-        }
     }
 }

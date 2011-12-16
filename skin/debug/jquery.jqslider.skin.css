@@ -1,0 +1,21 @@
+/**************************/
+/****** DEBUG STYLE *******/
+/**************************/
+
+.debug #dummy-cover {
+    overflow: visible;
+    border: 1px solid #000;
+}
+.debug .jqslider {
+    overflow: visible;
+}
+.debug .jqslider ul {
+    background: #666;
+    overflow: visible;
+}
+.debug .jqslider .jqslider-handler {
+    background-color: #bbb;
+}
+.debug .jqslider ul li {
+    background: #eee;
+}
