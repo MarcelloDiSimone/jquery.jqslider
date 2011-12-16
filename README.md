@@ -42,7 +42,7 @@ if set to true the slider will do a circular roundtrip
 **animationSpeed [500]**
 Speed of the animation
 
-**easingFunction ['linear']
+**easingFunction ['linear']**
 if you have included the easing plugin, you can pass the easing function here
 
 **listElement ['ul']**
