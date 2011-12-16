@@ -45,8 +45,11 @@ Speed of the animation
 **easingFunction ['linear']**
 if you have included the easing plugin, you can pass the easing function here
 
-**listElement ['ul']**
+**listSelector ['ul']**
 Defines the element type of the slide container element
 
-**slideElement ['li']**
+**slideSelector ['li']**
 Defines the element type of the slide element
+
+**slideTemplate ['<li />']**
+Defines the HTML snippet that is used to create a new slide
