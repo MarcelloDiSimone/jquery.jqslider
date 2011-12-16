@@ -11,14 +11,42 @@ scaling.
 
 
     <div class="jqslider">
-        <div class="jqslider-container">
-            <div class="jqslider-list">
-                <div class="jqslider-slide">
-                </div>
-            </div>
-        </div>
+        <ul>
+            <li>
+                <!-- Your content goes here -->
+            </li>
+        </ul>
     </div>
 
     <script>
     var slider = $('#firstlevel-slider').jqslider();
     </script>
+
+## Options
+
+autosetup       [true]
+You can prevent an automatic setup of the slider and run the setup manually. This is helpfull if you want to add new
+slides programmaticly.
+
+    var slider = $('#firstlevel-slider').jqslider({autosetup:false});
+    var sliderClass = slider.data('jqslider');
+    for( var i = 0; i <= 10; i++ ){
+        var currentSlide = sliderClass.addSlide();
+        currentSlide.append('<p>Slide ' + i + '</p>');
+    }
+    sliderClass.setup();
+
+circular        [false]
+if set to true the slider will do a circular roundtrip
+
+animationSpeed  [500]
+Speed of the animation
+
+easingFunction  ['linear']
+if you have included the easing plugin, you can pass the easing function here
+
+listElement     ['ul']
+Defines the element type of the slide container element
+
+slideElement    ['li']
+Defines the element type of the slide element
