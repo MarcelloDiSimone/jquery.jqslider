@@ -24,7 +24,7 @@ scaling.
 
 ## Options
 
-autosetup       [true]
+**autosetup [true]**
 You can prevent an automatic setup of the slider and run the setup manually. This is helpfull if you want to add new
 slides programmaticly.
 
@@ -36,17 +36,17 @@ slides programmaticly.
     }
     sliderClass.setup();
 
-circular        [false]
+**circular [false]**
 if set to true the slider will do a circular roundtrip
 
-animationSpeed  [500]
+**animationSpeed [500]**
 Speed of the animation
 
-easingFunction  ['linear']
+**easingFunction ['linear']
 if you have included the easing plugin, you can pass the easing function here
 
-listElement     ['ul']
+**listElement ['ul']**
 Defines the element type of the slide container element
 
-slideElement    ['li']
+**slideElement ['li']**
 Defines the element type of the slide element
