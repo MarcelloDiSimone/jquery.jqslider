@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+        
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>jQuery jQSlider :: Example Slimple</title>
+        <link rel="stylesheet" href="../jquery.jqslider.css"/>
+        <style type="text/css">
+            html,
+            body{
+                height: 100%;
+                width: 100%; 
+            }
+
+            body {
+                margin: 0;
+                padding:  0;
+            }
+
+            #dummy-cover {
+                width: 80%;
+                height: 80%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            .headline {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                color: #000;
+            }
+
+            img {
+                max-width: 100%;
+                width: 100%;
+            }
+
+
+            .jqslider {
+                border-radius: 10px;
+                box-shadow: 10px 10px 10px rgba( 125, 125, 125, .5 );
+            }
+        </style>
+    </head>
+    <body>
+        <div id="dummy-cover">
+
+            <div class="jqslider">
+                <ul>
+                    <li>
+
+                        <!-- START: SLIDE CONTENT -->
+                        <h1 class="headline">Slide 1</h1>
+                        <img src="images/dummy.jpg" alt="" />
+                        <!-- END: SLIDE CONTENT -->
+
+                    </li>
+                    <li>
+
+                        <!-- START: SLIDE CONTENT -->
+                        <h1 class="headline">Slide 2</h1>
+                        <img src="images/dummy.jpg" alt="" />
+                        <!-- END: SLIDE CONTENT -->
+    
+                    </li>
+                    <li>
+
+                        <!-- START: SLIDE CONTENT -->
+                        <h1 class="headline">Slide 3</h1>
+                        <img src="images/dummy.jpg" alt="" />
+                        <!-- END: SLIDE CONTENT -->
+
+                    </li>
+                </ul>
+                <a href="#" class="jqslider-handler-next jqslider-handler"></a>
+                <a href="#" class="jqslider-handler-prev jqslider-handler"></a>
+            </div>
+
+        </div>
+
+        <script src="js/lib/jquery.min.js" type="text/javascript"></script>
+        <script src="../jquery.jqslider.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var slider = $('.jqslider').jqslider({
+                circular:true,
+                animationSpeed:1000
+            });
+        </script>
+    </body>
+</html>

@@ -9,6 +9,7 @@
         base.el = el;
 
         var currentSlide = 0,
+            test = 0,
             list,
             container,
             children,
@@ -18,10 +19,10 @@
             prevButton,
             namespace,
             animating = false,
-            // alignment values shortcut
+            // alignment value shortcuts
             av = [
-                {position:'left',size:'width'},
-                {position:'top',size:'height'}
+                {pos:'left',size:'width'},
+                {pos:'top',size:'height'}
             ],
             // set the configuration values for css3 transform plugin
             // will be ignored if it's not included
@@ -73,12 +74,9 @@
 
             var next = $( children[ slide ] ),
                 current = $( children[ currentSlide ] ),
-                className = ( movePrev )? 'jqslider-list-before':'jqslider-list-after',
                 // extend currentCSS with the cssDefaults to avoid value pollution after orientation changes, which means
                 // the top ,respectively left value, will be kept in the cssDefault object and cause a diagonal animation
                 currentCSS = $.extend( {}, cssDefault );
-
-            //list.addClass( className );
 
             if( noAnimation === true ){
                 next.addClass('jqslider-current');
@@ -89,14 +87,15 @@
             } else {
                 list.toggleClass( 'jqslider-list-before', movePrev );
                 next.addClass('jqslider-next');
-                currentCSS[ av[ +isVertical ].position ]= ( movePrev )? '0%':'-100%';
+                currentCSS[ av[ +isVertical ].pos ]= ( movePrev )? '0%':'-100%';
+                //if( test++ == 2) return;
                 list.animate( currentCSS, {
                     duration: base.o.animationSpeed,
                     easing: base.o.easingFunction,
                     complete:  function(){
                         current.removeClass('jqslider-current');
                         next.removeClass('jqslider-next').addClass('jqslider-current');
-                        list.removeClass( className ).removeAttr('style');
+                        list.attr('style','').removeClass( 'jqslider-list-before' );
                         currentSlide = slide;
                         animating = false;
                         resetControls();
@@ -130,7 +129,7 @@
          * @return {jQuery}                    returns the jquery object of the created slide
          */
         base.addSlide = function( slidePosition ){
-            var newSlide = $('<div class="jqslider-slide" />');
+            var newSlide = $('<li />');
             if( undefined !== slidePosition && slidePosition < children.length - 1 ){
                 $( children[ slidePosition ] ).before( newSlide );
             } else {
@@ -227,13 +226,10 @@
 
             currentSlide = ( base.o.startSlide != currentSlide )? base.o.startSlide:currentSlide;
 
-            container = base.$el.children('.jqslider-container');
-            list = container.children('.jqslider-list');
-            children = list.children();
-            
+            list = $( base.o.listSelector ,base.$el);
+            children = list.children( base.o.slideSelector );
+            console.debug(children)
             initSlider();
-            /* TODO check ignorance of the namespace */
-
         };
         if( base.o.autosetup === true ) setup();
     };
@@ -242,7 +238,10 @@
         circular: false,
         startSlide: 0,
         animationSpeed:500,
-        easingFunction:'linear'
+        easingFunction:'linear',
+        listSelector:'> ul',
+        slideSelector:'li'
+
     };
     $.fn.jqslider = function(options){
         return this.each(function( index, slider ){
