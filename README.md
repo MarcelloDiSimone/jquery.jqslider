@@ -7,18 +7,18 @@ cloning the first (respectively last) slides to realize a circular movement. Thi
 inside of your slide that would break when it's cloned. This approach makes it also possible to have a fully css based
 scaling.
 
-Usage
------
+## Usage
 
-<div class="jqslider">
-    <div class="jqslider-container">
-        <div class="jqslider-list">
-            <div class="jqslider-slide">
+
+    <div class="jqslider">
+        <div class="jqslider-container">
+            <div class="jqslider-list">
+                <div class="jqslider-slide">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-var slider = $('#firstlevel-slider').jqslider();
-</script>
+    <script>
+    var slider = $('#firstlevel-slider').jqslider();
+    </script>
