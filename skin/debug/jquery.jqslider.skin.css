@@ -2,20 +2,35 @@
 /****** DEBUG STYLE *******/
 /**************************/
 
-.debug #dummy-cover {
+#dummy-cover {
     overflow: visible;
     border: 1px solid #000;
 }
-.debug .jqslider {
+.jqslider {
     overflow: visible;
 }
-.debug .jqslider ul {
-    background: #666;
+.jqslider .jqslider-container {
     overflow: visible;
 }
-.debug .jqslider .jqslider-handler {
+.jqslider .jqslider-container ul {
+    overflow: visible;
+}
+.jqslider .jqslider-handler {
     background-color: #bbb;
 }
-.debug .jqslider ul li {
-    background: #eee;
-}
+
+
+
+/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */
+.jqslider:before,
+.jqslider:after,
+.jqslider .jqslider-container:before,
+.jqslider .jqslider-container:after,
+.jqslider .jqslider-container ul:before,
+.jqslider .jqslider-container ul:after { content: ""; display: table; }
+.jqslider:after,
+.jqslider .jqslider-container:after,
+.jqslider .jqslider-container ul:after { clear: both; }
+.jqslider,
+.jqslider .jqslider-container,
+.jqslider .jqslider-container ul { zoom: 1; }

@@ -13,59 +13,151 @@
  * (end)
  *
  * See the jqslider documentation page for a full description.
+ *
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * and/or GPL (GPL-LICENSE.txt) licenses.
+ *
+ * Id: $Id: jquery.boilerplate.js 187 2011-11-27 13:03:28Z tom $
  */
 
-;(function( $, window, document, undefined ){
+/**
+ * @fileOverview This is a jquery slider plugin
+ * @name JQSlider
+ * @date $Date: 2012-01-07 $
+ * @author <a href="mailto:mdisimone@t8y.com">Marcello di Simone</a>
+ * @version 0.0.1
+ */
 
+/**
+ * Closure Function to create a namespace for the initialization of the Plugin
+ * @name anonymous
+ * @function
+ * @param {object}      $           The name of this parameter aliased jQuery object. Here it is aliased to $.
+ * @param {DOMElement}  windows     Reference to the window object
+ * @param {DOMElement}  document    Reference to the document object
+ * @param {undefined}   undefined   Reference to the document object
+ */
+;(function( $, window, document, undefined ){
     /**
+     * global accessible reference to JQSlider (this)
+     * @lends JQSlider
+     * @type Boolean|JQSlider
+     * @default false
+     */
+    var self = false;
+    /**
+     * @class JQSlider Plugin Class
+     * @name JQSlider
      * @constructor
-     * @param elem      slider root element
-     * @param options
+     * @param {DOMObject} elem      DOMElement to be initialized
+     * @param {Object}    options   Options for the Plugin Member
      */
     var JQSlider = function( elem, options ){
-        this.el = elem;
-        this.$el = $(elem);
-        this.options = options;
-        this.currentSlide = 0;
-        this.isVertical=false;
-        this.animating = false;
-        // alignment value shortcuts
-        this.av = [
+        self = this;
+        /**
+         * Stores a reference to the DOMElement of the module
+         * @name JQSlider#el
+         * @type DOMObject
+         */
+        self.el = elem;
+        /**
+         * Stores a reference to the jQuery object of the module
+         * @name JQSlider#$el
+         * @type Object
+         */
+        self.$el = $(elem);
+        /**
+         * This next line takes advantage of HTML5 data attributes
+         * to support customization of the plugin on a per-element
+         * basis (valid JSON only).
+         * @name JQSlider#metadata
+         * @type Object
+         * @example
+         * <div class="item" data-options='{"autosetup":"true"}'></div>
+         */
+        self.metadata = self.$el.data( 'options' );
+        /**
+         * Object with the configuration options of the module
+         * @name JQSlider#o
+         * @type Object
+         */
+        self.o = $.extend({}, self.defaults, options, self.metadata);
+        /**
+         * @name JQSlider#currentSlide
+         * @type Number
+         * @default 0
+         */
+        self.currentSlide = self.o.startSlide || 0;
+        /**
+         * @name JQSlider#isVertical
+         * @type Boolean
+         * @default false
+         */
+        self.isVertical = self.$el.hasClass( 'jqslider-vertical' );
+        /**
+         * @name JQSlider#animating
+         * @type Boolean
+         * @default false
+         */
+        self.animating = false;
+        /**
+         * alignment value shortcuts
+         * @name JQSlider#av
+         * @type Array
+         */
+        self.av = [
             {pos:'left',size:'width'},
             {pos:'top',size:'height'}
         ];
-        // set the configuration values for css3 transform plugin
-        // will be ignored if it's not included
-        this.cssDefault = {
+        /**
+         * set the configuration values for css3 transform plugin
+         * will be ignored if it's not included
+         * @name JQSlider#cssDefault
+         * @type Object
+         */
+        self.cssDefault = {
             useTranslate3d: true,
             leaveTransforms: false,
             avoidTransforms: true
         };
-
-        // This next line takes advantage of HTML5 data attributes
-        // to support customization of the plugin on a per-element
-        // basis. For example,
-        // <div class=item' data-plugin-options='{"message":"Goodbye World!"}'></div>
-        this.metadata = this.$el.data( 'plugin-options' );
-
-        this.o = $.extend({}, this.defaults, this.options, this.metadata);
-
-        this.namespace = this.$el.attr( 'id' ) || this.o.namespace || 'jqgrid-' + this.getUID();
-
-        this.isVertical = this.$el.hasClass( 'jqslider-vertical' );
-
-        this.currentSlide = ( this.o.startSlide != this.currentSlide )? this.o.startSlide:this.currentSlide;
-
-        this.container = this.$el.children( this.o.containerSelector );
-        this.list = this.container.children( this.o.listSelector );
-        this.children = this.list.children( this.o.slideSelector );
-        window.console.debug(this.children)
+        /**
+         * Namespace for the events that are triggered by self Instance
+         * this can also be used to have multiple slider with the same
+         * namespace so you're able to control same all at once with one event
+         * @name JQSlider#namespace
+         * @type String
+         */
+        self.namespace = self.$el.attr( 'id' ) || self.o.namespace || 'jqgrid-' + self._getUID();
+        /**
+         * reference of the slider container
+         * @name JQSlider#container
+         * @type jQuery
+         */
+        self.container = self.$el.children( self.o.containerSelector, self.$el );
+        /**
+         * reference of the slider list element
+         * @name JQSlider#list
+         * @type jQuery
+         */
+        self.list = self.container.children( self.o.listSelector, self.container );
+        /**
+         * jQuery set of all slide elements
+         * @name JQSlider#children
+         * @type jQuery
+         */
+        self.children = self.list.children( self.o.slideSelector, self.list );
         
-        if( this.options.autosetup !== false ) this.setup();
+        if( self.o.autosetup !== false ) self.setup();
     };
 
-    // the plugin prototype
+    /** @lends JQSlider.prototype */
     JQSlider.prototype = {
+        /**
+         * Default configuration values
+         * @field
+         * @type Object
+         * @property {boolean} whether or not the setup should be called automatically
+         */
         defaults: {
             autosetup: true,
             circular: false,
@@ -77,16 +169,15 @@
             slideSelector:'li',
             slideTemplate:'<li />'
         },
-
         /**
          * Moves to the next slide
          * @public
          */
         gotoNextSlide:function(){
-            var next = this.getNextSlideNumber();
+            var next = self._getNextSlideNumber();
             // if the slider has no circular animation and the last slide is already present, do nothing
             if( next !== false ){
-                this.gotoSlide( next, false );
+                self.gotoSlide( next, false );
             }
         },
         /**
@@ -94,186 +185,200 @@
          * @public
          */
         gotoPrevSlide:function(){
-            var prev = this.getPrevSlideNumber();
+            var prev = self._getPrevSlideNumber();
             // if the slider has no circular animation and the first slide is already present, do nothing
             if( prev !== false ) {
-                this.gotoSlide( prev, true );
+                self.gotoSlide( prev, true );
             }
         },
-
-
         /**
          * Moves to a designated slide
-         * @public
-         * @param {Number} slide                    number of slide to go to
+         * @param {Number}  slide                   number of slide to go to
          * @param {Boolean} [movePrev=false]        set to true if animation should go to the left
          * @param {Boolean} [noAnimation=false]     set to true if slide should be shown instantly without an animation
+         * @public
          */
         gotoSlide:function( slide, movePrev, noAnimation ){
-            var self = this;
             // stop if slider is currently animating or slide is out of bound
-            if( this.animating === true || slide < 0 && slide >= this.children.length ) return;
+            if( self.animating === true || slide < 0 && slide >= self.children.length ) return;
 
-            this.animating = true;
+            self.animating = true;
 
             movePrev = movePrev || false;
 
-            var next = $( this.children[ slide ] ),
-                current = $( this.children[ this.currentSlide ] ),
+            var next = $( self.children[ slide ] ),
+                current = $( self.children[ self.currentSlide ] ),
                 // extend currentCSS with the cssDefaults to avoid value pollution after orientation changes, which means
                 // the top ,respectively left value, would be kept in the cssDefault object and cause a diagonal animation
-                currentCSS = $.extend( {}, this.cssDefault );
+                currentCSS = $.extend( {}, self.cssDefault );
 
             if( noAnimation === true ){
                 next.addClass('jqslider-current');
                 current.removeClass('jqslider-current');
-                this.currentSlide = slide;
-                this.animating = false;
-                this.resetControls();
+                self.currentSlide = slide;
+                self.animating = false;
+                self._resetControls();
             } else {
-                this.list.toggleClass( 'jqslider-list-before', movePrev );
+                self.list.toggleClass( 'jqslider-list-before', movePrev );
                 next.addClass('jqslider-next');
-                currentCSS[ this.av[ +this.isVertical ].pos ]= ( movePrev )? '0%':'-100%';
-                this.list.animate( currentCSS, {
-                    duration: this.o.animationSpeed,
-                    easing: this.o.easingFunction,
+                currentCSS[ self.av[ +self.isVertical ].pos ]= ( movePrev )? '0%':'-100%';
+                self.list.animate( currentCSS, {
+                    duration: self.o.animationSpeed,
+                    easing: self.o.easingFunction,
                     complete:  function(){
                         current.removeClass('jqslider-current');
                         next.removeClass('jqslider-next').addClass('jqslider-current');
                         self.list.attr('style','').removeClass( 'jqslider-list-before' );
                         self.currentSlide = slide;
                         self.animating = false;
-                        self.resetControls();
+                        self._resetControls();
                     }
                 });
             }
         },
-
         /**
          * Returns the count of all slides
-         * @public
          * @return {Number}     returns the number of all slides
+         * @public
          */
 		getSlideCount:function(){
-			return this.children.length;
+			return self.children.length;
 		},
-
         /**
          * Returns the position number of the current active slide
+         * @return {Number}     returns the index of the current slide in children
+         * @see JQSlider#children
          * @public
-         * @return {Number}     returns the index of the current slide in the children set
          */
 		getCurrentSlide:function(){
-			return this.currentSlide;
+			return self.currentSlide;
 		},
-
+        /**
+         * changes the orientation of the slider from horizontal to vertical or vertical to horizontal respectively
+         * @public
+         */
         switchOrientation:function(){
-            this.$el.toggleClass( 'jqslider-vertical' );
-            this.isVertical = !this.isVertical;
+            self.$el.toggleClass( 'jqslider-vertical' );
+            self.isVertical = !self.isVertical;
         },
-
         /**
          * Adds a new slide node to the slider, if slidePosition is passed the new slide node will be added at a designated position
-         * @public
          * @param {Number} [slidePosition]     position of the new slide to be added at
          * @return {jQuery}                    returns the jquery object of the created slide
+         * @public
          */
         addSlide:function( slidePosition ){
-            var newSlide = $( this.o.slideTemplate );
-            if( undefined !== slidePosition && slidePosition < this.children.length - 1 ){
-                $( this.children[ slidePosition ] ).before( newSlide );
+            var newSlide = $( self.o.slideTemplate );
+            if( undefined !== slidePosition && slidePosition < self.children.length - 1 ){
+                $( self.children[ slidePosition ] ).before( newSlide );
             } else {
-                this.list.append( newSlide );
+                self.list.append( newSlide );
             }
-            this.children = this.list.children();
+            self.children = self.list.children();
 
             return newSlide;
         },
-
         /**
          * Returns the position of the next slider
-         * @public
          * @return {Number|Boolean}     returns index of next slide or false
+         * @private
          */
-        getNextSlideNumber:function(){
-            return ( ( this.currentSlide + 1 ) < this.children.length )? ( this.currentSlide + 1 ):( this.o.circular )? 0:false;
+        _getNextSlideNumber:function(){
+            return ( ( self.currentSlide + 1 ) < self.children.length )? ( self.currentSlide + 1 ):( self.o.circular )? 0:false;
         },
-
         /**
          * Returns the position of the previous slider or false
-         * @public
          * @return {Number|Boolean}     returns index of previous slide or false
+         * @private
          */
-        getPrevSlideNumber:function(){
-            return ( ( this.currentSlide - 1 ) >= 0 )? ( this.currentSlide - 1 ):( this.o.circular )? this.children.length-1:false;
+        _getPrevSlideNumber:function(){
+            return ( ( self.currentSlide - 1 ) >= 0 )? ( self.currentSlide - 1 ):( self.o.circular )? self.children.length-1:false;
         },
-
         /**
          * Hides the previousButton, respectively nextButton, if no circular animation is set and the first, respectively
          * last slide is reached
-         * @public
+         * @private
          */
-        resetControls:function(){
-            if( !this.o.circular ){
-                this.buttons.removeClass('jqslider-inactive');
-                if( this.currentSlide == 0 ) this.prevButton.addClass('jqslider-inactive');
-                if( this.currentSlide == this.children.length - 1 ) this.nextButton.addClass('jqslider-inactive');
+        _resetControls:function(){
+            if( !self.o.circular ){
+                self.buttons.removeClass('jqslider-inactive');
+                if( self.currentSlide == 0 ) {
+                    self.prevButton.addClass('jqslider-inactive');
+                } else if( self.currentSlide == self.children.length - 1 ){
+                    self.nextButton.addClass('jqslider-inactive');
+                }
             }
         },
-
         /**
          * Initialises the Slider controls and binds them to the previous and next methods
-         * @public
+         * @private
          */
-        initControls:function(){
-            var self = this;
-        	this.buttons = this.$el.children('.jqslider-handler');
-            this.nextButton = this.buttons.filter('.jqslider-handler-next').bind('click',function(e){
+        _initControls:function(){
+        	self.buttons = self.$el.children('.jqslider-handler');
+            self.nextButton = self.buttons.filter('.jqslider-handler-next').bind('click',function(e){
                 e.preventDefault();
                 self.$el.trigger('gotonextslide.' + self.namespace);
             });
-            this.prevButton = this.buttons.filter('.jqslider-handler-prev').bind('click',function(e){
+            self.prevButton = self.buttons.filter('.jqslider-handler-prev').bind('click',function(e){
                 e.preventDefault();
                 self.$el.trigger('gotoprevslide.' + self.namespace);
             });
 
-            if( !this.o.circular && this.currentSlide == 0 ) this.prevButton.addClass('jqslider-inactive');
+            if( !self.o.circular && self.currentSlide == 0 ) self.prevButton.addClass('jqslider-inactive');
         },
-
         /**
-         * returns a random number to create an unique namespace if no namespace is defined and no id is set on the jqgrid element
-         * @public
+         * returns a random number to create an unique namespace, if no namespace is defined and no id is set on the root element
          * @returns {Number}
+         * @private
          */
-        getUID:function () {
+        _getUID:function () {
             return (((1 + Math.random()) * 0x10000) | 0).toString( 16 ).substring( 1 );
         },
-
         /**
+         * the setup function
+         * @return JQSlider
          * @public
          */
         setup:function(){
-            //sets the namespace to the element ID or the namespace defined by the options, if neither is defined a unique namespace name is created
-            var self = this;
+            $( self.children[ self.currentSlide ] ).addClass('jqslider-current');
 
-            $( this.children[ this.currentSlide ] ).addClass('jqslider-current');
+            self._initControls();
 
-            this.initControls();
+            self.$el.bind('gotoprevslide.' + self.namespace, function( e ){ if( self.o.namespace && e.namespace != self.namespace ) return; self.gotoPrevSlide();});
+            self.$el.bind('gotonextslide.' + self.namespace, function( e ){ if( self.o.namespace && e.namespace != self.namespace ) return; self.gotoNextSlide();});
 
-            this.$el.bind('gotoprevslide.' + this.namespace, function( e ){ if( e.namespace != self.namespace ) return; self.gotoPrevSlide();});
-            this.$el.bind('gotonextslide.' + this.namespace, function( e ){ if( e.namespace != self.namespace ) return; self.gotoNextSlide();});
+            self.$el.addClass('jqslider-initialiced');
 
-            this.$el.addClass('jqslider-initialiced');
+            self.$el.trigger('init.' + self.namespace );
 
-            this.$el.trigger('init.' + this.namespace );
+            window.console.debug( $( self.children[ self.currentSlide ] ).addClass('current-slide') );
             
-            return this;
+            return self;
         }
-
     };
-    
+    /**
+     * Expose the defaults options to the global scope (window) so you can change them for all modules at once
+     * @see     window.JQSlider
+     * @scope   window
+     * @type    Object
+     */
     JQSlider.defaults = JQSlider.prototype.defaults;
+    /**
+     * jQuery object's methods (This comment is just a JSDoc helper)
+     * @name fn
+     * @memberOf $
+     * @see anonymous
+     * @namespace jQuery user methods container (plugin)
+     * @ignore
+     */
 
+    /**
+     * Initialize each object of the jQuery set as an instance of PluginBoilerplate
+     * @function
+     * @name pluginboilerplate
+     * @memberOf $.fn
+     * @return {jQuery} chainable jQuery class
+     */
     $.fn.jqslider = function(options) {
         return this.each(function(){
             if ( undefined == $( this ).data('jqslider') ) {
@@ -281,8 +386,6 @@
             }
         });
     };
-
-    window.Plugin = Plugin;
-
+    window.JQSlider = JQSlider;
 })( jQuery, window , document );
 
