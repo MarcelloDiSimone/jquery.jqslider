@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="jquery.jqslider" default="prod" basedir="./">
+
+    <description>Concatenate and minifies the jquery.jqslider project</description>
+
+
+    <target name="-load.properties" description="Set properties for this build">
+
+        <property name="src.dir" value="${basedir}/src"/>
+        <property name="build.dir" value="${basedir}/build"/>
+        <property name="tools.dir" value="${build.dir}/tools"/>
+        <property name="output.dir" value="${basedir}/dist"/>
+        <!--YUI Compressor location-->
+        <property name="yui.dir" value="${tools.dir}/yuicompressor-2.4.2.jar"/>
+        <property name="uglifyjs.dir" value="${tools.dir}/uglifyjs"/>
+        <!--Source JS dir-->
+        <property name="src.js.dir" value="${src.dir}/js"/>
+        <!--Source CSS dir-->
+        <property name="src.css.dir" value="${src.dir}/css"/>
+        <!--Source skins CSS dir-->
+        <property name="src.css.skins.dir" value="${src.dir}/skins"/>
+        <!--Source Lint/Hint dir-->
+        <property name="jslint.js" value="${tools.dir}/jshint.js"/>
+        <!--Rhino dir-->
+        <property name="js.jar" value="${tools.dir}/rhino/js.jar"/>
+        <!--Output dir-->
+        <!--Build version information -->
+        <property name="build.major" value="1"/>
+        <property name="build.minor" value="1"/>
+
+        <property name="jsdoc-toolkit.dir" location="../jsdoc-toolkit" />
+    </target>
+
+
+    <!--Create build directories-->
+    <target name="-init" depends="-load.properties" description="Create build directory structure">
+        <tstamp>
+            <format property="TODAY" pattern="EEE, d MMM yyyy HH:mm:ss Z"/>
+        </tstamp>
+
+        <delete dir="${output.dir}"/>
+
+        <mkdir dir="${output.dir}"/>
+        <mkdir dir="${output.dir}/js"/>
+        <mkdir dir="${output.dir}/css"/>
+
+        <echo file="${output.dir}/js/tstamp.txt" append="false">Build Date: ${TODAY}</echo>
+        <echo file="${output.dir}/css/tstamp.txt" append="false">Build Date: ${TODAY}</echo>
+    </target>
+
+    <!--JS Lint-->
+    <target depends="-init" name="-js.lint">
+        <pathconvert pathsep=" " property="jsfiles">
+            <fileset dir="${output.dir}/js/">
+                <include name="*.js"/>
+            </fileset>
+        </pathconvert>
+        <exec dir="${output.dir}/js/" executable="java" failonerror="true">
+            <arg line="-jar ${js.jar} ${jslint.js} ${jsfiles}"/>
+        </exec>
+        <echo>Finished</echo>
+    </target>
+
+
+    <!--Concatenate JS files-->
+    <target name="-js.concatenate" depends="-js.lint" description="Concatenates specified JavaScript files">
+        <concat destfile="${output.dir}/js/jquery.jqslider.js">
+            <fileset dir="${src.js.dir}" includes="*.js" />
+        </concat>
+        <echo>Finished</echo>
+    </target>
+
+    <!--Concatenate CSS files-->
+    <target name="-css.concatenate" depends="-init" description="Concatenates specified CSS files">
+        <concat destfile="${output.dir}/css/jquery.jqslider.css">
+            <fileset dir="${src.css.dir}" includes="*.css" excludes=""/>
+        </concat>
+        <echo>Finished</echo>
+    </target>
+
+    <!--Copy skins CSS files-->
+    <target name="-css.skins.copy" depends="-init" description="Copy specified skins CSS files">
+        <copy todir="${output.dir}/skins">
+            <fileset dir="${src.dir}/skins">
+                <exclude name="**/*.less"/>
+            </fileset>
+        </copy>
+        <echo>Finished</echo>
+    </target>
+
+    <target name="jsdoc" depends="-load.properties" description="Generate JSDoc">
+        <apply executable="java" parallel="false">
+            <fileset dir="${src.dir}/js" includes="jquery.jqslider.js"/>
+            <arg line="-jar"/>
+            <arg path="${jsdoc-toolkit.dir}/jsrun.jar"/>
+            <arg path="${jsdoc-toolkit.dir}/app/run.js"/>
+            <arg line="-d=${basedir}/docs/"/>
+            <arg line="-a"/>
+            <arg line="-p"/>
+            <arg line="-t=${jsdoc-toolkit.dir}/templates/jsdoc/"/>
+            <arg line="-d=${basedir}/docs/"/>
+        </apply>
+        <echo>Finished</echo>
+    </target>
+
+    <!--Minify JS files-->
+    <target name="-js.minify" depends="-js.concatenate" description="Minifies JavaScript files">
+        <apply executable="java" parallel="false" dest="${output.dir}/js">
+            <fileset dir="${output.dir}/js" includes="jquery.jqslider.js"/>
+            <arg line="-jar"/>
+            <arg path="${yui.dir}"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.js" to="*.min.js"/>
+            <targetfile/>
+        </apply>
+        <echo>Finished</echo>
+    </target>
+
+    <!--Minify CSS files-->
+    <target name="-css.minify" depends="-css.concatenate" description="Minifies CSS files">
+        <apply executable="java" parallel="false"  dest="${output.dir}/css">
+            <fileset dir="${output.dir}/css" includes="jquery.jqslider.css"/>
+            <arg line="-jar"/>
+            <arg path="${yui.dir}"/>
+            <arg line="--line-break 0"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.css" to="*.min.css"/>
+            <targetfile/>
+        </apply>
+        <echo>Finished</echo>
+    </target>
+
+    <!--Minify CSS files-->
+    <target name="-css.skins.minify" depends="-css.concatenate" description="Minifies CSS files">
+        <apply executable="java" parallel="false"  dest="${output.dir}/skins">
+            <fileset dir="${output.dir}/skins" includes="**/*.css"/>
+            <arg line="-jar"/>
+            <arg path="${yui.dir}"/>
+            <arg line="--line-break 0"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.css" to="*.min.css"/>
+            <targetfile/>
+        </apply>
+        <echo>Finished</echo>
+    </target>
+
+
+    <!--Build-->
+    <target name="prod" description="Builds project files for production use"
+            depends="
+            -init,
+            -css.skins.copy,
+            -js.concatenate,
+            -js.lint,
+            -css.concatenate, 
+            -js.minify,
+            -css.minify,
+            -css.skins.minify">
+    </target>
+</project>

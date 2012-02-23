@@ -10,6 +10,10 @@
 }
 .jqslider .jqslider-container ul {
     overflow: visible;
+    background-color: #777;
+}
+.jqslider .jqslider-container ul li {
+    overflow: visible;
 }
 .jqslider .jqslider-handler {
     background-color: #bbb;

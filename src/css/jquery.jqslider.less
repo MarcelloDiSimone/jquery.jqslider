@@ -1,10 +1,5 @@
-object,embed {
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-
 .jqslider {
+    position: relative;
     height: 100%;
     .jqslider-container {
         height: 100%;
@@ -22,8 +17,8 @@ object,embed {
                 left: -1000%;
                 top: -1000%;
                 overflow: hidden;
-                visibility: hidden;
-                /*display: none;*/
+                /*visibility: hidden;
+                display: none;*/
                 width: 50%;
                 height: 100%;
 
@@ -107,7 +102,7 @@ object,embed {
     height: 10%;
     width: 10%;
     top: 50%;
-    margin-top: -10px;
+    margin: -10px 0 0 0;
 
 
     &.jqslider-inactive {
@@ -127,7 +122,7 @@ object,embed {
 .jqslider.jqslider-vertical {
     .jqslider-handler {
         left: 50%;
-        margin-left: -10px;
+        margin: 0 0 0 -10px;
         top: 0;
         bottom: auto;
     }

@@ -1,4 +1,4 @@
-/**
+/*!*
  * Title: A responsive and performant content Slider
  * jQSlider follows a new approach in sliding content. Where most slider-plugins are moving the whole list of slides
  * when animating, jQSlider animates only the two slides necessary for the animation simultaneously. But the most
@@ -13,11 +13,6 @@
  * (end)
  *
  * See the jqslider documentation page for a full description.
- *
- * Dual licensed under the MIT (MIT-LICENSE.txt)
- * and/or GPL (GPL-LICENSE.txt) licenses.
- *
- * Id: $Id: jquery.boilerplate.js 187 2011-11-27 13:03:28Z tom $
  */
 
 /**
