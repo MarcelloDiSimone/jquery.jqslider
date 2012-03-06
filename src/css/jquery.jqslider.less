@@ -1,100 +1,101 @@
 .jqslider {
     position: relative;
     height: 100%;
-    .jqslider-container {
-        height: 100%;
-        overflow: hidden;
-        ul {
-            height: 100%;
-            position: relative;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            width: 200%;
-            height: 100%;
-            li {
-                position: absolute;
-                left: -1000%;
-                top: -1000%;
-                overflow: hidden;
-                /*visibility: hidden;
-                display: none;*/
-                width: 50%;
-                height: 100%;
-
-                &.jqslider-current,
-                &.jqslider-next {
-                    position: relative;
-                    top: 0;
-                    left: 0;
-                    visibility: visible;
-                    /*display: block;*/
-                }
-                &.jqslider-current {
-                    margin: 0 50% 0 0;
-                }
-                &.jqslider-next {
-                    position: absolute;
-                    left: 50%;
-                    top: 0;
-                }
-            }
-            &.jqslider-list-before {
-                left: -100%;
-                .jqslider-current {
-                    margin: 0 0 0 50%;
-                }
-                .jqslider-next {
-                    left: 0;
-                }
-            }
-        }
+}
+.jqs-container {
+    height: 100%;
+    overflow: hidden;
+}
+.jqs-list-before {
+    left: -100%;
+    .jqs-current {
+        margin: 0 0 0 50%;
     }
-    &.jqslider-vertical {
+    .jqs-next {
+        left: 0;
+    }
+}
+.jqs-list {
+    height: 100%;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 200%;
+    height: 100%;
+}
+.jqs-slide   {
+    position: absolute;
+    left: -1000%;
+    top: -1000%;
+    overflow: hidden;
+    /*visibility: hidden;
+    display: none;*/
+    width: 50%;
+    height: 100%;
+}
+.jqs-current,
+.jqs-next {
+    position: relative;
+    top: 0;
+    left: 0;
+    visibility: visible;
+    /*display: block;*/
+}
+.jqs-current {
+    margin: 0 50% 0 0;
+}
+.jqs-next {
+    position: absolute;
+    left: 50%;
+    top: 0;
+}
+.jqs-vertical {
+    height: 100%;
+    .jqs-container {
         height: 100%;
-        .jqslider-container {
-            height: 100%;
-            ul {
-                height: 200%;
-                width: 100%;
-                li {
-                    position: absolute;
-                    &.jqslider-current,
-                    &.jqslider-next {
-                        width: 100%;
-                        height: 50%;
-                        left: 0;
-                    }
-                    &.jqslider-current {
-                        margin: 0 0 50% 0;
-                    }
-                    &.jqslider-next {
-                        top: 50%;
-                    }
-                }
-                &.jqslider-list-before {
-                    left: auto;
-                    top: -100%;
-                    li {
-                        &.jqslider-current {
-                            margin: 50% 0 0 0;
-                        }
-                        &.jqslider-next {
-                            top: 0;
-                        }
-                    }
-                }
-            }
+
+    }
+    .jqs-list {
+        height: 200%;
+        width: 100%;
+    }
+    .jqs-slide {
+        position: absolute;
+
+    }
+    .jqs-current,
+    .jqs-next {
+        width: 100%;
+        height: 50%;
+        left: 0;
+    }
+    .jqs-current {
+        margin: 0 0 50% 0;
+    }
+    .jqs-next {
+        top: 50%;
+    }
+    .jqs-list-before {
+        left: auto;
+        top: -100%;
+        .jqs-current {
+            margin: 50% 0 0 0;
+        }
+        .jqs-next {
+            top: 0;
         }
     }
 }
 
-
+.lt-ie9 .jqs-vertical .jqs-list-before .jqs-current {
+    margin: 100% 0 0 0;
+}
 /*************************/
 /******* CONTROLS ********/
 /*************************/
 
-.jqslider-handler {
+.jqs-handler {
     position: absolute;
     display: block;
     z-index: 10000;
@@ -103,30 +104,29 @@
     width: 10%;
     top: 50%;
     margin: -10px 0 0 0;
-
-
-    &.jqslider-inactive {
-        opacity: .5;
-        cursor: auto;
-    }
-    &.jqslider-handler-prev {
-        left: 0;
-    }
-
-    &.jqslider-handler-next {
-        right: 0;
-    }
-
 }
-
-.jqslider.jqslider-vertical {
-    .jqslider-handler {
+.jqs-inactive {
+    opacity: .5;
+    cursor: auto;
+}
+.jqs-inactive {
+    opacity: .5;
+    cursor: auto;
+}
+.jqs-handler-prev {
+    left: 0;
+}
+.jqs-handler-next {
+    right: 0;
+}
+.jqs-vertical {
+    .jqs-handler {
         left: 50%;
         margin: 0 0 0 -10px;
         top: 0;
         bottom: auto;
     }
-    .jqslider-handler-next {
+    .jqs-handler-next {
         top: auto;
         bottom: 0;
     }

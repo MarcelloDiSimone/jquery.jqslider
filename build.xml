@@ -6,10 +6,12 @@
 
     <target name="-load.properties" description="Set properties for this build">
 
+        <property name="output.name" value="dist"/>
+
         <property name="src.dir" value="${basedir}/src"/>
         <property name="build.dir" value="${basedir}/build"/>
         <property name="tools.dir" value="${build.dir}/tools"/>
-        <property name="output.dir" value="${basedir}/dist"/>
+        <property name="output.dir" value="${basedir}/${output.name}"/>
         <!--YUI Compressor location-->
         <property name="yui.dir" value="${tools.dir}/yuicompressor-2.4.2.jar"/>
         <property name="uglifyjs.dir" value="${tools.dir}/uglifyjs"/>
@@ -44,8 +46,8 @@
         <mkdir dir="${output.dir}/js"/>
         <mkdir dir="${output.dir}/css"/>
 
-        <echo file="${output.dir}/js/tstamp.txt" append="false">Build Date: ${TODAY}</echo>
-        <echo file="${output.dir}/css/tstamp.txt" append="false">Build Date: ${TODAY}</echo>
+        <!---echo file="${output.dir}/js/tstamp.txt" append="false">Build Date: ${TODAY}</echo>
+        <echo file="${output.dir}/css/tstamp.txt" append="false">Build Date: ${TODAY}</echo-->
     </target>
 
     <!--JS Lint-->
@@ -60,7 +62,6 @@
         </exec>
         <echo>Finished</echo>
     </target>
-
 
     <!--Concatenate JS files-->
     <target name="-js.concatenate" depends="-js.lint" description="Concatenates specified JavaScript files">
@@ -85,21 +86,6 @@
                 <exclude name="**/*.less"/>
             </fileset>
         </copy>
-        <echo>Finished</echo>
-    </target>
-
-    <target name="jsdoc" depends="-load.properties" description="Generate JSDoc">
-        <apply executable="java" parallel="false">
-            <fileset dir="${src.dir}/js" includes="jquery.jqslider.js"/>
-            <arg line="-jar"/>
-            <arg path="${jsdoc-toolkit.dir}/jsrun.jar"/>
-            <arg path="${jsdoc-toolkit.dir}/app/run.js"/>
-            <arg line="-d=${basedir}/docs/"/>
-            <arg line="-a"/>
-            <arg line="-p"/>
-            <arg line="-t=${jsdoc-toolkit.dir}/templates/jsdoc/"/>
-            <arg line="-d=${basedir}/docs/"/>
-        </apply>
         <echo>Finished</echo>
     </target>
 
@@ -147,6 +133,20 @@
         <echo>Finished</echo>
     </target>
 
+    <target name="jsdoc" depends="-load.properties" description="Generate JSDoc">
+        <apply executable="java" parallel="false">
+            <fileset dir="${src.dir}/js" includes="jquery.jqslider.js"/>
+            <arg line="-jar"/>
+            <arg path="${jsdoc-toolkit.dir}/jsrun.jar"/>
+            <arg path="${jsdoc-toolkit.dir}/app/run.js"/>
+            <arg line="-d=${basedir}/docs/"/>
+            <arg line="-a"/>
+            <arg line="-p"/>
+            <arg line="-t=${jsdoc-toolkit.dir}/templates/jsdoc/"/>
+            <arg line="-d=${basedir}/docs/"/>
+        </apply>
+        <echo>Finished</echo>
+    </target>
 
     <!--Build-->
     <target name="prod" description="Builds project files for production use"

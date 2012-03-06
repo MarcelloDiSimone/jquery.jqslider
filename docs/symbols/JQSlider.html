@@ -259,6 +259,16 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
+								<b><a href="../symbols/JQSlider.html#$doc">$doc</a></b>
+								</div>
+								<div class="description">Stores a reference to the document object</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
 								<b><a href="../symbols/JQSlider.html#$el">$el</a></b>
 								</div>
 								<div class="description">Stores a reference to the jQuery object of the module</div>
@@ -309,17 +319,6 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/JQSlider.html#cssDefault">cssDefault</a></b>
-								</div>
-								<div class="description">set the configuration values for css3 transform plugin
-will be ignored if it's not included</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
 								<b><a href="../symbols/JQSlider.html#currentSlide">currentSlide</a></b>
 								</div>
 								<div class="description"></div>
@@ -337,12 +336,12 @@ will be ignored if it's not included</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/JQSlider.html#el">el</a></b>
+								JQSlider.<b><a href="../symbols/JQSlider.html#.defaults">defaults</a></b>
 								</div>
-								<div class="description">Stores a reference to the DOMElement of the module</div>
+								<div class="description">Expose the defaults options to the global scope (window) so you can change them for all modules at once</div>
 							</td>
 						</tr>
 					
@@ -397,6 +396,16 @@ namespace so you're able to control same all at once with one event</div>
 								<b><a href="../symbols/JQSlider.html#o">o</a></b>
 								</div>
 								<div class="description">Object with the configuration options of the module</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/JQSlider.html#slideTemplate">slideTemplate</a></b>
+								</div>
+								<div class="description"></div>
 							</td>
 						</tr>
 					
@@ -515,7 +524,7 @@ last slide is reached</div>
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JQSlider.html#gotoSlide">gotoSlide</a></b>(slide, movePrev, noAnimation)
+								<div class="fixedFont"><b><a href="../symbols/JQSlider.html#gotoSlide">gotoSlide</a></b>(slide, moveCounterwise, noAnimation)
 								</div>
 								<div class="description">Moves to a designated slide</div>
 							</td>
@@ -572,10 +581,10 @@ last slide is reached</div>
 						<dt class="heading">Parameters:</dt>
 						
 							<dt>
-								<span class="light fixedFont">{DOMObject}</span>  <b>elem</b>
+								<span class="light fixedFont">{HTMLElement}</span>  <b>elem</b>
 								
 							</dt>
-								<dd>DOMElement to be initialized</dd>
+								<dd>element to be initialized</dd>
 						
 							<dt>
 								<span class="light fixedFont">{Object}</span>  <b>options</b>
@@ -600,6 +609,28 @@ last slide is reached</div>
 				<div class="sectionTitle">
 					Field Detail
 				</div>
+				
+					<a name="$doc"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>$doc</b>
+					
+					</div>
+					<div class="description">
+						Stores a reference to the document object
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
 				
 					<a name="$el"> </a>
 					<div class="fixedFont">
@@ -718,29 +749,6 @@ last slide is reached</div>
 
 					<hr />
 				
-					<a name="cssDefault"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{Object}</span>
-					<b>cssDefault</b>
-					
-					</div>
-					<div class="description">
-						set the configuration values for css3 transform plugin
-will be ignored if it's not included
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
 					<a name="currentSlide"> </a>
 					<div class="fixedFont">
 					
@@ -792,15 +800,15 @@ will be ignored if it's not included
 
 					<hr />
 				
-					<a name="el"> </a>
-					<div class="fixedFont">
+					<a name=".defaults"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{DOMObject}</span>
-					<b>el</b>
+					<span class="light">{Object}</span>
+					<span class="light">JQSlider.</span><b>defaults</b>
 					
 					</div>
 					<div class="description">
-						Stores a reference to the DOMElement of the module
+						Expose the defaults options to the global scope (window) so you can change them for all modules at once
 						
 						
 					</div>
@@ -935,6 +943,35 @@ namespace so you're able to control same all at once with one event
 						
 						
 						
+						
+
+					<hr />
+				
+					<a name="slideTemplate"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>slideTemplate</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Default Value:</dt>
+							<dd>
+								'<li/>'
+							</dd>
+							</dl>
 						
 
 					
@@ -1160,7 +1197,7 @@ last slide is reached
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> returns the index of the current slide in children</dd>
+								<dd><span class="light fixedFont">{Number}</span> returns the index of the current slide in slides</dd>
 							
 							</dl>
 						
@@ -1169,7 +1206,7 @@ last slide is reached
 							<dl class="detailList">
 							<dt class="heading">See:</dt>
 							
-								<dd><a href="../symbols/JQSlider.html#children">JQSlider#children</a></dd>
+								<dd>JQSlider#slides</dd>
 							
 							</dl>
 						
@@ -1262,7 +1299,7 @@ last slide is reached
 					<div class="fixedFont">
 					
 					
-					<b>gotoSlide</b>(slide, movePrev, noAnimation)
+					<b>gotoSlide</b>(slide, moveCounterwise, noAnimation)
 					
 					</div>
 					<div class="description">
@@ -1284,7 +1321,7 @@ last slide is reached
 								<dd>number of slide to go to</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Boolean}</span> <b>movePrev</b>
+									<span class="light fixedFont">{Boolean}</span> <b>moveCounterwise</b>
 									<i>Optional, Default: false</i>
 								</dt>
 								<dd>set to true if animation should go to the left</dd>
@@ -1375,7 +1412,7 @@ last slide is reached
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Feb 23 2012 20:30:49 GMT+0100 (MEZ)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Mar 06 2012 18:56:12 GMT+0100 (MEZ)
 		</div>
 	</body>
 </html>

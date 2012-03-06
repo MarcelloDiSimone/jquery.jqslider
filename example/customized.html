@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>jQuery jQSlider :: Example Slimple</title>
+        <link rel="stylesheet" href="../src/css/jquery.jqslider.css"/>
+        <style type="text/css">
+            html,
+            body {
+                height: 100%;
+                width: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .dummy-cover {
+                float: left;
+                width: 40%;
+                height: 80%;
+                margin: 600px 5%;
+            }
+
+            img {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .jqs-handler {
+                background: #777;
+                background: rgba(0,0,0,.5);
+                border-radius: 20px;
+                box-shadow: 0 0 10px rgba(0,0,0,.5);
+                height: 20px;
+                width: 10px;
+                padding: 10px 20px;
+                color: #FFF;
+                text-decoration: none;
+                display: block;
+            }
+
+            .jqs-handler-next {
+                right: 10px;
+            }
+
+            .jqs-handler-prev {
+                left: 10px;
+            }
+
+            .jqs-container {
+                box-shadow: 0 0 30px rgba(0,0,0,.5);
+                border-radius: 10px;
+
+                background: -webkit-gradient(linear, 0% 0%, 0% 100%, to(#e1e1e1), from(#FFFFFF));
+                background: -webkit-linear-gradient(top, #FFFFFF, #e1e1e1);
+                background: -moz-linear-gradient(top, #FFFFFF, #e1e1e1);
+                background: -ms-linear-gradient(top, #FFFFFF, #e1e1e1);
+                background: -o-linear-gradient(top, #FFFFFF, #e1e1e1);
+            }
+
+            .slider-content {
+                overflow: hidden;
+                border: 1px solid #000;
+            }
+        </style>
+        <link rel="stylesheet" href="../src/skins/debug/jquery.jqslider.skin.css" />
+    </head>
+    <body class="debug">
+        <div>
+            <a href="#" id="move-both">Move Both</a>
+            <a href="#" id="goto-10">Goto 10</a>
+            <a href="#" id="goto-2">Goto 2</a>
+        </div>
+        <div class="dummy-cover">
+
+            <div id="slide1" class="jqslider">
+                <div class="jqs-container">
+                    <div>
+
+                    </div>
+                </div>
+                <a class="jqs-handler-next jqs-handler">&gt;</a>
+                <a class="jqs-handler-prev jqs-handler">&lt;</a>
+            </div>
+
+        </div>
+        <div class="dummy-cover">
+
+            <div id="slide2" class="jqslider jqs-vertical" data-options='{"startSlide":"2"}'>
+                <div class="jqs-container">
+                    <div>
+
+                    </div>
+                </div>
+                <a href="#" class="jqs-handler-next jqs-handler"></a>
+                <a href="#" class="jqs-handler-prev jqs-handler"></a>
+            </div>
+
+        </div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+        <script src="js/lib/jquery.easing.1.3.min.js" type="text/javascript"></script>
+        <script src="../src/js/jquery.jqslider.js" type="text/javascript"></script>
+        <script type="text/javascript">
+
+            // setting the defaults for all sliders on this page
+            JQSlider.defaults = $.extend(JQSlider.defaults,{
+                autosetup:false,
+                circular:true,
+                easingFunction:'easeInOutCubic',
+                animationSpeed:2000,
+                slideSelector:'div',
+                listSelector:'div'
+            });
+
+            var slide1 = $( '#slide1' ).jqslider( { startSlide:4 } );
+            // startSlide is set by the data-options attribute of the element tag
+            var slide2 = $( '#slide2' ).jqslider();
+
+            /* Add 10 slides programaticly */
+            $('.jqslider').each( function (index, slider) {
+                var sliderClass = $( slider ).data( 'jqslider' );
+                for ( var i = 0; i <= 10; i++ ) {
+                    sliderClass.addSlide().append( '<div class="slider-content"><div><h1>Slide ' + i + '</h1></div></div>' );
+                }
+                sliderClass.setup();
+            } );
+
+            /* Add an auto scoll behaviour to the first slider */
+            slide1.bind({
+                'init mouseout':function (e) {
+                    var $this = $( this );
+                    this.intID = setInterval( function () {
+                        $this.trigger( 'gotonextslide' );
+                    }, 5000 );
+                },
+                'mouseover':function (e) {
+                    clearInterval( this.intID );
+                }
+            });
+
+            /* Add a link that moves both slides */
+            $( '#move-both' ).bind( 'click', function (e) {
+                    e.preventDefault();
+                    $( '.jqslider' ).trigger( 'gotonextslide' );
+                }
+            );
+            $( '#goto-10' ).bind( 'click', function (e) {
+                    e.preventDefault();
+                    $( '.jqslider' ).trigger( 'gotoslide', [ 10, true ] );
+                }
+            );
+            $( '#goto-2' ).bind( 'click', function (e) {
+                    e.preventDefault();
+                    $( '.jqslider' ).trigger( 'gotoslide', [ 2, false ] );
+                }
+            );
+
+
+        </script>
+    </body>
+</html>

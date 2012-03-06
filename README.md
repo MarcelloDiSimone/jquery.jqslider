@@ -11,6 +11,8 @@ scaling.
 
 
     <div class="jqslider">
+        <a href="#" class="jqs-handler-next jqs-handler"></a>
+        <a href="#" class="jqs-handler-prev jqs-handler"></a>
         <ul>
             <li>
                 <!-- Your content goes here -->
@@ -19,14 +21,15 @@ scaling.
     </div>
 
     <script>
-    var slider = $('#firstlevel-slider').jqslider();
+        var slider = $('#firstlevel-slider').jqslider();
     </script>
 
 ## Options
 
 **autosetup [true]**
 You can prevent an automatic setup of the slider and run the setup manually. This is helpfull if you want to add new
-slides programmaticly.
+slides programmaticly and need access to the plugin instance. Because jqslider hides all slides not currently needed,
+it's sometimes not possible to retrieve the right dimensions of the slide.
 
     var slider = $('#firstlevel-slider').jqslider({autosetup:false});
     var sliderClass = slider.data('jqslider');

@@ -1,0 +1,6 @@
+.jqslider{overflow:visible;}
+.jqslider .jqs-container{overflow:visible;}
+.jqslider .jqs-container ul{overflow:visible;background-color:#777;}
+.jqslider .jqs-container ul li{overflow:visible;background-image:-webkit-gradient(linear,0 0,0 100%,color-stop(0.5,rgba(255,255,255,0.2)),color-stop(0.5,transparent),to(transparent));background-image:-moz-linear-gradient(rgba(255,255,255,0.2) 50%,transparent 50%,transparent);background-image:-o-linear-gradient(rgba(255,255,255,0.2) 50%,transparent 50%,transparent);background-image:linear-gradient(rgba(255,255,255,0.2) 50%,transparent 50%,transparent);-webkit-background-size:50px 50px;-moz-background-size:50px 50px;background-size:50px 50px;}
+.jqslider .jqs-container ul li.jqs-next{background-color:rgba(255,255,255,0.2);}
+.jqslider .jqs-handler{background-color:#bbb;}
