@@ -20,24 +20,24 @@ h1, h2 {
   margin-top: -41px;
   padding: 0;
 }
-.jqslider .jqs-handler-prev {
+.jqs-handler-prev {
   background: url('images/sprite.png') no-repeat left top;
   left: -37px;
 }
-.jqslider .jqs-handler-next {
+.jqs-handler-next {
   background: url('images/sprite.png') no-repeat left -100px;
   right: -37px;
 }
-.jqslider.jqs-vertical .jqs-handler {
+.jqs-vertical .jqs-handler {
   height: 47px;
   width: 60px;
   margin: 0 0 0 -37px;
 }
-.jqslider.jqs-vertical .jqs-handler.jqs-handler-prev {
+.jqs-vertical .jqs-handler-prev {
   background: url('images/sprite.png') no-repeat left -200px;
   top: 0;
 }
-.jqslider.jqs-vertical .jqs-handler.jqs-handler-next {
+.jqs-vertical .jqs-handler-next {
   background: url('images/sprite.png') no-repeat left -300px;
   bottom: 0;
 }

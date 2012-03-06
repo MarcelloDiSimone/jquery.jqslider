@@ -20,17 +20,17 @@
  * @name JQSlider
  * @date $Date: 2012-01-07 $
  * @author Marcello di Simone
- * @version 0.0.1
+ * @version 0.5
  */
 
 /**
  * Closure Function to create a namespace for the initialization of the Plugin
  * @name anonymous
  * @function
- * @param {Object}      $            Aliased jQuery object.
- * @param {HTMLElement}  windows     Reference to the window object
- * @param {HTMLElement}  document    Reference to the document object
- * @param {undefined}   undefined    Reference to the document object
+ * @param {Object}       $            Aliased jQuery object.
+ * @param {HTMLElement}  windows      Reference to the window object
+ * @param {HTMLElement}  document     Reference to the document object
+ * @param {undefined}    undefined    Reference to the document object
  */
 ;(function( $, window, document, undefined ){
 

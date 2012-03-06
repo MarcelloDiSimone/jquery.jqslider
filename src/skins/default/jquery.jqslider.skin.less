@@ -25,28 +25,28 @@ h2 {
     padding: 0;
 }
 
-.jqslider {
+.jqs-handler-prev {
+    background: url('images/sprite.png') no-repeat left top;
+    left: -37px;
+}
+
+.jqs-handler-next {
+    background: url('images/sprite.png') no-repeat left -100px;
+    right: -37px;
+}
+
+.jqs-vertical {
+    .jqs-handler {
+         height: 47px;
+         width: 60px;
+         margin: 0 0 0 -37px;
+    }
     .jqs-handler-prev {
-        background: url('images/sprite.png') no-repeat left top;
-        left: -37px;
+        background: url('images/sprite.png') no-repeat left -200px;
+        top: 0;
     }
     .jqs-handler-next {
-        background: url('images/sprite.png') no-repeat left -100px;
-        right: -37px;
-    }
-    &.jqs-vertical {
-        .jqs-handler {
-             height: 47px;
-             width: 60px;
-             margin: 0 0 0 -37px;
-             &.jqs-handler-prev {
-                 background: url('images/sprite.png') no-repeat left -200px;
-                 top: 0;
-             }
-             &.jqs-handler-next {
-                 background: url('images/sprite.png') no-repeat left -300px;
-                 bottom: 0;
-             }
-         }
+        background: url('images/sprite.png') no-repeat left -300px;
+        bottom: 0;
     }
 }
