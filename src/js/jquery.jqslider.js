@@ -59,12 +59,6 @@
          */
         this.$el = $(elem);
         /**
-         * Stores a reference to the document object
-         * @name JQSlider#$doc
-         * @type Object
-         */
-        this.$body = $('body');
-        /**
          * This next line takes advantage of HTML5 data attributes
          * to support customization of the plugin on a per-element
          * basis (valid JSON only).
@@ -192,7 +186,7 @@
 
             moveCounterwise = moveCounterwise || false;
             
-            this.$el.trigger('animationstart', [ { current:this.currentSlide, next:slide, counterwise: moveCounterwise } ] );
+            this.$el.trigger('animationstart', [ this.currentSlide, slide, moveCounterwise ] );
 
             var self = this,
                 next = $( this.slides[ slide ] ),
@@ -200,18 +194,19 @@
                 // extend currentCSS with the cssDefaults to avoid value pollution after orientation changes, which means
                 // the top ,respectively left value, would be kept in the cssDefault object and cause a diagonal animation
                 currentCSS = {},
-                // here I typecast the boolean value this.isVertical to get the first or second index of the array av which holds the sting top or left
+                // typecast the boolean value this.isVertical to get the first or second index of the array this.av which holds the sting top or left
                 elmPos = this.av[ +this.isVertical ].pos,
-                // here I typecast the boolean value this.isVertical to get the first or second index of the array av which holds the sting width or height
+                // typecast the boolean value this.isVertical to get the first or second index of the array this.av which holds the sting width or height
                 elmSize = this.av[ +this.isVertical ].size,
-                moveSize = current[ elmSize ]();
+                moveSize = this.list[ elmSize ]() / 2;
+
             if( noAnimation === true ){
                 next.addClass('jqs-current');
                 current.removeClass('jqs-current');
                 this.currentSlide = slide;
                 this.animating = false;
                 this._resetControls();
-                this.$el.trigger('animationend',[ { current:this.currentSlide, next:slide, counterwise: moveCounterwise } ]);
+                this.$el.trigger('animationend',[ this.currentSlide, slide, moveCounterwise ]);
             } else {
                 // jQuery has a calculation bug in IE8 when translating negative percent values in pixels, therefor we set it ourself
                 this.list.toggleClass( 'jqs-list-before', moveCounterwise ).css( elmPos, moveCounterwise? -moveSize:0 );
@@ -229,7 +224,7 @@
                         self.currentSlide = slide;
                         self.animating = false;
                         self._resetControls();
-                        self.$el.trigger('animationend',[ { current:self.currentSlide, next:slide, counterwise: moveCounterwise } ]);
+                        self.$el.trigger('animationend',[ this.currentSlide, slide, moveCounterwise ]);
                     }
                     // for debuging only
                     //,step:function(){window.console.debug('')}

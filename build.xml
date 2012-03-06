@@ -31,6 +31,7 @@
         <property name="build.minor" value="1"/>
 
         <property name="jsdoc-toolkit.dir" location="../jsdoc-toolkit" />
+        <property name="jsdoc.dir" location="${basedir}/docs/api" />
     </target>
 
 
@@ -143,7 +144,7 @@
             <arg line="-a"/>
             <arg line="-p"/>
             <arg line="-t=${jsdoc-toolkit.dir}/templates/jsdoc/"/>
-            <arg line="-d=${basedir}/docs/"/>
+            <arg line="-d=${jsdoc.dir}"/>
         </apply>
         <echo>Finished</echo>
     </target>
