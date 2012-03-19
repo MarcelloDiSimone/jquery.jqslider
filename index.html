@@ -1,139 +1,459 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
     <head>
-        <meta charset='utf-8'>
-
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>jQuery jQSlider :: Example Slimple</title>
+        <link rel="stylesheet" href="common/js/lib/jquery.jqslider/css/jquery.jqslider.css"/>
 
         <link href='http://fonts.googleapis.com/css?family=Lobster+Two:700italic,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-        <title>MarcelloDiSimone/jquery.jqslider @ GitHub</title>
-
         <style type="text/css">
+            html,
             body {
-                margin-top: 1.0em;
-                background-color: #ffffff;
-                font-family: Helvetica, Arial, FreeSans, san-serif;
-                color: #000000;
+                height: 100%;
+                width: 100%;
             }
 
-            #container {
-                margin: 0 auto;
-                width: 700px;
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Abel';
+            }
+
+            .slider-content {
+                padding: 20px 60px;
+
             }
 
             h1 {
-                font-size: 3.8em;
-                color: #000000;
-                margin-bottom: 3px;
+                font-family: 'Lobster Two';
+                font-size: 2em;
             }
 
-            h1 .small {
-                font-size: 0.4em;
+            h1, h2, h3, h4, h5 {
+                color: #EC7600;
             }
 
-            h1 a {
-                text-decoration: none
+            .jqslider {
+                background: #ffffff; /* Old browsers */
+                background: -moz-radial-gradient(center, ellipse cover, #ffffff 57%, #f2f2f2 100%); /* FF3.6+ */
+                background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(57%, #ffffff), color-stop(100%, #f2f2f2)); /* Chrome,Safari4+ */
+                background: -webkit-radial-gradient(center, ellipse cover, #ffffff 57%, #f2f2f2 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-radial-gradient(center, ellipse cover, #ffffff 57%, #f2f2f2 100%); /* Opera 12+ */
+                background: -ms-radial-gradient(center, ellipse cover, #ffffff 57%, #f2f2f2 100%); /* IE10+ */
+                background: radial-gradient(center, ellipse cover, #ffffff 57%, #f2f2f2 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#f2f2f2', GradientType = 1); /* IE6-9 fallback on horizontal gradient */
             }
 
-            h2 {
-                font-size: 1.5em;
-                color: #000000;
+            .jqs-handler {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 40px;
+                background: url('common/images/arrow_left.png') no-repeat center center rgba(0, 0, 0, .1);
+                text-decoration: none;
+                vertical-align: middle;
             }
 
-            h3 {
-                text-align: center;
-                color: #000000;
+            .jqs-handler.jqs-inactive {
+                display: none;
             }
 
-            a {
-                color: #000000;
+            .jqs-handler:hover {
+                background-color: rgba(0, 0, 0, .2);
             }
 
-            .description {
-                font-size: 1.2em;
-                margin-bottom: 30px;
-                margin-top: 30px;
-                font-style: italic;
+            .jqs-handler-next {
+                background: url('common/images/arrow_right.png') no-repeat center center rgba(0, 0, 0, .1);
+                left: auto;
+                right: 0;
             }
 
-            .download {
-                float: right;
-            }
 
-            pre {
-                background: #000;
-                color: #fff;
-                padding: 15px;
-            }
-
-            hr {
-                border: 0;
-                width: 80%;
-                border-bottom: 1px solid #aaa
-            }
-
-            .footer {
-                text-align: center;
-                padding-top: 30px;
-                font-style: italic;
-            }
         </style>
     </head>
-
     <body>
-        <a href="https://github.com/MarcelloDiSimone/jquery.jqslider"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"/></a>
 
-        <div id="container">
+        <div class="jqslider">
+            <div class="jqs-container">
+                <article>
+                    <section>
+                        <div class="slider-content">
 
-            <div class="download">
-                <a href="https://github.com/MarcelloDiSimone/jquery.jqslider/zipball/master">
-                    <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-                <a href="https://github.com/MarcelloDiSimone/jquery.jqslider/tarball/master">
-                    <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+                            <h1>JQSlider by MarcelloDiSimone</h1>
+
+                            <p>
+                                You can download this project in either
+                                <a href="https://github.com/MarcelloDiSimone/jquery.jqslider/zipball/master">zip</a> or
+                                <a href="https://github.com/MarcelloDiSimone/jquery.jqslider/tarball/master">tar</a> formats.
+                            </p>
+
+                            <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:
+                            <pre class="prettyprint linenums">
+                                    <code class="language-bsh">
+$ cd ~/github
+$ git clone git://github.com/MarcelloDiSimone/jquery.jqslider</code>
+                                </pre>
+                            </p>
+
+                            <p>It is not necessary to clone or download the whole package directly into
+                            your project directory, you can store it at a central location and build the needed files
+                                from that location, into your project with the included ant build file.</p>
+                            </p>
+                        </div>
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>Downloading</h1>
+
+                            <p>Download the plugin from</p>
+                        </div>
+
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>Building</h1>
+
+                            <p>From within the newly created plugin directory, simply run <code>ant</code> to build all needed
+                            files into the directory <code>deploy</code>. You can pass ant the <code>output.dir</code> to
+                            build the files into, for example your project directory.</p>
+
+                            <pre class="prettyprint linenums">
+                                <code class="language-bsh">
+$ cd jquery.jqslider
+$ ant
+
+# or alternatively #
+
+$ ant -Doutput.dir=/path/to/your/project/js/jquery.jqslider</code>
+                            </pre>
+                            <p>Ant will create following directory structure:</p>
+                            <pre>
+css
+    jquery.jqslider.css
+    jquery.jqslider.min.css
+js
+    jquery.jqslider.js
+    jquery.jqslider.min.js
+skins
+    debug
+        jquery.jqslider.skin.css
+        jquery.jqslider.skin.min.css
+    default
+        images
+            sprite.png
+        jquery.jqslider.skin.css
+        jquery.jqslider.skin.min.css
+                            </pre>
+                        </div>
+
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>Setup</h1>
+
+                            <p>After the build process, you're ready to setup a basic version of the slider. All you need to do
+                                is to include JQuery, the default style, the jquery.jqslider script and the needed HTML
+                                markup. If you like to control the slider programaticly or you want to add your own conrol handlers
+                                somewhere else one the page, you can remove the handlers from the markup.</p>
+                                <pre class="prettyprint linenums">
+                                    <code class="language-html">
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;link href="js/jquery.jqslider/css/jquery.jqslider.min.css" rel="stylesheet" /&gt;
+&lt;script src="js/jquery.jqslider/js/jquery.jqslider.min.js"&gt;&lt;/script&gt;
+&lt;div id="myslider" class="jqslider"&gt;
+    &lt;div class="jqs-container"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;!-- content --&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;a href="#" class="jqs-handler-next jqs-handler"&gt;&lt;/a&gt;
+    &lt;a href="#" class="jqs-handler-prev jqs-handler"&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    var slider = $('#myslider').jqslider();
+&lt;/script&gt;</code>
+                                </pre>
+                        </div>
+
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>3 ways to configure</h1>
+
+                            <p>You can configure the plugin in the standard JQuery style by passing an object with key value pairs.</p>
+                            <pre class="prettyprint linenums">
+                                <code class="language-javascript">
+$('#myslider').jqslider({option:value});</code>
+                            </pre>
+                            <p>Additionaly you can change the global configuration for all sliders on that page.</p>
+                            <pre class="prettyprint linenums">
+                                <code class="language-javascript">
+JQSlider.defaults = $.extend(JQSlider.defaults,{ option: value });</code>
+                            </pre>
+                            <p>Or if you want, add individual configuration to the HTML element itself by placing a JSON string into a
+                            <code>data-options</code> attribute. Because it is JSON you have to take care, all values and keys are quoted.
+                            Internaly single-quotes are replaced with double quotes, so you don't need to break with your HTML code style.</p>
+                            <pre class="prettyprint linenums">
+                                <code class="language-html">
+&lt;div id="slide2" class="jqslider jqs-vertical" data-options="{'option':'value'}"&gt;
+&lt;-- alternativly --&gt;
+&lt;div id="slide2" class="jqslider jqs-vertical" data-options='{"option":"value"}'&gt;
+&lt;-- alternativly --&gt;
+&lt;div id="slide2" class="jqslider jqs-vertical" data-options="{&amp;quot;option&amp;quot;:&amp;quot;value&amp;quot;}"&gt;</code>
+                            </pre>
+                        </div>
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>Configuration options</h1>
+
+                            <p>So you may ask yourself, what the hell shell I configure now? Here it comes</p>
+
+                            <h2>@config {Boolean} autoinit<br/>
+                            @default true</h2>
+                            You can prevent an automatic initialisation of the slider if you want to run it later on. For
+                            example if you want to bind a function to the init event, otherwise it would be triggered already.
+                            I'm working on a solution for this, any help on this is highly appreciated.
+
+                            <pre class="prettyprint linenums">
+                                <code class="language-javascript">
+var slider = $('#my-slider').jqslider({autoinit:false});
+// let's add a autoslide functionality
+slider.bind({
+    'init mouseout':function(e){
+        var $this = $( this );
+        this.intID = setInterval( function () {
+            $this.trigger( 'next' );
+        }, 5000 );
+    },
+    'mouseover':function (e) {
+        clearInterval( this.intID );
+    }
+});
+// get the plugin class instance
+var sliderInstance = slider.data('jqslider');
+sliderInstance.init();</code>
+                            </pre>
+
+                        </div>
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>Configuring the animation behaviour</h1>
+
+                            <h2>@config {Boolean} circular<br/>
+                            @default false</h2>
+
+                            <p>Set to true, for an infinite animation.</p>
+
+                            <h2>@config {Number} duration<br/>
+                            @default 500</h2>
+
+                            <p>Duration of the animation
+
+                            <h2>@config {String} easingFunction<br/>
+                            @default 'linear'</h2>
+
+                            <p>If you have included the easing plugin, you can define an easing function for the animation.</p>
+
+                            <h2>@config {Number} startSlide<br/>
+                            @default 0</h2>
+
+                            <p>Zero based index of the slide to start with. Can also be set by adding
+                            <code>jqs-current</code> to the appropriate slide.</p>
+
+                        </div>
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>Configuring the markup</h1>
+
+                            <p>If you have rich content and normal lists don't fit your semantic needs, you use your own
+                                markup, and configure the new elements. While you're able to define any jquery selector
+                                for the list element, you can only define a HTML tag for the slide element. This limitation is
+                                because new slides will be created depending on the slideTag value.</p>
+
+                                                <pre class="prettyprint linenums">
+                                                    <code class="language-html">
+&lt;div id="myslider" class="jqslider"&gt;
+    &lt;div class="jqs-container"&gt;
+        &lt;article&gt;
+            &lt;section&gt;
+                &lt;!-- content --&gt;
+            &lt;/section&gt;
+        &lt;/article&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+var slider = $('#myslider').jqslider({
+    listSelector:'article',
+    slideTag:'section'
+});
+&lt;/script&gt;</code>
+                                                </pre>
+                            <h2>@config {String} containerSelector<br/>
+                            @default '.jqs-container'</h2>
+
+                            <p>Define the jquery selector of the container element for querying. Must be set in the markup.</p>
+
+                            <h2>@config {String} listSelector<br/>
+                            @default 'ul'</h2>
+
+                            <p>Define the jquery selector of the list element for querying.</p>
+
+                            <h2>@config {String} slideTag<br/>
+                            @default 'li'</h2>
+
+                            <p>Define the tag name of the slide element for querying. It will be used for building the HTML
+                            template when creating a new slide.</p>
+                        </div>
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>Events to trigger</h1>
+
+                            <p>JQSlider is intended to be controlled by events. Although you're able to control it by accessing
+                            the plugin instance, it's designed to be event based. here are several events bound to the jqslider
+                            root element, you can trigger to control the slider</p>
+
+                            <pre class="prettyprint linenums">
+                                <code class="language-javascript">
+var slider = $('#my-slider').jqslider()
+
+slider.trigger('next');
+slider.trigger('prev');
+
+/**
+ * @event gotoslide
+ * @param {Number} slideNumber number of slide to go to
+ * @param {Boolean} [counterwise=false] optional set to true if the animation should go to the opposite direction
+ * @param {Boolean} [noAnimation=false] optional set to true if slide should be shown instantly without an animation
+ *
+ */
+slider.trigger('gotoslide',[ 1, true, false ]);</code>
+                            </pre>
+                        </div>
+
+                    </section>
+                    <section>
+
+                        <div class="slider-content">
+                            <h1>Events to listen to</h1>
+
+                            <p>The plugin also triggers several events you can bind your functionality to.</p>
+
+                            <pre class="prettyprint linenums">
+                                <code class="language-javascript">
+var slider = $('#my-slider').jqslider({autosetup:false})
+slider.bind({
+    'init':function(){
+        /* called after initialisation of the plugin */
+    },
+    'animationstart':function(){
+        /* called before every animation */
+    },
+    'animationend':function(){
+        /* called after every animation */
+    },
+});
+
+slider.find('.jqs-slide').bind({
+    'animationinstart':function(){
+        /* triggered on the slide element before it is animated into the viewport */
+    },
+    'animationinend':function(){
+        /* triggered on the slide element after it is animated into the viewport */
+    },
+    'animationoutstart':function(){
+        /* triggered on the slide element before it is animated out of the viewport */
+    },
+    'animationoutend':function(){
+        /* triggered on the slide element after it is animated out of the viewport */
+    },
+});</code>
+                            </pre>
+                        </div>
+                    </section>
+                </article>
             </div>
-
-            <h1><a href="https://github.com/MarcelloDiSimone/jquery.jqslider">jquery.jqslider</a>
-                <span class="small">by <a href="https://github.com/MarcelloDiSimone">MarcelloDiSimone</a></span></h1>
-
-            <div class="description">
-                A JQuery plugin for a responsive and performant content slider
-            </div>
-
-
-            <h2>Dependencies</h2>
-
-            <p>JQuery</p>
-
-
-            <h2>Authors</h2>
-
-            <p>Marcello di Simone</p>
-
-
-            <h2>Contact</h2>
-
-            <p>Marcello di Simone</p>
-
-
-            <h2>Download</h2>
-
-            <p>
-                You can download this project in either
-                <a href="https://github.com/MarcelloDiSimone/jquery.jqslider/zipball/master">zip</a> or
-                <a href="https://github.com/MarcelloDiSimone/jquery.jqslider/tarball/master">tar formats.
-            </p>
-
-            <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-                by running:
-                <pre>$ git clone git://github.com/MarcelloDiSimone/jquery.jqslider</pre>
-            </p>
-
-            <div class="footer">
-                get the source code on GitHub :
-                <a href="https://github.com/MarcelloDiSimone/jquery.jqslider">MarcelloDiSimone/jquery.jqslider</a>
-            </div>
-
+            <a href="#" class="jqs-handler-next jqs-handler"></a>
+            <a href="#" class="jqs-handler-prev jqs-handler"></a>
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="../example/js/lib/jquery.easing.1.3.min.js"></script>
+        <script src="common/js/lib/jquery.jqslider/js/jquery.jqslider.js"></script>
+        <link href="common/js/lib/google-code-prettify/prettify.css" rel="stylesheet"/>
+        <link href="common/js/lib/google-code-prettify/sons-of-obsidians.css" rel="stylesheet"/>
+        <script src="common/js/lib/google-code-prettify/prettify.js"></script>
+        <script>
+            var slider = $( '.jqslider' ).jqslider( {
+                duration:1000,
+                easingFunction:'easeInOutCubic',
+                listSelector:'article',
+                slideTag:'section'
+            } ).bind( {
+                        'animationend':function ( e, slideNumber ) {
+                            location.hash = '#!slide-' + slideNumber;
+                        }
+                    } );
+
+            var sliderInstance = slider.data( 'jqslider' );
+
+            $( document ).bind( {
+                'keydown':function ( e ) {
+                    if ( e.target === document.body || e.target === document.body.parentNode || e.altKey ) {
+                        if ( e.keyCode >= 32 && e.keyCode <= 40 ) {
+                            e.preventDefault();
+                        }
+                        switch ( e.keyCode ) {
+                            case 33: //page up
+                                slider.trigger( 'prev' );
+                                break;
+                            case 34: //page down
+                                slider.trigger( 'next' );
+                                break;
+                            case 37: // <-
+                            case 38: // up arrow
+                                slider.trigger( 'prev' );
+                                break;
+                            case 32: // space
+                            case 39: // ->
+                            case 40: // down arrow
+                                slider.trigger( 'next' );
+                                break;
+                        }
+                    }
+                }
+            } );
+
+            $( window ).bind( {
+                'hashchange':function ( e, noAnimation ) {
+                    if ( location.hash ) {
+                        var hashNumber = location.hash.match( /\d+$/ )[0] || 0;
+                        slider.trigger( 'gotoslide', [ hashNumber, (hashNumber < sliderInstance.activeIndex), noAnimation ] );
+                    }
+                }
+            } ).trigger( 'hashchange', [ true ] );
+
+            $( function () {
+                prettyPrint();
+            } )
+        </script>
     </body>
 </html>

@@ -1,0 +1,87 @@
+.jqslider {
+  position: relative;
+  height: 100%;
+}
+.jqs-container {
+  height: 100%;
+  overflow: hidden;
+}
+.jqs-list-before {
+  left: -100%;
+}
+.jqs-list-before .jqs-current {
+  margin: 0 0 0 50%;
+}
+.jqs-list-before .jqs-next {
+  left: 0;
+}
+.jqs-list {
+  height: 100%;
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 200%;
+  height: 100%;
+}
+.jqs-slide {
+  position: absolute;
+  left: -1000%;
+  top: -1000%;
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  /*visibility: hidden;
+    display: none;*/
+
+}
+.jqs-current, .jqs-next {
+  top: 0;
+  left: 0;
+  /*visibility: visible;
+    display: block;*/
+
+}
+.jqs-current {
+  position: relative;
+  margin: 0 50% 0 0;
+}
+.jqs-next {
+  left: 50%;
+  top: 0;
+}
+.jqs-vertical {
+  height: 100%;
+}
+.jqs-vertical .jqs-container {
+  height: 100%;
+}
+.jqs-vertical .jqs-list {
+  height: 200%;
+  width: 100%;
+}
+.jqs-vertical .jqs-slide {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  left: 0;
+}
+.jqs-vertical .jqs-current {
+  margin: 0 0 50% 0;
+}
+.jqs-vertical .jqs-next {
+  top: 50%;
+}
+.jqs-vertical .jqs-list-before {
+  left: auto;
+  top: -100%;
+}
+.jqs-vertical .jqs-list-before .jqs-current {
+  margin: 50% 0 0 0;
+}
+.jqs-vertical .jqs-list-before .jqs-next {
+  top: 0;
+}
+.lt-ie9 .jqs-vertical .jqs-list-before .jqs-current {
+  margin: 100% 0 0 0;
+}
