@@ -126,15 +126,12 @@
 
         </div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+        <!--script src="js/lib/jquery.min.js"></script-->
+        <script src="../../zepto/dist/zepto.min.js"></script>
         <script src="../src/js/jquery.jqslider.js" type="text/javascript"></script>
         <script type="text/javascript">
-            var slider = $('.jqslider').jqslider({
-                circular:true,
-                animationSpeed:1000
-            }).bind('swipe', function(){
-                window.console.debug('swipe');
-                $(this).data('jqslider').gotoNextSlide();
+            $(function(){
+                $('.jqslider').jqslider();
             });
         </script>
     </body>

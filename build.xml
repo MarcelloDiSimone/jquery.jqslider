@@ -6,7 +6,7 @@
 
     <target name="-load.properties" description="Set properties for this build">
 
-        <property name="output.name" value="dist"/>
+        <property name="output.name" value="deploy"/>
 
         <property name="src.dir" value="${basedir}/src"/>
         <property name="build.dir" value="${basedir}/build"/>

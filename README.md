@@ -2,57 +2,64 @@ jQuery.jQSlider - Fast and responsive content slider
 ==================================================
 
 jQSlider follows a new approach in sliding content. Where most slider-plugins are moving the whole list of slides
-when animating, jQSlider animates only two slides simultaneously. But the most important difference is, that it is not
-cloning the first (respectively last) slides to realize a circular movement. This is important if you have rich content
+when animating, jQSlider animates only the list with two visible slides at the time. But the most important difference is,
+that it is not cloning the first (respectively last) slides to realize a circular movement. This is important if you have rich content
 inside of your slide that would break when it's cloned. This approach makes it also possible to have a fully css based
 scaling.
 
 ## Usage
 
-
-    <div class="jqslider">
+    <div id="content-slider" class="jqslider">
         <a href="#" class="jqs-handler-next jqs-handler"></a>
         <a href="#" class="jqs-handler-prev jqs-handler"></a>
-        <ul>
-            <li>
-                <!-- Your content goes here -->
-            </li>
-        </ul>
+        <div class="jqs-container">
+            <ul>
+                <li>
+                    <!-- Your content goes here -->
+                </li>
+            </ul>
+        </div>
     </div>
 
     <script>
-        var slider = $('#firstlevel-slider').jqslider();
+        var slider = $('#content-slider').jqslider();
     </script>
 
 ## Options
 
-**autosetup [true]**
-You can prevent an automatic setup of the slider and run the setup manually. This is helpfull if you want to add new
-slides programmaticly and need access to the plugin instance. Because jqslider hides all slides not currently needed,
-it's sometimes not possible to retrieve the right dimensions of the slide.
+    **autoinit [true]**
+    You can prevent an automatic initialisation of the slider if you want to run it later on. This is than helpful, if you need the instance of
+    the plugin to access its methods, like addSlide, but you don't want the slides to be setup. Because JQSlider adds classes to all elements that
+    applies styling to it, like hiding not needed slides, so that it can prevent you from determining the correct height and width values of its
+    child elements.
 
-    var slider = $('#firstlevel-slider').jqslider({autosetup:false});
-    var sliderClass = slider.data('jqslider');
-    for( var i = 0; i <= 10; i++ ){
-        var currentSlide = sliderClass.addSlide();
-        currentSlide.append('<p>Slide ' + i + '</p>');
-    }
-    sliderClass.setup();
+        var slider = $('#content-slider').jqslider({autoinit:false});
+        var pluginInstance = slider.data('jqslider');
+        var totalWidth = 0;
+        for( var i = 0; i <= 10; i++ ){
+            var currentSlide = pluginInstance.addSlide();
+            currentSlide.append('<div class="slide-content">Slide ' + i + '</p>');
+            totalWidth += currentSlide.width();
+        }
+        pluginInstance.init();
 
-**circular [false]**
-if set to true the slider will do a circular roundtrip
+    **circular {Boolean=false}**
+    Set to true, for an endless animation.
 
-**animationSpeed [500]**
-Speed of the animation
+    **duration {Number=500}**
+    Duration of the animation
 
-**easingFunction ['linear']**
-if you have included the easing plugin, you can pass the easing function here
+    **easingFunction {String='linear'}**
+    If you have included the easing plugin, you can define an easing function for the animation.
 
-**listSelector ['ul']**
-Defines the element type of the slide container element
+    **startSlide {Number=0}**
+    Zero based index of the slide to start with.
 
-**slideSelector ['li']**
-Defines the element type of the slide element
+    **containerSelector {String='.jqs-container'}**
+    Define the jquery selector of the container element for querying. Must be set in the markup.
 
-**slideTemplate ['<li />']**
-Defines the HTML snippet that is used to create a new slide
+    **listTag {String='ul'}**
+    Define the tag name of the container element for querying.
+
+    **slideTag {String='li'}**
+    Define the tag name of the slide element for querying. It will be used for building the HTML template when creating a new slide.

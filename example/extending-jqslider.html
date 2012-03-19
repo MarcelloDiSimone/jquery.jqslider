@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+        
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>jQuery jQSlider :: Example Slimple</title>
+        <link rel="stylesheet" href="../src/css/jquery.jqslider.css"/>
+        <link rel="stylesheet" href="../src/skins/default/jquery.jqslider.skin.css"/>
+        <style type="text/css">
+            html,
+            body{
+                height: 100%;
+                width: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding:  0;
+            }
+
+            #dummy-cover {
+                width: 80%;
+                height: 80%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            .headline {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                color: #000;
+            }
+
+            img {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .slider-content {
+                padding: 20px 80px;
+                font-family: Verdana, Helvetica, "sans serif";
+                font-size: 12px;
+                color: #eee;
+            }
+            .slider-content h1,
+            .slider-content h2 {
+                text-shadow: 0px 2px 0px #111;
+            }
+            .slider-content .text {
+                -moz-column-count: 3;
+                -moz-column-gap: 1em;
+                -moz-column-rule: 1px dotted #eee;
+                -webkit-column-count: 3;
+                -webkit-column-gap: 3em;
+                -webkit-column-rule: 1px dotted #999;
+            }
+
+            .jqs-vertical .jqs-handler {
+                position: absolute;
+                display: block;
+                z-index: 10000;
+                cursor: pointer;
+                height: 83px;
+                width: 104px;
+                margin: -41px 0 0 0;
+                padding: 0;
+                top: 50%;
+            }
+            .jqs-vertical .jqs-handler.jqs-handler-prev {
+                bottom: auto;
+                right: auto;
+                left: -37px;
+            }
+            .jqs-vertical .jqs-handler.jqs-handler-next {
+                right: -37px;
+                bottom: auto;
+                left: auto;
+            }
+            .link-down,
+            .link-up {
+                display: inline-block;
+                margin: 10px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="dummy-cover">
+
+            <div id="jqgrid" class="jqslider">
+                <div class="jqs-container">
+                    <ul>
+                        <li id="slide_11"><div class="slider-content"><h1>slide_11</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                        <li id="slide_12"><div class="slider-content"><h1>slide_12</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                        <li id="slide_21"><div class="slider-content"><h1>slide_21</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                        <li id="slide_22"><div class="slider-content"><h1>slide_22</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                        <li id="slide_23"><div class="slider-content"><h1>slide_23</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                        <li id="slide_31"><div class="slider-content"><h1>slide_31</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                        <li id="slide_32"><div class="slider-content"><h1>slide_32</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                        <li id="slide_33"><div class="slider-content"><h1>slide_33</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                        <li id="slide_34"><div class="slider-content"><h1>slide_34</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
+                    </ul>
+                </div>
+                <a href="#" class="jqs-handler-next jqs-handler"></a>
+                <a href="#" class="jqs-handler-prev jqs-handler"></a>
+            </div>
+
+        </div>
+
+        <!--script src="js/lib/jquery.min.js"></script-->
+        <script src="../../zepto/dist/zepto.min.js"></script>
+        <script src="../src/js/jquery.jqslider.js"></script>
+        <script src="js/jquery.jqslidergrid.js"></script>
+        <script>
+            var slider = $('#jqgrid').jqslidergrid({
+                circular:true,
+                duration:1000,
+                grid:[
+                    ['slide_11','slide_12'],
+                    ['slide_21','slide_22','slide_23'],
+                    ['slide_31','slide_32','slide_33','slide_34']
+                ]
+            });
+
+            $('.link-up').bind('click',function(){
+                slider.trigger('up');
+            });
+            $('.link-down').bind('click',function(){
+                slider.trigger('down');
+            });
+        </script>
+    </body>
+</html>

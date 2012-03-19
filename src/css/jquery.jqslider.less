@@ -29,24 +29,23 @@
     left: -1000%;
     top: -1000%;
     overflow: hidden;
-    /*visibility: hidden;
-    display: none;*/
     width: 50%;
     height: 100%;
+    /*visibility: hidden;
+    display: none;*/
 }
 .jqs-current,
 .jqs-next {
-    position: relative;
     top: 0;
     left: 0;
-    visibility: visible;
-    /*display: block;*/
+    /*visibility: visible;
+    display: block;*/
 }
 .jqs-current {
+    position: relative;
     margin: 0 50% 0 0;
 }
 .jqs-next {
-    position: absolute;
     left: 50%;
     top: 0;
 }
@@ -62,10 +61,6 @@
     }
     .jqs-slide {
         position: absolute;
-
-    }
-    .jqs-current,
-    .jqs-next {
         width: 100%;
         height: 50%;
         left: 0;
@@ -90,44 +85,4 @@
 
 .lt-ie9 .jqs-vertical .jqs-list-before .jqs-current {
     margin: 100% 0 0 0;
-}
-/*************************/
-/******* CONTROLS ********/
-/*************************/
-
-.jqs-handler {
-    position: absolute;
-    display: block;
-    z-index: 10000;
-    cursor: pointer;
-    height: 10%;
-    width: 10%;
-    top: 50%;
-    margin: -10px 0 0 0;
-}
-.jqs-inactive {
-    opacity: .5;
-    cursor: auto;
-}
-.jqs-inactive {
-    opacity: .5;
-    cursor: auto;
-}
-.jqs-handler-prev {
-    left: 0;
-}
-.jqs-handler-next {
-    right: 0;
-}
-.jqs-vertical {
-    .jqs-handler {
-        left: 50%;
-        margin: 0 0 0 -10px;
-        top: 0;
-        bottom: auto;
-    }
-    .jqs-handler-next {
-        top: auto;
-        bottom: 0;
-    }
 }

@@ -12,10 +12,19 @@
   background-image: -ms-linear-gradient(right top, #5e5e5e 0%, #383838 50%);
 }
 .jqslider .jqs-handler {
+  position: absolute;
+  display: block;
+  z-index: 10000;
+  cursor: pointer;
   height: 83px;
   width: 104px;
   margin-top: -41px;
   padding: 0;
+  top: 50%;
+}
+.jqslider .jqs-inactive {
+  cursor: auto;
+  opacity: .5;
 }
 .jqslider .jqs-handler-prev {
   background: url('images/sprite.png') no-repeat left top;
@@ -29,6 +38,8 @@
   height: 47px;
   width: 60px;
   margin: 0 0 0 -37px;
+  top: auto;
+  left: 50%;
 }
 .jqslider .jqs-vertical .jqs-handler-prev {
   background: url('images/sprite.png') no-repeat left -200px;

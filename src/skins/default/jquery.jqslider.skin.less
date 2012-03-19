@@ -12,10 +12,20 @@
     }
 
     .jqs-handler {
+        position: absolute;
+        display: block;
+        z-index: 10000;
+        cursor: pointer;
         height: 83px;
         width: 104px;
         margin-top: -41px;
         padding: 0;
+        top: 50%;
+    }
+
+    .jqs-inactive {
+        cursor: auto;
+        opacity: .5;
     }
 
     .jqs-handler-prev {
@@ -30,9 +40,11 @@
 
     .jqs-vertical {
         .jqs-handler {
-             height: 47px;
-             width: 60px;
-             margin: 0 0 0 -37px;
+            height: 47px;
+            width: 60px;
+            margin: 0 0 0 -37px;
+            top: auto;
+            left: 50%
         }
         .jqs-handler-prev {
             background: url('images/sprite.png') no-repeat left -200px;

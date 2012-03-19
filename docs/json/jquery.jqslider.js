@@ -33,7 +33,7 @@
          * @property o
          * @type Object
          */
-        this.o = $.extend( JQSlider.prototype.defaults, options, $.parseJSON( ( this.$el.data( 'options' ) || "" ).replace(/'/g,"\"") ) );
+        this.o = $.extend( JQSlider.prototype.defaults, options, this.$el.data( 'options' ) );
         /**
          * Defines if the layout of the slider is vertical or not. Will be defined initially by the css class 'jqs-vertical' of the element.
          * @property isVertical
@@ -94,9 +94,6 @@
         }
     }
 
-    /**
-     * @namespace JQSlider
-     */
     JQSlider.prototype = {
         /**
          * Stores all configuration settings, this set will be extended with client configuration objects
