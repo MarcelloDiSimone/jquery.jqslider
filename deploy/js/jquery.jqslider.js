@@ -33,14 +33,7 @@
          * @property o
          * @type Object
          */
-        this.o = $.extend( JQSlider.prototype.defaults, options, this.$el.data( 'options' ) );
-        /**
-         * Stores the index of the current active slide inside the jquery set this._slides.
-         * @property activeIndex
-         * @type Number
-         * @default 0
-         */
-        this.activeIndex = this.o.startSlide || 0;
+        this.o = $.extend( JQSlider.prototype.defaults, options, $.parseJSON( ( this.$el.data( 'options' ) || "" ).replace(/'/g,"\"") ) );
         /**
          * Defines if the layout of the slider is vertical or not. Will be defined initially by the css class 'jqs-vertical' of the element.
          * @property isVertical
@@ -80,14 +73,14 @@
          * @type Object
          * @private
          */
-        this._container = this.$el.children( this.o.containerSelector );
+        this._container = this.$el.children( this.o.containerSelector ).addClass('jqs-container');
         /**
          * reference of the slider list element
          * @property _list
          * @type Object
          * @private
          */
-        this._list = this._container.children( this.o.listTag ).addClass( 'jqs-list' );
+        this._list = this._container.children( this.o.listSelector ).addClass( 'jqs-list' );
         /**
          * jQuery set of all slide elements
          * @property _slides
@@ -101,6 +94,9 @@
         }
     }
 
+    /**
+     * @namespace JQSlider
+     */
     JQSlider.prototype = {
         /**
          * Stores all configuration settings, this set will be extended with client configuration objects
@@ -148,19 +144,19 @@
              */
             easingFunction:'linear',
             /**
-             * Define the jquery selector of the container element for querying. Must be set in the markup.
+             * Define the jquery selector of the container element for querying. Must be represented in the markup.
              * @config containerSelector
              * @type String
              * @default '.jqs-container'
              */
             containerSelector:'.jqs-container',
             /**
-             * Define the tag name of the container element for querying.
-             * @config listTag
+             * Define the jquery selector of the list element for querying.
+             * @config listSelector
              * @type String
              * @default 'ul'
              */
-            listTag:'ul',
+            listSelector:'ul',
             /**
              * Define the tag name of the slide element for querying. It will be used for building the HTML template when
              * creating a new slide.
@@ -208,15 +204,15 @@
          */
         gotoSlide:function ( slideNumber, counterwise, noAnimation ) {
             // stop if slider is currently animating or slideNumber number is out of bound
-            if ( this._block === true || slideNumber < 0 && slideNumber >= this._slides.length ) return;
+            if ( this._block === true || slideNumber < 0 || slideNumber >= this._slides.length || slideNumber == this.activeIndex ) return;
 
             this._block = true;
 
             counterwise = counterwise || false;
 
             var self = this,
-                next = this._slides.eq( slideNumber ),
-                current = this._slides.eq( this.activeIndex ),
+                next = this.getSlide( slideNumber ),
+                current = this.getSlide( this.activeIndex ),
                 // extend currentCSS with the cssDefaults to avoid value pollution after orientation changes, which means
                 // the top ,respectively left value, would be kept in the cssDefault object and cause a diagonal animation
                 currentCSS = {},
@@ -229,7 +225,7 @@
             this._startAnimation( slideNumber, counterwise, noAnimation, current, next );
 
             if ( noAnimation === true ) {
-                this._endAnimation( slideNumber, counterwise, current, next );
+                this._endAnimation( slideNumber, counterwise, noAnimation, current, next );
             } else {
                 // jQuery has a calculation bug in IE8 when translating negative percent values in pixels, therefor we set it ourself
                 this._list.toggleClass( 'jqs-list-before', counterwise ).css( elmPos, counterwise ? -moveSize : 0 );
@@ -310,14 +306,23 @@
          */
         addSlide:function ( slidePosition ) {
             var newSlide = $( this._tmpl, {'class':'jqs-slide'} );
-            if ( undefined !== slidePosition && slidePosition < this._slides.length - 1 ) {
-                this._slides.eq( slidePosition ).before( newSlide );
+            if ( undefined !== slidePosition && slidePosition < this._slides.length ) {
+                this.getSlide( slidePosition ).before( newSlide );
             } else {
                 this._list.append( newSlide );
             }
-            this._slides = this._list.children();
+            this._slides = this._list.children('.jqs-slide');
 
             return newSlide;
+        },
+
+        /**
+         * Returns the slide node at the given index
+         * @public
+         * @param {Number} slideIndex
+         */
+        getSlide:function( slideIndex ){
+            return this._slides.eq( slideIndex );
         },
 
         /**
@@ -327,9 +332,9 @@
          * @param {Number|String|Object} slide    index, ID or jQuery set of the slide to be removed
          */
         removeSlide:function ( slide ) {
-            var foundSlide = ( typeof slide === 'number' ) ? this._slides.eq( slide ) : ( typeof slide === 'string') ? this._slides.find( slide ) : slide;
-            foundSlide.remove();
-            this._update();
+            /** TODO: make this more specific */
+            var foundSlide = ( typeof slide === 'number' ) ? this.getSlide( slide ) : ( typeof slide === 'string') ? this._slides.find( slide ) : slide;
+            this._slides.remove( foundSlide );
         },
 
         /**
@@ -415,9 +420,17 @@
          * @return Object
          */
         init:function () {
-            var self = this;
+            var self = this,
+                current = this._slides.filter('[class*="jqs-current"]').index();
+            /**
+             * Index of the current active slide. Can be defined by configuration or by adding the class jqs-current to the appropriate slide.
+             * @property activeIndex
+             * @type Number
+             * @default 0
+             */
+            this.activeIndex = current >= 0 ? current:this.o.startSlide || 0;
 
-            this._slides.eq( this.activeIndex ).addClass( 'jqs-current' );
+            this.getSlide( this.activeIndex ).addClass( 'jqs-current' );
 
             this._initControls();
 
