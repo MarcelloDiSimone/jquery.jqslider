@@ -19,8 +19,6 @@
         <property name="src.js.dir" value="${src.dir}/js"/>
         <!--Source CSS dir-->
         <property name="src.css.dir" value="${src.dir}/css"/>
-        <!--Source skins CSS dir-->
-        <property name="src.css.skins.dir" value="${src.dir}/skins"/>
         <!--Source Lint/Hint dir-->
         <property name="jslint.js" value="${tools.dir}/jshint.js"/>
         <!--Rhino dir-->
@@ -30,8 +28,8 @@
         <property name="build.major" value="1"/>
         <property name="build.minor" value="1"/>
 
-        <property name="jsdoc-toolkit.dir" location="../jsdoc-toolkit" />
-        <property name="jsdoc.dir" location="${basedir}/docs/api" />
+        <property name="jsdoc-toolkit.dir" value="../jsdoc-toolkit" />
+        <property name="jsdoc.dir" value="${basedir}/docs/api" />
     </target>
 
 
@@ -80,16 +78,6 @@
         <echo>Finished</echo>
     </target>
 
-    <!--Copy skins CSS files-->
-    <target name="-css.skins.copy" depends="-init" description="Copy specified skins CSS files">
-        <copy todir="${output.dir}/skins">
-            <fileset dir="${src.dir}/skins">
-                <exclude name="**/*.less"/>
-            </fileset>
-        </copy>
-        <echo>Finished</echo>
-    </target>
-
     <!--Minify JS files-->
     <target name="-js.minify" depends="-js.concatenate" description="Minifies JavaScript files">
         <apply executable="java" parallel="false" dest="${output.dir}/js">
@@ -108,21 +96,6 @@
     <target name="-css.minify" depends="-css.concatenate" description="Minifies CSS files">
         <apply executable="java" parallel="false"  dest="${output.dir}/css">
             <fileset dir="${output.dir}/css" includes="jquery.jqslider.css"/>
-            <arg line="-jar"/>
-            <arg path="${yui.dir}"/>
-            <arg line="--line-break 0"/>
-            <srcfile/>
-            <arg line="-o"/>
-            <mapper type="glob" from="*.css" to="*.min.css"/>
-            <targetfile/>
-        </apply>
-        <echo>Finished</echo>
-    </target>
-
-    <!--Minify CSS files-->
-    <target name="-css.skins.minify" depends="-css.concatenate" description="Minifies CSS files">
-        <apply executable="java" parallel="false"  dest="${output.dir}/skins">
-            <fileset dir="${output.dir}/skins" includes="**/*.css"/>
             <arg line="-jar"/>
             <arg path="${yui.dir}"/>
             <arg line="--line-break 0"/>
@@ -153,12 +126,10 @@
     <target name="prod" description="Builds project files for production use"
             depends="
             -init,
-            -css.skins.copy,
             -js.concatenate,
             -js.lint,
             -css.concatenate, 
             -js.minify,
-            -css.minify,
-            -css.skins.minify">
+            -css.minify">
     </target>
 </project>

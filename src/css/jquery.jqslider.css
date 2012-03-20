@@ -35,7 +35,8 @@
     display: none;*/
 
 }
-.jqs-current, .jqs-next {
+.jqs-current,
+.jqs-next {
   top: 0;
   left: 0;
   /*visibility: visible;
