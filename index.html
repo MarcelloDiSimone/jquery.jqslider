@@ -7,7 +7,7 @@
 
         <link href='http://fonts.googleapis.com/css?family=Lobster+Two:700italic,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="src/css/jquery.jqslider.css"/>
+        <link rel="stylesheet" href="deploy/css/jquery.jqslider.min.css"/>
         <link href="docs/common/js/lib/google-code-prettify/prettify.css" rel="stylesheet"/>
         <link href="docs/common/js/lib/google-code-prettify/sons-of-obsidians.css" rel="stylesheet"/>
         <style type="text/css">
@@ -102,7 +102,7 @@ $ git clone git://github.com/MarcelloDiSimone/jquery.jqslider</code>
 
                             <p>It is not necessary to clone or download the whole package directly into
                             your project directory, you can store it at a central location and build the needed files
-                                from that location, into your project with the included ant build file.</p>
+                            from that location into your project by running the included ant build script.</p>
                             </p>
                         </div>
                     </section>
@@ -112,8 +112,9 @@ $ git clone git://github.com/MarcelloDiSimone/jquery.jqslider</code>
                             <h1>Building</h1>
 
                             <p>From within the newly created plugin directory, simply run <code>ant</code> to build all needed
-                            files into the directory <code>deploy</code>. You can pass ant the <code>output.dir</code> to
-                            build the files into, for example your project directory.</p>
+                            files into a directory named <code>deploy</code> by default. You can run <code>ant</code> with the option <code>-D</code>
+                            to overwrite variables of the build script. One of this variables is <code>output.dir</code>. It defines the
+                            path to the directory, where the files are created.</p>
 
                             <pre class="prettyprint linenums">
                                 <code class="language-bsh">
@@ -126,21 +127,22 @@ $ ant -Doutput.dir=/path/to/your/project/js/jquery.jqslider</code>
                             </pre>
                             <p>Ant will create following directory structure:</p>
                             <pre>
-css
-    jquery.jqslider.css
-    jquery.jqslider.min.css
-js
-    jquery.jqslider.js
-    jquery.jqslider.min.js
-skins
-    debug
-        jquery.jqslider.skin.css
-        jquery.jqslider.skin.min.css
-    default
-        images
-            sprite.png
-        jquery.jqslider.skin.css
-        jquery.jqslider.skin.min.css
+deploy/
+    css/
+        jquery.jqslider.css
+        jquery.jqslider.min.css
+    js/
+        jquery.jqslider.js
+        jquery.jqslider.min.js
+    skins/
+        debug/
+            jquery.jqslider.skin.css
+            jquery.jqslider.skin.min.css
+        default/
+            images/
+                sprite.png
+            jquery.jqslider.skin.css
+            jquery.jqslider.skin.min.css
                             </pre>
                         </div>
 
@@ -151,11 +153,11 @@ skins
                             <h1>Setup</h1>
 
                             <p>After the build process, you're ready to setup a basic version of the slider. All you need to do
-                                is to include JQuery, the default style, the jquery.jqslider script and the needed HTML
-                                markup. If you like to control the slider programaticly or you want to add your own conrol handlers
-                                somewhere else one the page, you can remove the handlers from the markup.</p>
-                                <pre class="prettyprint linenums">
-                                    <code class="language-html">
+                            is to include JQuery, the default style, the jquery.jqslider script and the needed HTML
+                            markup. If you like to control the slider programaticly or you want to add your own conrol handlers
+                            somewhere else one the page, you can remove the handlers from the markup.</p>
+                            <pre class="prettyprint linenums">
+                                <code class="language-html">
 &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"&gt;&lt;/script&gt;
 &lt;link href="js/jquery.jqslider/css/jquery.jqslider.min.css" rel="stylesheet" /&gt;
 &lt;script src="js/jquery.jqslider/js/jquery.jqslider.min.js"&gt;&lt;/script&gt;
@@ -174,7 +176,7 @@ skins
 &lt;script&gt;
     var slider = $('#myslider').jqslider();
 &lt;/script&gt;</code>
-                                </pre>
+                            </pre>
                         </div>
 
                     </section>
@@ -188,14 +190,18 @@ skins
                                 <code class="language-javascript">
 $('#myslider').jqslider({option:value});</code>
                             </pre>
-                            <p>Additionaly you can change the global configuration for all sliders on that page.</p>
+                            <p>Additionaly you can change the global configuration for all sliders on a page.</p>
                             <pre class="prettyprint linenums">
                                 <code class="language-javascript">
+// for a single value
+JQSlider.defaults.option = value;
+// for more than one value
 JQSlider.defaults = $.extend(JQSlider.defaults,{ option: value });</code>
                             </pre>
                             <p>Or if you want, add individual configuration to the HTML element itself by placing a JSON string into a
-                            <code>data-options</code> attribute. Because it is JSON you have to take care, all values and keys are quoted.
-                            Internaly single-quotes are replaced with double quotes, so you don't need to break with your HTML code style.</p>
+                            <code>data-options</code> attribute. The configuration must be a valid JSON String.
+                            Internaly single-quotes are replaced by double quotes, so you don't need to break with your HTML code style,
+                            but you can also write double quotes or even entities if you like to.</p>
                             <pre class="prettyprint linenums">
                                 <code class="language-html">
 &lt;div id="slide2" class="jqslider jqs-vertical" data-options="{'option':'value'}"&gt;
@@ -211,13 +217,16 @@ JQSlider.defaults = $.extend(JQSlider.defaults,{ option: value });</code>
                         <div class="slider-content">
                             <h1>Configuration options</h1>
 
-                            <p>So you may ask yourself, what the hell shell I configure now? Here it comes</p>
+                            <p>So what's there to configure anyway? Here we go. First off all the autoinit value.</p>
 
                             <h2>@config {Boolean} autoinit<br/>
                             @default true</h2>
-                            You can prevent an automatic initialisation of the slider if you want to run it later on. For
-                            example if you want to bind a function to the init event, otherwise it would be triggered already.
-                            I'm working on a solution for this, any help on this is highly appreciated.
+                            You can prevent an automatic initialisation of the slider. This is needed, for
+                            example if you want to bind a function to the <code>init</code> event (otherwise it would be triggered already).
+                            Another reason to do so is when you add new slides with the <code>addSlide</code> method and need to determin ie. the
+                            width or height of the newly created slide (after the init call all slides except of the current active one will be hidden
+                            and thus makes it hard to determin the right values). Let me know if you find other situations, where you need to use this approach,
+                            or if you see a posibility to avoid this workaround by a design change of the plugin.
 
                             <pre class="prettyprint linenums">
                                 <code class="language-javascript">
@@ -249,12 +258,12 @@ sliderInstance.init();</code>
                             <h2>@config {Boolean} circular<br/>
                             @default false</h2>
 
-                            <p>Set to true, for an infinite animation.</p>
+                            <p>Set to true, for an infinite loop of slides.</p>
 
                             <h2>@config {Number} duration<br/>
                             @default 500</h2>
 
-                            <p>Duration of the animation
+                            <p>Duration of the animation</p>
 
                             <h2>@config {String} easingFunction<br/>
                             @default 'linear'</h2>
@@ -264,8 +273,8 @@ sliderInstance.init();</code>
                             <h2>@config {Number} startSlide<br/>
                             @default 0</h2>
 
-                            <p>Zero based index of the slide to start with. Can also be set by adding
-                            <code>jqs-current</code> to the appropriate slide.</p>
+                            <p>Zero based index of the slide to start with. Can also be set by adding the class
+                            <code>jqs-current</code> to the HTML element of the slide.</p>
 
                         </div>
                     </section>
@@ -274,13 +283,14 @@ sliderInstance.init();</code>
                         <div class="slider-content">
                             <h1>Configuring the markup</h1>
 
-                            <p>If you have rich content and normal lists don't fit your semantic needs, you use your own
-                                markup, and configure the new elements. While you're able to define any jquery selector
-                                for the list element, you can only define a HTML tag for the slide element. This limitation is
-                                because new slides will be created depending on the slideTag value.</p>
+                            <p>If you have rich content and normal lists don't fit your semantic needs, you can use whichever markup you like,
+                            and configure the selectors of the new elements with <code>containerSelector</code>, <code>listSelector</code>
+                            and <code>slideTag</code>. While you're able to define any selector jquery knows of for the container
+                            and list element, you must define a HTML tag for the slide element. This limitation is because
+                            new slides will be created with that tag.</p>
 
-                                                <pre class="prettyprint linenums">
-                                                    <code class="language-html">
+                            <pre class="prettyprint linenums">
+                                <code class="language-html">
 &lt;div id="myslider" class="jqslider"&gt;
     &lt;div class="jqs-container"&gt;
         &lt;article&gt;
@@ -297,7 +307,7 @@ var slider = $('#myslider').jqslider({
     slideTag:'section'
 });
 &lt;/script&gt;</code>
-                                                </pre>
+                            </pre>
                             <h2>@config {String} containerSelector<br/>
                             @default '.jqs-container'</h2>
 
@@ -321,24 +331,26 @@ var slider = $('#myslider').jqslider({
                             <h1>Events to trigger</h1>
 
                             <p>JQSlider is intended to be controlled by events. Although you're able to control it by accessing
-                            the plugin instance, it's designed to be event based. here are several events bound to the jqslider
-                            root element, you can trigger to control the slider</p>
+                            the plugin instance, it's designed to be event based. here are the events bound to the jqslider
+                            root element, you can trigger them to control the slider behaviour.</p>
 
                             <pre class="prettyprint linenums">
                                 <code class="language-javascript">
-var slider = $('#my-slider').jqslider()
-
-slider.trigger('next');
-slider.trigger('prev');
-
+/**
+ * @event next
+ */
+$('#my-slider').trigger('next');
+/**
+ * @event prev
+ */
+$('#my-slider').trigger('prev');
 /**
  * @event gotoslide
- * @param {Number} slideNumber number of slide to go to
- * @param {Boolean} [counterwise=false] optional set to true if the animation should go to the opposite direction
- * @param {Boolean} [noAnimation=false] optional set to true if slide should be shown instantly without an animation
- *
+ * @param {Number} slideNumber              zero based index of the slide to go to
+ * @param {Boolean} [counterwise=false]     optional parameter, if the animation should move to the opposite direction
+ * @param {Boolean} [noAnimation=false]     optional parameter, if the slide should be shown instantly without an animation
  */
-slider.trigger('gotoslide',[ 1, true, false ]);</code>
+$('#my-slider').trigger('gotoslide',[ 1, true, false ]);</code>
                             </pre>
                         </div>
 
@@ -362,7 +374,7 @@ slider.bind({
     },
     'animationend':function(){
         /* called after every animation */
-    },
+    }
 });
 
 slider.find('.jqs-slide').bind({
@@ -377,7 +389,7 @@ slider.find('.jqs-slide').bind({
     },
     'animationoutend':function(){
         /* triggered on the slide element after it is animated out of the viewport */
-    },
+    }
 });</code>
                             </pre>
                         </div>
@@ -408,7 +420,7 @@ slider.find('.jqs-slide').bind({
         <script src="docs/common/js/lib/jquery.easing.1.3.min.js"></script>
         <script src="docs/common/js/lib/jquery.jqswipe.min.js"></script>
         <script src="docs/common/js/lib/google-code-prettify/prettify.js"></script>
-        <script src="src/js/jquery.jqslider.js"></script>
+        <script src="deploy/js/jquery.jqslider.min.js"></script>
         <script>
             $( function () {
 
