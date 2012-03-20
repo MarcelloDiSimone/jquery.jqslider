@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>jQuery jQSlider :: Example Slimple</title>
         <link rel="stylesheet" href="../deploy/css/jquery.jqslider.min.css"/>
-        <link rel="stylesheet" href="../deploy/skins/default/jquery.jqslider.skin.min.css"/>
+        <link rel="stylesheet" href="../common/css/skins/default/jquery.jqslider.skin.css"/>
         <style type="text/css">
             html,
             body{
@@ -29,13 +29,6 @@
                 margin: auto;
             }
 
-            .headline {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                color: #000;
-            }
-
             img {
                 max-width: 100%;
                 width: 100%;
@@ -45,42 +38,29 @@
                 padding: 20px 80px;
                 font-family: Verdana, Helvetica, "sans serif";
                 font-size: 12px;
-                color: #eee;
+                color: #333;
             }
             .slider-content h1,
             .slider-content h2 {
-                text-shadow: 0px 2px 0px #111;
-            }
-            .slider-content .text {
-                -moz-column-count: 3;
-                -moz-column-gap: 1em;
-                -moz-column-rule: 1px dotted #eee;
-                -webkit-column-count: 3;
-                -webkit-column-gap: 3em;
-                -webkit-column-rule: 1px dotted #999;
+                text-shadow: 0px 2px 0px #BBB;
             }
 
+
             .jqs-vertical .jqs-handler {
-                position: absolute;
-                display: block;
-                z-index: 10000;
-                cursor: pointer;
-                height: 83px;
-                width: 104px;
-                margin: -41px 0 0 0;
-                padding: 0;
+                padding: 10px;
                 top: 50%;
             }
             .jqs-vertical .jqs-handler.jqs-handler-prev {
                 bottom: auto;
                 right: auto;
-                left: -37px;
+                left: 10px;
             }
             .jqs-vertical .jqs-handler.jqs-handler-next {
-                right: -37px;
+                right: 10px;
                 bottom: auto;
                 left: auto;
             }
+
             .link-down,
             .link-up {
                 display: inline-block;
@@ -106,8 +86,8 @@
                         <li id="slide_34"><div class="slider-content"><h1>slide_34</h1><a class="link-down">Down</a><a class="link-up">Up</a></div></li>
                     </ul>
                 </div>
-                <a href="#" class="jqs-handler-next jqs-handler"></a>
-                <a href="#" class="jqs-handler-prev jqs-handler"></a>
+                <a href="#" class="jqs-handler jqs-handler-next">→</a>
+                <a href="#" class="jqs-handler jqs-handler-prev">←</a>
             </div>
 
         </div>
