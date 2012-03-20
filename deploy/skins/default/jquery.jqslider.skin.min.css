@@ -1,10 +1,8 @@
-.jqslider{font-family:Verdana,Helvetica,"sans serif";font-size:12px;color:#eee;}
-.jqslider .jqs-container{box-shadow:0 0 20px #7d7d7d;background-image:linear-gradient(right top,#5e5e5e 0,#383838 50%);background-image:-o-linear-gradient(right top,#5e5e5e 0,#383838 50%);background-image:-moz-linear-gradient(right top,#5e5e5e 0,#383838 50%);background-image:-webkit-linear-gradient(right top,#5e5e5e 0,#383838 50%);background-image:-ms-linear-gradient(right top,#5e5e5e 0,#383838 50%);}
-.jqslider .jqs-handler{position:absolute;display:block;z-index:10000;cursor:pointer;height:83px;width:104px;margin-top:-41px;padding:0;top:50%;}
-.jqslider .jqs-inactive{cursor:auto;opacity:.5;}
-.jqslider .jqs-handler-prev{background:url('images/sprite.png') no-repeat left top;left:-37px;}
-.jqslider .jqs-handler-next{background:url('images/sprite.png') no-repeat left -100px;right:-37px;}
-.jqslider .jqs-vertical .jqs-handler{height:47px;width:60px;margin:0 0 0 -37px;top:auto;left:50%;}
-.jqslider .jqs-vertical .jqs-handler-prev{background:url('images/sprite.png') no-repeat left -200px;top:0;}
-.jqslider .jqs-vertical .jqs-handler-next{background:url('images/sprite.png') no-repeat left -300px;bottom:0;}
+.jqs-container{-moz-box-shadow:0 0 30px #AAA;-webkit-box-shadow:0 0 30px #AAA;box-shadow:0 0 30px #AAA;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;background:-webkit-gradient(linear,0% 0,0% 100%,to(#e1e1e1),from(#fff));background:-webkit-linear-gradient(top,#fff,#e1e1e1);background:-moz-linear-gradient(top,#fff,#e1e1e1);background:-ms-linear-gradient(top,#fff,#e1e1e1);background:-o-linear-gradient(top,#fff,#e1e1e1);}
+.jqs-handler{position:absolute;display:block;z-index:10000;cursor:pointer;top:50%;background:#777;background:rgba(0,0,0,0.5);border-radius:20px;box-shadow:0 0 10px rgba(0,0,0,0.5);text-decoration:none;color:#FFF;padding:10px;}
+.jqs-handler-next{right:10px;}
+.jqs-handler-prev{left:10px;}
+.jqs-vertical .jqs-handler{position:absolute;display:block;z-index:10000;cursor:pointer;top:auto;left:50%;right:auto;}
+.jqs-vertical .jqs-handler-next{bottom:10px;}
+.jqs-vertical .jqs-handler-prev{top:10px;}
 h1,h2{text-shadow:0 2px 0 #111;}
