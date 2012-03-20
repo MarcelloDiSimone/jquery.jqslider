@@ -1,7 +1,4 @@
 /**
- *
- */
-/**
  * @description A responsive and fast content Slider
  * jQSlider follows a new approach in building a slider. Where most slider-plugins are moving the whole list of slides
  * when animating, jQSlider animates only the two slides necessary for the animation simultaneously. This is not only an

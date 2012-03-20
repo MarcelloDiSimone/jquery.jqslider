@@ -219,7 +219,7 @@ OOP.extend = function(subClass, superClass) {
      */
     JQSliderGrid.prototype._update = function () {
         this._slides = this._list.children();
-        this.activeIndex = this._slides.index( this.o.css.current );
+        this.activeIndex = this._slides.index( 'jqs-current' );
     };
 
     /**
@@ -324,7 +324,7 @@ OOP.extend = function(subClass, superClass) {
             });
         });
 
-        var firstSlide = this._slides.eq( this.activeIndex ).addClass( this.o.css.current );
+        var firstSlide = this._slides.eq( this.activeIndex ).addClass( 'jqs-current' );
 
         this.activeRowIndex = firstSlide.data('row');
         this.activeColIndex = firstSlide.data('col');
@@ -338,34 +338,34 @@ OOP.extend = function(subClass, superClass) {
     JQSliderGrid.prototype._initControls = function(){
         var self = this,
             /**
-             * jQuery set with all handlers found inside the jqslider element with the class defined in css.handler
+             * jQuery set with all handlers found inside the jqslider element
              * @private
              * @property _handlers
              * @type Object
              */
-             h = this._handlers = this.$el.children( '.' + this.o.css.handler);
+             h = this._handlers = this.$el.children( '.jqs-handler' );
         if( h.length ){
             /**
-             * jQuery set with all handlers found inside the jqslider element with the class defined in css.nextHandler
+             * Reference to the handler triggering the next animation
              * @private
              * @property _nextHandler
              * @type Object
              */
-            this._nextHandler = h.filter( '.' + this.o.css.handlerNext ).bind('click',function(e){
+            this._nextHandler = h.filter( '.jqs-handler-next' ).bind('click',function(e){
                 e.preventDefault();
                 self.right();
             });
             /**
-             * jQuery set with all handlers found inside the jqslider element with the class defined in css.prevHandler
+             * Reference to the handler triggering the prev animation
              * @private
              * @property _prevHandler
              * @type Object
              */
-            this._prevHandler = h.filter( '.' + this.o.css.handlerPrev ).bind('click',function(e){
+            this._prevHandler = h.filter( '.jqs-handler-prev' ).bind('click',function(e){
                 e.preventDefault();
                 self.left();
             });
-            if( !this.o.circular && this.activeIndex == 0 ) this._prevHandler.addClass( this.o.css.inactive );
+            if( !this.o.circular && this.activeIndex == 0 ) this._prevHandler.addClass( 'jqs-inactive' );
         }
     };
     /**
