@@ -70,27 +70,6 @@
          * @private
          */
         this._tmpl = '<' + this.o.slideTag + '/>';
-        /**
-         * reference of the slider container
-         * @property _container
-         * @type Object
-         * @private
-         */
-        this._container = this.$el.children( this.o.containerSelector ).addClass('jqs-container');
-        /**
-         * reference of the slider list element
-         * @property _list
-         * @type Object
-         * @private
-         */
-        this._list = this._container.children( this.o.listSelector ).addClass( 'jqs-list' );
-        /**
-         * jQuery set of all slide elements
-         * @property _slides
-         * @type Object
-         * @private
-         */
-        this._slides = this._list.children( this.o.slideTag ).addClass( 'jqs-slide' );
 
         if ( this.o.autoinit !== false ) {
             this.init();
@@ -378,6 +357,42 @@
             }
         },
 
+        _initSlider:function(){
+
+            /**
+             * reference of the slider container
+             * @property _container
+             * @type Object
+             * @private
+             */
+            this._container = this.$el.children( this.o.containerSelector ).addClass('jqs-container');
+            /**
+             * reference of the slider list element
+             * @property _list
+             * @type Object
+             * @private
+             */
+            this._list = this._container.children( this.o.listSelector ).addClass( 'jqs-list' );
+            /**
+             * jQuery set of all slide elements
+             * @property _slides
+             * @type Object
+             * @private
+             */
+            this._slides = this._list.children( this.o.slideTag ).addClass( 'jqs-slide' );
+
+            var current = this._slides.filter('[class*="jqs-current"]').index();
+            /**
+             * Index of the current active slide. Can be defined by configuration or by adding the class jqs-current to the appropriate slide.
+             * @property activeIndex
+             * @type Number
+             * @default 0
+             */
+            this.activeIndex = current >= 0 ? current:this.o.startSlide || 0;
+
+            this.getSlide( this.activeIndex ).addClass( 'jqs-current' );
+        },
+
         /**
          * Initialises the Slider controls and binds them to the previous and next methods.
          * @private
@@ -423,17 +438,9 @@
          * @return Object
          */
         init:function () {
-            var self = this,
-                current = this._slides.filter('[class*="jqs-current"]').index();
-            /**
-             * Index of the current active slide. Can be defined by configuration or by adding the class jqs-current to the appropriate slide.
-             * @property activeIndex
-             * @type Number
-             * @default 0
-             */
-            this.activeIndex = current >= 0 ? current:this.o.startSlide || 0;
+            var self = this;
 
-            this.getSlide( this.activeIndex ).addClass( 'jqs-current' );
+            this._initSlider();
 
             this._initControls();
 
