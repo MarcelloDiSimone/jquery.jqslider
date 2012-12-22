@@ -71,6 +71,28 @@
          */
         this._tmpl = '<' + this.o.slideTag + '/>';
 
+	    /**
+	     * reference of the slider container
+	     * @property _container
+	     * @type Object
+	     * @private
+	     */
+	    this._container = this.$el.children( this.o.containerSelector );
+	    /**
+	     * reference of the slider list element
+	     * @property _list
+	     * @type Object
+	     * @private
+	     */
+	    this._list = this._container.children( this.o.listSelector );
+	    /**
+	     * jQuery set of all slide elements
+	     * @property _slides
+	     * @type Object
+	     * @private
+	     */
+	    this._slides = this._list.children( this.o.slideTag );
+
         if ( this.o.autoinit !== false ) {
             this.init();
         }
@@ -358,28 +380,9 @@
         },
 
         _initSlider:function(){
-
-            /**
-             * reference of the slider container
-             * @property _container
-             * @type Object
-             * @private
-             */
-            this._container = this.$el.children( this.o.containerSelector ).addClass('jqs-container');
-            /**
-             * reference of the slider list element
-             * @property _list
-             * @type Object
-             * @private
-             */
-            this._list = this._container.children( this.o.listSelector ).addClass( 'jqs-list' );
-            /**
-             * jQuery set of all slide elements
-             * @property _slides
-             * @type Object
-             * @private
-             */
-            this._slides = this._list.children( this.o.slideTag ).addClass( 'jqs-slide' );
+            this._container.addClass('jqs-container');
+            this._list.addClass( 'jqs-list' );
+            this._slides.addClass( 'jqs-slide' );
 
             var current = this._slides.filter('[class*="jqs-current"]').index();
             /**

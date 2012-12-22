@@ -1,0 +1,42 @@
+/**************************/
+/****** DEBUG STYLE *******/
+/**************************/
+.jqslider {
+  overflow: visible;
+}
+.jqs-container {
+  overflow: visible;
+}
+.jqs-list {
+  overflow: visible;
+  background-color: #777;
+}
+.jqs-slide {
+  overflow: visible;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.5, transparent), to(transparent));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent);
+  -webkit-background-size: 50px 50px;
+  -moz-background-size: 50px 50px;
+  background-size: 50px 50px;
+}
+.jqs-next {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.jqs-handler {
+  background-color: #bbb;
+}
+/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */
+/*.jqslider:before,*/
+/*.jqslider:after,*/
+/*.jqslider .jqs-container:before,*/
+/*.jqslider .jqs-container:after,*/
+/*.jqslider .jqs-container ul:before,*/
+/*.jqslider .jqs-container ul:after { content: ""; display: table; }*/
+/*.jqslider:after,*/
+/*.jqslider .jqs-container:after,*/
+/*.jqslider .jqs-container ul:after { clear: both; }*/
+/*.jqslider,*/
+/*.jqslider .jqs-container,*/
+/*.jqslider .jqs-container ul { zoom: 1; }*/
