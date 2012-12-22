@@ -1,5 +1,5 @@
 *.iml
 *.ipr
 *.iws
-.idea/
 deploy/
+node_modules/

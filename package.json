@@ -1,0 +1,20 @@
+{
+	"name": "jquery.jqslider",
+	"version": "0.3.0",
+	"author": "Marcello di Simone <mdisimone.dev@gmail.com>",
+	"description": "A fast and responsive content slider",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MarcelloDiSimone/jquery.jqslider.git"
+	},
+	"keywords": [
+		"jquery",
+		"jqslider",
+		"responsive slider"
+	],
+	"dependencies" : {
+		"grunt": "0.3.x",
+		"grunt-contrib-less": "0.3.x"
+	},
+	"license": "MIT"
+}
