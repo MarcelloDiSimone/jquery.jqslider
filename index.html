@@ -24,6 +24,17 @@
                 font-family: 'Abel', Verdana, Arial, Helvetica;
             }
 
+            .jqslider {
+                min-height: 100%;
+            }
+
+            .slider-content,
+            .jqs-list,
+            .jqs-slide,
+            .jqs-container {
+                height: auto;
+            }
+
             .slider-content {
                 padding: 20px 60px;
 
@@ -32,6 +43,7 @@
             h1 {
                 font-family: 'Lobster Two', Verdana, Arial, Helvetica;
                 font-size: 2em;
+                margin: 0 0 1em 0;
             }
 
             h1, h2, h3, h4, h5 {
@@ -72,38 +84,35 @@ $ git clone git://github.com/MarcelloDiSimone/jquery.jqslider</code>
                         <div class="slider-content">
                             <h1>Building</h1>
 
-                            <p>From within the newly created plugin directory, simply run <code>ant</code> to build all needed
-                            files into a directory named <code>deploy</code> by default. You can run <code>ant</code> with the option <code>-D</code>
-                            to overwrite variables of the build script. One of this variables is <code>output.dir</code>. It defines the
-                            path to the directory, where the files are created.</p>
+                            <p>To build a minified version of the plugin we're using grunt.js it's a javascript based build tool, similar to ant.</p>
 
-                            <pre class="prettyprint linenums">
-                                <code class="language-bsh">
-$ cd jquery.jqslider
-$ ant
+	                        <p>To install grunt you need to have node/npm installed. Its recommended to install grunt globaly by running following command on your console</p>
 
-# or alternatively #
+                            <pre class="prettyprint linenums"><code class="language-bsh">$ npm install grunt -g</code></pre>
 
-$ ant -Doutput.dir=/path/to/your/project/js/jquery.jqslider</code>
-                            </pre>
-                            <p>Ant will create following directory structure:</p>
+	                        Now install all files necessary to build the plugin. To do so, just run following command on the console
+
+                            <pre class="prettyprint linenums"><code class="language-bsh">$ npm install</code></pre>
+
+                            Now grunt is set up and you can run it by simply typing grunt:
+
+                            <pre class="prettyprint linenums"><code class="language-bsh">$ grunt</code></pre>
+
+                            <p>Grunt will create following directory structure:</p>
                             <pre>
 deploy/
     css/
         jquery.jqslider.css
-        jquery.jqslider.min.css
+        skins/
+	        debug/
+	            jquery.jqslider.skin.css
+	        default/
+	            images/
+	                sprite.png
+	            jquery.jqslider.skin.css
     js/
         jquery.jqslider.js
-        jquery.jqslider.min.js
-    skins/
-        debug/
-            jquery.jqslider.skin.css
-            jquery.jqslider.skin.min.css
-        default/
-            images/
-                sprite.png
-            jquery.jqslider.skin.css
-            jquery.jqslider.skin.min.css
+
                             </pre>
                         </div>
 
