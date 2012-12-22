@@ -7,8 +7,8 @@
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>jQuery jQSlider :: Example Slimple</title>
-        <link rel="stylesheet" href="../deploy/css/jquery.jqslider.min.css"/>
-        <link rel="stylesheet" href="../common/css/skins/default/jquery.jqslider.skin.css"/>
+        <link rel="stylesheet" href="../jquery.jqslider/src/css/jquery.jqslider.css"/>
+        <link rel="stylesheet" href="../jquery.jqslider/src/css/skins/default/jquery.jqslider.skin.css"/>
         <link href='http://fonts.googleapis.com/css?family=Lobster+Two:700italic,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         <style type="text/css">
@@ -101,11 +101,11 @@
 
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../common/js/lib/jquery.min.js"><\/script>')</script>
-        <script src="../common/js/lib/jquery.easing.1.3.min.js"></script>
-        <script src="../common/js/lib/jquery.jqswipe.min.js"></script>
-        <script src="../deploy/js/jquery.jqslider.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/lib/jquery.min.js"><\/script>')</script>
+        <script src="../js/lib/jquery.easing.1.3.min.js"></script>
+        <script src="../js/lib/jquery.jqswipe.min.js"></script>
+        <script src="../jquery.jqslider/src/js/jquery.jqslider.js"></script>
         <script>
             var loremIpsum = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
 
@@ -148,7 +148,7 @@
 
             /* Add 10 slides programaticly */
             slide1.each( function (index, slider) {
-                var sliderClass = $( slider ).data( 'jqslider' );
+                var sliderClass = slide1.data( 'jqslider' );
                 for ( var i = 0; i < 10; i++ ) {
                     var slide = sliderClass.addSlide();
                     slide.html( '<div class="slider-content"><h1>Slide ' + ( i + 1 ) + '</h1><p>' + loremIpsum + '</p></div>' );
