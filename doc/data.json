@@ -1,0 +1,759 @@
+{
+    "project": {
+        "name": "jquery.jqslider",
+        "description": "A fast and responsive content slider",
+        "version": "0.3.0",
+        "url": ""
+    },
+    "files": {
+        "src/js/jquery.jqslider.js": {
+            "name": "src/js/jquery.jqslider.js",
+            "modules": {
+                "JQSlider": 1
+            },
+            "classes": {
+                "JQSlider": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "JQSlider": {
+            "name": "JQSlider",
+            "submodules": {},
+            "classes": {
+                "JQSlider": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/js/jquery.jqslider.js",
+            "line": 21,
+            "description": "A responsive and fast content Slider\njQSlider follows a new approach in building a slider. Where most slider-plugins are moving the whole list of slides\nwhen animating, jQSlider animates only the two slides necessary for the animation simultaneously. This is not only an\nway to optimize the performance of the animation, it also allows to realize a 100% css based scaling which leads us to\na full responsive slider.",
+            "requires": [
+                "jQuery"
+            ],
+            "extends": "jQuery.fn"
+        }
+    },
+    "classes": {
+        "JQSlider": {
+            "name": "JQSlider",
+            "shortname": "JQSlider",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "JQSlider",
+            "namespace": "",
+            "file": "src/js/jquery.jqslider.js",
+            "line": 21,
+            "description": "Plugin Constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "elem",
+                    "description": "element to be initialized",
+                    "type": "HTMLElement"
+                },
+                {
+                    "name": "options",
+                    "description": "Options for the Plugin Member",
+                    "type": "Object"
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 12,
+            "params": [
+                {
+                    "name": "$",
+                    "description": "Aliased jQuery object or alternatively Zepto.",
+                    "type": "JQuery"
+                },
+                {
+                    "name": "windows",
+                    "description": "Reference to the window object",
+                    "type": "HTMLElement"
+                },
+                {
+                    "name": "document",
+                    "description": "Reference to the document object",
+                    "type": "HTMLElement"
+                },
+                {
+                    "name": "undefined",
+                    "description": "this is just a way to assure that undefined has not been overloaded with some other value than undefined",
+                    "type": "Undefined"
+                }
+            ],
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 29,
+            "description": "Stores a reference to the jQuery object of the module",
+            "itemtype": "property",
+            "name": "$el",
+            "type": "Object",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 35,
+            "description": "Object with the configuration options of the module, the plugin defaults will be extended with options passed\nwhile initialisation and last by options set in the data-options attribute of the HTML element of the slider",
+            "itemtype": "property",
+            "name": "_o",
+            "extends": "JQSlider.defaults",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 44,
+            "description": "Defines if the layout of the slider is vertical or not. Will be defined initially by the css class 'jqs-vertical' of the element.",
+            "itemtype": "property",
+            "name": "isVertical",
+            "type": "Boolean",
+            "default": "false",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 51,
+            "description": "set to true while animating to prevent double clicking",
+            "itemtype": "property",
+            "name": "_block",
+            "type": "Boolean",
+            "default": "false",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 59,
+            "description": "alignment value shortcuts",
+            "itemtype": "property",
+            "name": "_av",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "final": 1,
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 70,
+            "description": "This \"template\" is used to generate new slides, it is build using the 'slideTag' config value.",
+            "itemtype": "property",
+            "name": "_tmpl",
+            "type": "String",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 78,
+            "description": "reference of the slider container",
+            "itemtype": "property",
+            "name": "_container",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 85,
+            "description": "reference of the slider list element",
+            "itemtype": "property",
+            "name": "_list",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 92,
+            "description": "jQuery set of all slide elements",
+            "itemtype": "property",
+            "name": "_slides",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 105,
+            "memberof": "JQSlider",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 109,
+            "description": "Stores all configuration settings, this set will be extended with client configuration objects",
+            "itemtype": "property",
+            "name": "defaults",
+            "type": "Object",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 115,
+            "description": "You can prevent an automatic initialisation of the slider if you want to run it later on. This is than\nhelpful, if you need the instance of the plugin to access its methods, like addSlide, but you don't want\nthe slides to be setup. Because JQSlider adds classes to all elements that applies styling to it, like\nhiding not needed slides, so that it can prevent you from determining the correct height and width values\nof its child elements.",
+            "itemtype": "config",
+            "name": "autoinit",
+            "type": "Boolean",
+            "default": "true",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 126,
+            "description": "Set to true, for an endless animation.",
+            "itemtype": "config",
+            "name": "circular",
+            "type": "Boolean",
+            "default": "false",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 133,
+            "description": "Zero based index of the slide to start with",
+            "itemtype": "config",
+            "name": "startSlide",
+            "type": "Number",
+            "default": "0",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 140,
+            "description": "Duration of the animation",
+            "itemtype": "config",
+            "name": "duration",
+            "type": "Number",
+            "default": "500",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 147,
+            "description": "If you have included the easing plugin, you can define an easing function for the animation.",
+            "itemtype": "config",
+            "name": "easingFunction",
+            "type": "String",
+            "default": "'linear'",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 154,
+            "description": "Define the jquery selector of the container element for querying. Must be represented in the markup.",
+            "itemtype": "config",
+            "name": "containerSelector",
+            "type": "String",
+            "default": "'.jqs-container'",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 161,
+            "description": "Define the jquery selector of the list element for querying.",
+            "itemtype": "config",
+            "name": "listSelector",
+            "type": "String",
+            "default": "'ul'",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 168,
+            "description": "Define the tag name of the slide element for querying. It will be used for building the HTML template when\ncreating a new slide.",
+            "itemtype": "config",
+            "name": "slideTag",
+            "type": "String",
+            "default": "'li'",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 178,
+            "description": "Moves to the next slide",
+            "itemtype": "method",
+            "name": "next",
+            "return": {
+                "description": "returns a chainable reference to JQSlider",
+                "type": "JQSlider"
+            },
+            "chainable": 1,
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 194,
+            "description": "Moves to the previous slide",
+            "itemtype": "method",
+            "name": "prev",
+            "return": {
+                "description": "returns a chainable reference to JQSlider",
+                "type": "JQSlider"
+            },
+            "chainable": 1,
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 210,
+            "description": "Moves to the given slide number. The direction, based on the orientation (horizontal/vertical), can be set with\ncounterwise. If you want to jump directly to the slide, without an animation, pass noAnimation as true.",
+            "itemtype": "method",
+            "name": "gotoSlide",
+            "params": [
+                {
+                    "name": "slideNumber",
+                    "description": "number of slide to go to",
+                    "type": "Number"
+                },
+                {
+                    "name": "counterwise",
+                    "description": "optional set to true if the animation should go to the opposite direction",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "noAnimation",
+                    "description": "optional set to true if slide should be shown instantly without an animation",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "returns a chainable reference to JQSlider",
+                "type": "JQSlider"
+            },
+            "chainable": 1,
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 263,
+            "description": "This function is called when the animation started. It is excluded from the animation method to help building\na inherited Slider class. In this case it triggers the animation start event.",
+            "itemtype": "method",
+            "name": "_startAnimation",
+            "params": [
+                {
+                    "name": "slideNumber",
+                    "description": "Number of the slide that had been animated in",
+                    "type": "Number"
+                },
+                {
+                    "name": "counterwise",
+                    "description": "if true the animation will move to the left or top if it's a vertical animation",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "noAnimation",
+                    "description": "if true the slide will be shown right away, without animation",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "current",
+                    "description": "jQuery element of the slide that was animated out",
+                    "type": "JQuery"
+                },
+                {
+                    "name": "next",
+                    "description": "jQuery element of the slide that was animated in",
+                    "type": "JQuery"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 281,
+            "description": "This function is called when the animation ends. All slides are reset to default with the next slide as current slide.\nIt is excluded from the animation method to help building a inherited Slider class.",
+            "itemtype": "method",
+            "name": "_endAnimation",
+            "params": [
+                {
+                    "name": "slideNumber",
+                    "description": "Number of the slide that had been animated in",
+                    "type": "Number"
+                },
+                {
+                    "name": "counterwise",
+                    "description": "if true the animation will move to the left or top if it's a vertical animation",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "noAnimation",
+                    "description": "if true the slide will be shown right away, without animation",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "current",
+                    "description": "jQuery element of the slide that was animated out",
+                    "type": "JQuery"
+                },
+                {
+                    "name": "next",
+                    "description": "jQuery element of the slide that was animated in",
+                    "type": "JQuery"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 303,
+            "description": "Returns the zero based length of the slides array.",
+            "itemtype": "method",
+            "name": "getSlideCount",
+            "return": {
+                "description": "returns the number of all slides",
+                "type": "Number"
+            },
+            "access": "public",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 314,
+            "description": "Switches the orientation of the slider between horizontal and vertical.",
+            "itemtype": "method",
+            "name": "switchOrientation",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "returns a chainable reference to JQSlider",
+                "type": "JQSlider"
+            },
+            "chainable": 1,
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 329,
+            "description": "Adds a new slide node into the slide container. Optionally the position of the new slide can be defined with slidePosition.",
+            "itemtype": "method",
+            "name": "addSlide",
+            "params": [
+                {
+                    "name": "slidePosition",
+                    "description": "position of the new slide to be appended to",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "returns the jquery object of the created slide",
+                "type": "JQuery"
+            },
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 348,
+            "description": "Returns the slide node at the given index",
+            "params": [
+                {
+                    "name": "slideIndex",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "returns the jquery object of the slide with the passed index",
+                "type": "JQuery"
+            },
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 358,
+            "description": "Removes a given slide, defined by the index or ID, or a whole jquery slide set.",
+            "itemtype": "method",
+            "name": "removeSlide",
+            "params": [
+                {
+                    "name": "slide",
+                    "description": "index, ID or jQuery set of the slide to be removed",
+                    "type": "Number|String|Object"
+                }
+            ],
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 365,
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 370,
+            "description": "Returns the zero based position of the following slider.",
+            "itemtype": "method",
+            "name": "_getSibblingIndex",
+            "params": [
+                {
+                    "name": "prev",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "returns index of next slide or false",
+                "type": "Number|Boolean"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 392,
+            "description": "Hides the previous handler, respectively next handler, if no circular animation is configured and the first, respectively\nlast slide is reached.",
+            "itemtype": "method",
+            "name": "_resetControls",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 410,
+            "description": "Initializes the slider and all slides, set class names on all objects and display the first slide",
+            "itemtype": "method",
+            "name": "_initSlider",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 422,
+            "description": "Index of the current active slide. Can be defined by configuration or by adding the class jqs-current to the appropriate slide.",
+            "itemtype": "property",
+            "name": "activeIndex",
+            "type": "Number",
+            "default": "0",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 433,
+            "description": "Initialises the Slider controls and binds them to the previous and next methods.",
+            "itemtype": "method",
+            "name": "_initControls",
+            "access": "private",
+            "tagname": "",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 441,
+            "description": "jQuery set with all handlers found inside the jqslider element with the class defined in css.handler.",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_handlers",
+            "type": "Object",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 449,
+            "description": "jQuery set with all handlers found inside the jqslider element with the class defined in css.nextHandler.",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_nextHandler",
+            "type": "Object",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 459,
+            "description": "jQuery set with all handlers found inside the jqslider element with the class defined in css.prevHandler.",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_prevHandler",
+            "type": "Object",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 472,
+            "description": "Initializes the jqslider plugin and binds the available events to it. Finally it triggers the init event.",
+            "itemtype": "method",
+            "name": "init",
+            "return": {
+                "description": "returns a chainable reference to JQSlider",
+                "type": "JQSlider"
+            },
+            "chainable": 1,
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 487,
+            "itemtype": "event",
+            "name": "prev",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 493,
+            "itemtype": "event",
+            "name": "next",
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 499,
+            "itemtype": "event",
+            "name": "gotoslide",
+            "params": [
+                {
+                    "name": "slideNumber",
+                    "description": "number of slide to go to",
+                    "type": "Number"
+                },
+                {
+                    "name": "counterwise",
+                    "description": "optional set to true if the animation should go to the opposite direction",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "noAnimation",
+                    "description": "optional set to true if slide should be shown instantly without an animation",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "class": "JQSlider",
+            "module": "JQSlider"
+        },
+        {
+            "file": "src/js/jquery.jqslider.js",
+            "line": 515,
+            "description": "Initialize each object of the jQuery set as an instance of JQSlider, sets a reference to the instance\nin data-jqslider which is used as a singleton.",
+            "name": "jqslider",
+            "memberof": "$.fn",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Object with plugin settings",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "jQuery object",
+                "type": "JQuery"
+            },
+            "chainable": 1,
+            "class": "JQSlider",
+            "module": "JQSlider"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: memberof",
+            "line": " src/js/jquery.jqslider.js:105"
+        },
+        {
+            "message": "unknown tag: name",
+            "line": " src/js/jquery.jqslider.js:515"
+        },
+        {
+            "message": "unknown tag: memberof",
+            "line": " src/js/jquery.jqslider.js:515"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/js/jquery.jqslider.js:12"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/js/jquery.jqslider.js:105"
+        },
+        {
+            "message": "Missing item type\nReturns the slide node at the given index",
+            "line": " src/js/jquery.jqslider.js:348"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/js/jquery.jqslider.js:365"
+        },
+        {
+            "message": "Missing item type\nInitialize each object of the jQuery set as an instance of JQSlider, sets a reference to the instance\nin data-jqslider which is used as a singleton.",
+            "line": " src/js/jquery.jqslider.js:515"
+        }
+    ]
+}
