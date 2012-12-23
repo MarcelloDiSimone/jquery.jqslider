@@ -221,6 +221,7 @@
          */
         gotoSlide: function (slideNumber, counterwise, noAnimation) {
             // stop if slider is currently animating or slideNumber number is out of bound
+            slideNumber = parseInt(slideNumber, 10);
             if (this._block === true || slideNumber < 0 || slideNumber >= this._slides.length || slideNumber === this.activeIndex) return;
 
             this._block = true;
