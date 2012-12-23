@@ -1,16 +1,16 @@
 module.exports = function (grunt) {
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-jsdoc-plugin');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
-	// Project configuration.
-	grunt.initConfig({
-		/**
-		 * configure the correct path layout of your project here
-		 */
-		dest: {
-			source: './src',
-			deploy: './deploy'
-		},
+    // Project configuration.
+    grunt.initConfig({
+        /**
+         * configure the correct path layout of your project here
+         */
+        dest: {
+            source: './src',
+            deploy: './deploy'
+        },
         pkg: '<json:package.json>',
         meta: {
             banner: '/*!\n' +
@@ -22,17 +22,16 @@ module.exports = function (grunt) {
                 ' * @version <%= pkg.version %> \n' +
                 ' */'
         },
-		jshint: {
-			options: {
-				browser: true,
-				devel: true,
-				maxerr: 1000,
-				strict: false
-			}
-		},
-		lint: {
-			files: ['<%= dest.source %>/js/*.js']
-		},
+        jshint: {
+            options: {
+                browser: true,
+                devel: true,
+                maxerr: 1000
+            }
+        },
+        lint: {
+            files: ['<%= dest.source %>/js/*.js']
+        },
         less: {
             deploy: {
                 options: {
@@ -49,13 +48,19 @@ module.exports = function (grunt) {
                 dest: '<%= dest.deploy %>/js/jquery.jqslider.min.js'
             }
         },
-        jsdoc : {
-            dist : {
-                src: ['<%= dest.source %>/js/*.js'],
-                dest: 'doc'
+        yuidoc: {
+            deploy: {
+                name: '<%= pkg.name %>',
+                description: '<%= pkg.description %>',
+                version: '<%= pkg.version %>',
+                url: '<%= pkg.homepage %>',
+                options: {
+                    paths: '<%= dest.source %>/js',
+                    outdir: 'doc'
+                }
             }
         }
-	});
+    });
 
-	grunt.registerTask('default', 'lint less min');
+    grunt.registerTask('default', 'lint less min');
 };
