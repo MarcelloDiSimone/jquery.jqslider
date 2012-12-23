@@ -10,11 +10,13 @@
 	"keywords": [
 		"jquery",
 		"jqslider",
-		"responsive slider"
+		"responsive",
+	    "slider"
 	],
-	"dependencies" : {
-		"grunt": "0.3.x",
-		"grunt-contrib-less": "0.3.x"
+	"devDependencies": {
+		"grunt": "~0.3.x",
+		"grunt-contrib-less": "0.3.x",
+		"grunt-jsdoc-plugin": "0.1.x"
 	},
 	"license": "MIT"
 }

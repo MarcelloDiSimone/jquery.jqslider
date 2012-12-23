@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-jsdoc-plugin');
 
 	// Project configuration.
 	grunt.initConfig({
@@ -47,6 +47,12 @@ module.exports = function (grunt) {
             deploy: {
                 src: ['<banner:meta.banner>', '<%= dest.source %>/js/*.js'],
                 dest: '<%= dest.deploy %>/js/jquery.jqslider.min.js'
+            }
+        },
+        jsdoc : {
+            dist : {
+                src: ['<%= dest.source %>/js/*.js'],
+                dest: 'doc'
             }
         }
 	});

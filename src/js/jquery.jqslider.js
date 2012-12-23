@@ -6,17 +6,36 @@
  * a full responsive slider.
  * @module JQSlider
  * @requires jQuery
- * @param {Object}       $            Aliased jQuery object or alternatively Zepto.
+ * @param {jQuery}       $            Aliased jQuery object or alternatively Zepto.
  * @param {HTMLElement}  windows      Reference to the window object
  * @param {HTMLElement}  document     Reference to the document object
  * @param {undefined}    undefined    this is just a way to assure that undefined has not been overloaded with some other value than undefined
  */
 
+/**
+ * See (http://jquery.com/).
+ * @name $
+ * @alias jQuery
+ * @class
+ * See the jQuery Library  (http://jquery.com/) for full details.  This just
+ * documents the function and classes that are added to jQuery by this plug-in.
+ */
+
+/**
+ * See (http://jquery.com/)
+ * @name $.fn
+ * @alias jQuery.fn
+ * @class
+ * See the jQuery Library  (http://jquery.com/) for full details.  This just
+ * documents the function and classes that are added to jQuery by this plug-in.
+ * @memberOf $
+ */
+
 (function ($, window, document, undefined) {
     /**
      * @description Plugin Constructor
-     * @class JQSlider
      * @constructor
+     * @alias module:JQSlider
      * @param {HTMLElement} elem      element to be initialized
      * @param {Object}      options   Options for the Plugin Member
      */
@@ -95,9 +114,6 @@
         }
     }
 
-    /**
-     * @namespace JQSlider
-     */
     JQSlider.prototype = {
         /**
          * Stores all configuration settings, this set will be extended with client configuration objects
@@ -477,6 +493,7 @@
      * @description Initialize each object of the jQuery set as an instance of JQSlider, sets a reference to the instance
      * in data-jqslider which is used as a singleton.
      * @name jqslider
+     * @memberOf $.fn
      * @param {Object} options  Object with plugin settings
      * @return {Object} jQuery object
      */
