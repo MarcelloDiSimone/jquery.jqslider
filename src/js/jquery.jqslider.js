@@ -226,12 +226,12 @@
                 var self = this,
                     next = this.getSlide(slideNumber),
                     current = this.getSlide(this.activeIndex),
-                    // extend currentCSS with the cssDefaults to avoid value pollution after orientation changes, which means
-                    // the top ,respectively left value, would be kept in the cssDefault object and cause a diagonal animation
+                // extend currentCSS with the cssDefaults to avoid value pollution after orientation changes, which means
+                // the top ,respectively left value, would be kept in the cssDefault object and cause a diagonal animation
                     currentCSS = {},
-                    // typecast the boolean value this.isVertical to get the first or second index of the array this._av which holds the sting top or left
+                // typecast the boolean value this.isVertical to get the first or second index of the array this._av which holds the sting top or left
                     elmPos = this._av[ +this.isVertical ].pos,
-                    // typecast the boolean value this.isVertical to get the first or second index of the array this._av which holds the sting width or height
+                // typecast the boolean value this.isVertical to get the first or second index of the array this._av which holds the sting width or height
                     elmSize = this._av[ +this.isVertical ].size,
                     moveSize = this._list[ elmSize ]() / 2;
 
@@ -337,7 +337,7 @@
             } else {
                 this._list.append(newSlide);
             }
-            this._slides = this._list.children('.jqs-slide');
+            this._slides = this._list.children(this._o.slideTag);
 
             return newSlide;
         },
@@ -411,7 +411,6 @@
          * @private
          */
         _initSlider: function () {
-            this._container.addClass('jqs-container');
             this._list.addClass('jqs-list');
             this._slides.addClass('jqs-slide');
 
@@ -504,8 +503,6 @@
                     self.gotoSlide(slideNumber, counterwise, noAnimation);
                 }
             }).trigger('init');
-
-            return this;
         }
     };
     JQSlider.defaults = JQSlider.prototype.defaults;
