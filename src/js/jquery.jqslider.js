@@ -102,9 +102,6 @@
         }
     }
 
-    /**
-     * @memberof JQSlider
-     */
     JQSlider.prototype = {
         /**
          * Stores all configuration settings, this set will be extended with client configuration objects
