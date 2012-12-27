@@ -55,12 +55,16 @@ module.exports = function (grunt) {
                 version: '<%= pkg.version %>',
                 url: '<%= pkg.homepage %>',
                 options: {
+                    linkNatives: true,
                     paths: '<%= dest.source %>/js',
                     outdir: 'doc'
                 }
             }
+        },
+        qunit: {
+            all: ['test/**/*.html']
         }
     });
 
-    grunt.registerTask('default', 'lint less min');
+    grunt.registerTask('default', 'lint less min yuidoc qunit');
 };

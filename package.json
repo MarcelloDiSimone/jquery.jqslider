@@ -1,22 +1,25 @@
 {
-  "name": "jquery.jqslider",
-  "version": "0.3.0",
-  "author": "Marcello di Simone <mdisimone.dev@gmail.com>",
-  "description": "A fast and responsive content slider",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/MarcelloDiSimone/jquery.jqslider.git"
-  },
-  "keywords": [
-    "jquery",
-    "jqslider",
-    "responsive",
-    "slider"
-  ],
-  "devDependencies": {
-    "grunt": "~0.3.x",
-    "grunt-contrib-less": "0.3.x",
-    "grunt-contrib-yuidoc": "~0.3.2"
-  },
-  "license": "MIT"
+    "name": "jquery.jqslider",
+    "version": "0.3.0",
+    "author": "Marcello di Simone <mdisimone.dev@gmail.com>",
+    "description": "A fast and responsive content slider",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MarcelloDiSimone/jquery.jqslider.git"
+    },
+    "keywords": [
+        "jquery",
+        "jqslider",
+        "responsive",
+        "slider"
+    ],
+    "devDependencies": {
+        "grunt": "~0.3.x",
+        "grunt-contrib-less": "0.3.x",
+        "grunt-contrib-yuidoc": "~0.3.2"
+    },
+    "scripts": {
+        "test": "grunt qunit"
+    },
+    "license": "MIT"
 }
