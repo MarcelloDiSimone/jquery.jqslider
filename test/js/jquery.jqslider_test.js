@@ -1,7 +1,7 @@
 /*global QUnit:false, module:false, test:false, asyncTest:false, expect:false*/
 /*global start:false, stop:false ok:false, equal:false, notEqual:false, deepEqual:false*/
 /*global notDeepEqual:false, strictEqual:false, notStrictEqual:false, raises:false*/
-
+QUnit.config.autostart = false;
 
 (function ($) {
 
@@ -24,20 +24,6 @@
      raises(block, [expected], [message])
      */
 
-    function EventLogger( target, event ) {
-        if ( !(this instanceof EventLogger) ) {
-            return new EventLogger( target );
-        }
-        this.target = target;
-        this.log = [];
-
-        var self = this;
-
-        this.target.off( event ).on( event, function( e ) {
-            self.log.push(e.type);
-        });
-    }
-
     module('jQuery#JQSlider', {
         setup: function () {
             this.elems = $('.jqslider');
@@ -46,7 +32,6 @@
     });
 
     test('is chainable', 1, function () {
-        // Not a bad test to run on collection methods.
         strictEqual(this.elems.jqslider(), this.elems, 'should be chaninable');
     });
 
@@ -68,7 +53,7 @@
             this.newSlide = this.instance.getSlide(1);
         },
         teardown: function () {
-            $(document).off();
+            $(document).off('init');
             this.slider.off();
             this.newSlide.off();
             this.firstSlide.off();
@@ -115,79 +100,81 @@
         this.instance.init();
     });
 
-    module('Test programmatic API', {
+    module('Test programmatic API methods:', {
         setup: function () {
             this.elems = $('.jqslider');
             this.elems.jqslider();
         }
     });
 
-    test('getSlideCount works', 1, function () {
-        // Not a bad test to run on collection methods.
-        equal(this.elems.data('jqslider').getSlideCount(), 2, 'slide number is correct');
+    test('getSlideCount', 1, function () {
+        equal(this.elems.data('jqslider').getSlideCount(), 2, 'getSlideCount returns correct number of slides');
     });
 
-    test('test method addSlide to return an object who\'s an instance of jQuery ', 2, function () {
-        // Not a bad test to run on collection methods.
+    test('addSlide', 2, function () {
         var instance = this.elems.data('jqslider'),
             newSlide = instance.addSlide();
-        ok(typeof newSlide === 'object' && newSlide instanceof $, 'returned object is an instance of jQuery"');
-        equal(instance.getSlideCount(), 3, 'slide count was incremented');
+        ok(typeof newSlide === 'object' && newSlide instanceof $, 'addSlide returns a jQuery slide object"');
+        equal(instance.getSlideCount(), 3, 'Number of slides is incremented');
     });
 
-    test('test method removeSlide to removing element', 3, function () {
-        // Not a bad test to run on collection methods.
-        equal(this.elems.data('jqslider').getSlideCount(), 2, 'getSlideCount returns initially 2 slides');
+    test('removeSlide', 2, function () {
         this.elems.data('jqslider').removeSlide(0);
-        equal(this.elems.data('jqslider').getSlideCount(), 1, 'getSlideCount returns correct number of slides');
-        equal(this.elems.find('ul li').length, 1, 'Slider list has correct number of DOM elements');
+        equal(this.elems.data('jqslider').getSlideCount(), 1, 'removeSlide removed the slide and number of slides is incremented');
+        equal(this.elems.find('ul li').length, 1, 'The slider has the correct number of DOM elements');
     });
 
-    test('test method switchOrientation to switching CSS class', 1, function () {
-        // Not a bad test to run on collection methods.
+    test('switchOrientation', 1, function () {
         this.elems.data('jqslider').switchOrientation();
-        ok(this.elems.hasClass('jqs-vertical'), 'slider has class "jqs-vertical" set correctly');
+        ok(this.elems.hasClass('jqs-vertical'), 'switchOrientation set the CSS class "jqs-vertical" correctly');
     });
 
-    module('Test control API', {
+    module('Test control API methods:', {
         setup: function () {
-            this.elems = $('.jqslider');
+            this.elems = $('.jqslider').jqslider({autoinit: false});
+            this.instance = this.elems.data('jqslider');
         },
         teardown: function () {
-            this.elems.off();
+            $(document).off('animationend');
         }
     });
 
-    asyncTest('test method next to trigger animation', 2, function () {
-        // Not a bad test to run on collection methods.
-        this.elems.jqslider({autoinit: false});
-        var instance = this.elems.data('jqslider');
-        instance.addSlide();
-        this.elems.on({
+    asyncTest('next', 1, function () {
+        var that = this
+        this.instance.init();
+        $(document).on({
             'animationend': function () {
-                equal(instance.activeIndex, 1, 'current active slider after call of next is 1');
+                equal(that.instance.activeIndex, 1, 'current active slider changed to 1');
                 start();
             }
         });
-        instance.init();
-        equal(instance.activeIndex, 0, 'current active slider is initialiy 0');
-        this.elems.data('jqslider').next();
+        this.instance.next();
     });
 
-    asyncTest('test method prev to trigger animation', 2, function () {
-        // Not a bad test to run on collection methods.
-        this.elems.jqslider({autoinit: false});
-        var instance = this.elems.data('jqslider');
-        instance.addSlide();
-        this.elems.on({
+    asyncTest('prev', 1, function () {
+        var that = this;
+        this.instance.init();
+        $(document).on({
             'animationend': function () {
-                equal(instance.activeIndex, 1, 'current active slider after call of next is 1');
+                equal(that.instance.activeIndex, 1, 'current active slider changed to 1');
                 start();
             }
         });
-        instance.init();
-        equal(instance.activeIndex, 0, 'current active slider is initialiy 0');
-        this.elems.data('jqslider').next();
+        this.instance.next();
     });
 
+    asyncTest('gotoSlide', 1, function () {
+        var that = this;
+        this.instance.addSlide();
+        $(document).on({
+            'animationend': function () {
+                equal(that.instance.activeIndex, 2, 'current active slider changed to 2');
+                start();
+            }
+        });
+        this.instance.init();
+        this.instance.gotoSlide(2);
+    });
+
+    start();
 }(jQuery));
