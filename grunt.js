@@ -66,5 +66,9 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', 'lint less min yuidoc qunit');
+    grunt.registerTask('default', 'lint less min');
+
+    grunt.registerTask('test', 'lint qunit');
+
+
 };
