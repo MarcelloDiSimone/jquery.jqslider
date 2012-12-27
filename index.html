@@ -70,15 +70,11 @@
                             </p>
 
                             <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:</p>
-                            <pre class="prettyprint linenums">
+                            <pre class="prettyprint">
                                     <code class="language-bsh">
-$ cd ~/github
-$ git clone git://github.com/MarcelloDiSimone/jquery.jqslider</code>
+$ cd /path/to/your/project/js/libs
+$ git clone git://github.com/MarcelloDiSimone/jquery.jqslider jquery.jqslider</code>
                             </pre>
-
-                            <p>It is not necessary to clone or download the whole package directly into
-                            your project directory, you can store it at a central location and build the needed files
-                            from that location into your project by running the included ant build script.</p>
                         </div>
                     </section>
                     <section>
@@ -86,19 +82,19 @@ $ git clone git://github.com/MarcelloDiSimone/jquery.jqslider</code>
                         <div class="slider-content">
                             <h1>Building</h1>
 
-                            <p>To build a minified version of the plugin we're using grunt.js it's a javascript based build tool, similar to ant.</p>
+                            <p>To build the minified version of the plugin you need grunt.js. It's a javascript based build tool, similar to ant.</p>
 
-	                        <p>To install grunt you need to have node/npm installed. Its recommended to install grunt globaly by running following command on your console</p>
+                            <p>Grunt is based on node and so requires node to be installed. It's recommended to install grunt globally by running following command on your console</p>
 
-                            <pre class="prettyprint linenums"><code class="language-bsh">$ npm install grunt -g</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">$ npm install -g grunt</code></pre>
 
-	                        Now install all files necessary to build the plugin. To do so, just run following command on the console
+                            All other dependencies of the build process are defined in the package.json and can be easily installed by:
 
-                            <pre class="prettyprint linenums"><code class="language-bsh">$ npm install</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">$ npm install</code></pre>
 
                             Now grunt is set up and you can run it by simply typing grunt:
 
-                            <pre class="prettyprint linenums"><code class="language-bsh">$ grunt</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">$ grunt</code></pre>
 
                             <p>Grunt will create following directory structure:</p>
                             <pre>
@@ -106,12 +102,12 @@ deploy/
     css/
         jquery.jqslider.css
         skins/
-	        debug/
-	            jquery.jqslider.skin.css
-	        default/
-	            images/
-	                sprite.png
-	            jquery.jqslider.skin.css
+            debug/
+                jquery.jqslider.skin.css
+            default/
+                images/
+                    sprite.png
+                jquery.jqslider.skin.css
     js/
         jquery.jqslider.js
 
@@ -322,7 +318,7 @@ $('#my-slider').trigger('prev');
  * @param {Boolean} [counterwise=false]     optional parameter, if the animation should move to the opposite direction
  * @param {Boolean} [noAnimation=false]     optional parameter, if the slide should be shown instantly without an animation
  */
-$('#my-slider').trigger('gotoslide',[ 1, true, false ]);</code>
+$('#my-slider').trigger('gotoslide', [1, true, false]);</code>
                             </pre>
                         </div>
 
@@ -375,7 +371,7 @@ slider.find('.jqs-slide').bind({
                             <p>There are also some example files, you can find here:</p>
                             <ul>
                                 <li><a href="examples/simple.html">Simple Slider Setup</a></li>
-                                <li><a href="examples/simple.html">Slider with responsive images</a></li>
+                                <li><a href="examples/images.html">Slider with responsive images</a></li>
                                 <li><a href="examples/video.html">Slider with responsive videos</a></li>
                                 <li><a href="examples/customized.html">An individual customized slider</a></li>
                                 <li><a href="examples/extending-jqslider.html">Extending the plugin</a></li>
