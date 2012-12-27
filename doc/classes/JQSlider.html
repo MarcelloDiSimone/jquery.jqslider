@@ -92,7 +92,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l21"><code>src&#x2F;js&#x2F;jquery.jqslider.js:21</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l45"><code>src&#x2F;js&#x2F;jquery.jqslider.js:45</code></a>
         </div>
     
 
@@ -129,7 +129,7 @@
             
                 <li class="arg">
                     
-                        <code>options</code>
+                        <code class="optional">[options]</code>
                     
                 </li>
             
@@ -162,7 +162,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l21"><code>src&#x2F;js&#x2F;jquery.jqslider.js:21</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l45"><code>src&#x2F;js&#x2F;jquery.jqslider.js:45</code></a>
         
         </p>
 
@@ -185,7 +185,7 @@
                 <li class="param">
                     
                         <code class="param-name">elem</code>
-                        <span class="type">HTMLElement</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a></span>
                     
 
                     
@@ -199,8 +199,9 @@
             
                 <li class="param">
                     
-                        <code class="param-name">options</code>
-                        <span class="type">Object</span>
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
@@ -209,6 +210,122 @@
                         <p>Options for the Plugin Member</p>
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[circular=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>You can prevent an automatic
+    initialisation of the slider if you want to run it later on. This
+    is than helpful, if you need the instance of the plugin to access
+    its methods, like <code>addSlide</code>, but you don't want the slides to
+    be setup. Because <code>JQSlider</code> adds classes to all elements that
+    applies styling to it, like hiding not needed slides, so that it
+    can prevent you from determining the correct height and width
+    values of its child elements.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[startSlide=0]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Defines the slide number to be
+    shown initially</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[duration=500]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Duration of the animation</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[easingFunction=&#x27;linear&#x27;]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If you have included
+    the easing plugin, you can define an easing function for the animation.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[containerSelector=&#x27;.jqs-container&#x27;]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Define
+    the jquery selector of the container element for querying. Must
+    be represented in the markup.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[listSelector=&#x27;ul&#x27;]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Define the jquery selector of
+    the list element for querying.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[slideTag=&#x27;li&#x27;]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Define the tag name of the
+    slide element for querying. It will be used for building the HTML
+    template when</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -301,7 +418,7 @@
                                 
                             </li>
                         
-                            <li class="index-item method public">
+                            <li class="index-item method">
                                 <a href="#method_getSlideCount">getSlideCount</a>
 
                                 
@@ -343,7 +460,7 @@
                                 
                             </li>
                         
-                            <li class="index-item method public">
+                            <li class="index-item method">
                                 <a href="#method_switchOrientation">switchOrientation</a>
 
                                 
@@ -609,7 +726,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l281"><code>src&#x2F;js&#x2F;jquery.jqslider.js:281</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l372"><code>src&#x2F;js&#x2F;jquery.jqslider.js:372</code></a>
         
         </p>
 
@@ -620,8 +737,9 @@
     </div>
 
     <div class="description">
-        <p>This function is called when the animation ends. All slides are reset to default with the next slide as current slide.
-It is excluded from the animation method to help building a inherited Slider class.</p>
+        <p>This function is called when the animation ends. All slides are reset
+to default with the next slide as current slide. It is excluded from
+the animation method to help building a inherited Slider class.</p>
     </div>
 
     
@@ -633,7 +751,7 @@ It is excluded from the animation method to help building a inherited Slider cla
                 <li class="param">
                     
                         <code class="param-name">slideNumber</code>
-                        <span class="type">Number</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                     
 
                     
@@ -648,13 +766,14 @@ It is excluded from the animation method to help building a inherited Slider cla
                 <li class="param">
                     
                         <code class="param-name">counterwise</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>if true the animation will move to the left or top if it's a vertical animation</p>
+                        <p>if true the animation will move to the left
+  or top if it's a vertical animation</p>
                     </div>
 
                     
@@ -663,13 +782,14 @@ It is excluded from the animation method to help building a inherited Slider cla
                 <li class="param">
                     
                         <code class="param-name">noAnimation</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>if true the slide will be shown right away, without animation</p>
+                        <p>if true the slide will be shown right away,
+  without animation</p>
                     </div>
 
                     
@@ -684,7 +804,8 @@ It is excluded from the animation method to help building a inherited Slider cla
                     
 
                     <div class="param-description">
-                        <p>jQuery element of the slide that was animated out</p>
+                        <p><code>jQuery</code> element of the slide that was
+  animated out</p>
                     </div>
 
                     
@@ -699,7 +820,8 @@ It is excluded from the animation method to help building a inherited Slider cla
                     
 
                     <div class="param-description">
-                        <p>jQuery element of the slide that was animated in</p>
+                        <p><code>jQuery</code> element of the slide that was
+  animated in</p>
                     </div>
 
                     
@@ -734,7 +856,7 @@ It is excluded from the animation method to help building a inherited Slider cla
 
     
         <span class="returns-inline">
-            <span class="type">Number | Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -763,7 +885,7 @@ It is excluded from the animation method to help building a inherited Slider cla
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l370"><code>src&#x2F;js&#x2F;jquery.jqslider.js:370</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l468"><code>src&#x2F;js&#x2F;jquery.jqslider.js:468</code></a>
         
         </p>
 
@@ -786,7 +908,7 @@ It is excluded from the animation method to help building a inherited Slider cla
                 <li class="param">
                     
                         <code class="param-name">prev</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                     
 
                     
@@ -809,7 +931,7 @@ It is excluded from the animation method to help building a inherited Slider cla
             <div class="returns-description">
                 
                     
-                        <span class="type">Number | Boolean</span>:
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
                     returns index of next slide or false
                 
@@ -855,7 +977,7 @@ It is excluded from the animation method to help building a inherited Slider cla
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l433"><code>src&#x2F;js&#x2F;jquery.jqslider.js:433</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l534"><code>src&#x2F;js&#x2F;jquery.jqslider.js:534</code></a>
         
         </p>
 
@@ -866,7 +988,8 @@ It is excluded from the animation method to help building a inherited Slider cla
     </div>
 
     <div class="description">
-        <p>Initialises the Slider controls and binds them to the previous and next methods.</p>
+        <p>Initialises the Slider controls and binds them to the previous and
+next methods.</p>
     </div>
 
     
@@ -911,7 +1034,7 @@ It is excluded from the animation method to help building a inherited Slider cla
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l410"><code>src&#x2F;js&#x2F;jquery.jqslider.js:410</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l509"><code>src&#x2F;js&#x2F;jquery.jqslider.js:509</code></a>
         
         </p>
 
@@ -922,7 +1045,8 @@ It is excluded from the animation method to help building a inherited Slider cla
     </div>
 
     <div class="description">
-        <p>Initializes the slider and all slides, set class names on all objects and display the first slide</p>
+        <p>Initializes the slider and all slides, set class names on all objects
+and display the first slide</p>
     </div>
 
     
@@ -967,7 +1091,7 @@ It is excluded from the animation method to help building a inherited Slider cla
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l392"><code>src&#x2F;js&#x2F;jquery.jqslider.js:392</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l490"><code>src&#x2F;js&#x2F;jquery.jqslider.js:490</code></a>
         
         </p>
 
@@ -978,8 +1102,9 @@ It is excluded from the animation method to help building a inherited Slider cla
     </div>
 
     <div class="description">
-        <p>Hides the previous handler, respectively next handler, if no circular animation is configured and the first, respectively
-last slide is reached.</p>
+        <p>Hides the previous handler, respectively next handler, if no circular
+animation is configured and the first, respectively last slide is
+reached.</p>
     </div>
 
     
@@ -1058,7 +1183,7 @@ last slide is reached.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l263"><code>src&#x2F;js&#x2F;jquery.jqslider.js:263</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l349"><code>src&#x2F;js&#x2F;jquery.jqslider.js:349</code></a>
         
         </p>
 
@@ -1069,8 +1194,9 @@ last slide is reached.</p>
     </div>
 
     <div class="description">
-        <p>This function is called when the animation started. It is excluded from the animation method to help building
-a inherited Slider class. In this case it triggers the animation start event.</p>
+        <p>This function is called when the animation started. It is excluded
+from the animation method to help building a inherited Slider class.
+In this case it triggers the animation start event.</p>
     </div>
 
     
@@ -1082,7 +1208,7 @@ a inherited Slider class. In this case it triggers the animation start event.</p
                 <li class="param">
                     
                         <code class="param-name">slideNumber</code>
-                        <span class="type">Number</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                     
 
                     
@@ -1097,13 +1223,14 @@ a inherited Slider class. In this case it triggers the animation start event.</p
                 <li class="param">
                     
                         <code class="param-name">counterwise</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>if true the animation will move to the left or top if it's a vertical animation</p>
+                        <p>if true the animation will move to the left
+  or top if it's a vertical animation</p>
                     </div>
 
                     
@@ -1112,13 +1239,14 @@ a inherited Slider class. In this case it triggers the animation start event.</p
                 <li class="param">
                     
                         <code class="param-name">noAnimation</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>if true the slide will be shown right away, without animation</p>
+                        <p>if true the slide will be shown right away,
+  without animation</p>
                     </div>
 
                     
@@ -1133,7 +1261,8 @@ a inherited Slider class. In this case it triggers the animation start event.</p
                     
 
                     <div class="param-description">
-                        <p>jQuery element of the slide that was animated out</p>
+                        <p><code>jQuery</code> element of the slide that was
+  animated out</p>
                     </div>
 
                     
@@ -1148,7 +1277,8 @@ a inherited Slider class. In this case it triggers the animation start event.</p
                     
 
                     <div class="param-description">
-                        <p>jQuery element of the slide that was animated in</p>
+                        <p><code>jQuery</code> element of the slide that was
+  animated in</p>
                     </div>
 
                     
@@ -1210,7 +1340,7 @@ a inherited Slider class. In this case it triggers the animation start event.</p
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l329"><code>src&#x2F;js&#x2F;jquery.jqslider.js:329</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l423"><code>src&#x2F;js&#x2F;jquery.jqslider.js:423</code></a>
         
         </p>
 
@@ -1221,7 +1351,8 @@ a inherited Slider class. In this case it triggers the animation start event.</p
     </div>
 
     <div class="description">
-        <p>Adds a new slide node into the slide container. Optionally the position of the new slide can be defined with slidePosition.</p>
+        <p>Adds a new slide node into the slide container. Optionally the position
+of the new slide can be defined with <code>slidePosition</code>.</p>
     </div>
 
     
@@ -1233,7 +1364,7 @@ a inherited Slider class. In this case it triggers the animation start event.</p
                 <li class="param">
                     
                         <code class="param-name optional">[slidePosition]</code>
-                        <span class="type">Number</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
@@ -1259,7 +1390,7 @@ a inherited Slider class. In this case it triggers the animation start event.</p
                     
                         <span class="type">JQuery</span>:
                     
-                    returns the jquery object of the created slide
+                    returns the <code>jQuery</code> object of the created slide
                 
             </div>
         </div>
@@ -1269,7 +1400,7 @@ a inherited Slider class. In this case it triggers the animation start event.</p
 </div>
 
                 
-                    <div id="method_getSlideCount" class="method item public">
+                    <div id="method_getSlideCount" class="method item">
     <h3 class="name"><code>getSlideCount</code></h3>
 
     
@@ -1278,14 +1409,12 @@ a inherited Slider class. In this case it triggers the animation start event.</p
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
     
 
-    
-        <span class="flag public">public</span>
     
 
     
@@ -1307,7 +1436,7 @@ a inherited Slider class. In this case it triggers the animation start event.</p
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l303"><code>src&#x2F;js&#x2F;jquery.jqslider.js:303</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l399"><code>src&#x2F;js&#x2F;jquery.jqslider.js:399</code></a>
         
         </p>
 
@@ -1330,7 +1459,7 @@ a inherited Slider class. In this case it triggers the animation start event.</p
             <div class="returns-description">
                 
                     
-                        <span class="type">Number</span>:
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                     
                     returns the number of all slides
                 
@@ -1402,7 +1531,7 @@ a inherited Slider class. In this case it triggers the animation start event.</p
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l210"><code>src&#x2F;js&#x2F;jquery.jqslider.js:210</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l283"><code>src&#x2F;js&#x2F;jquery.jqslider.js:283</code></a>
         
         </p>
 
@@ -1413,8 +1542,10 @@ a inherited Slider class. In this case it triggers the animation start event.</p
     </div>
 
     <div class="description">
-        <p>Moves to the given slide number. The direction, based on the orientation (horizontal/vertical), can be set with
-counterwise. If you want to jump directly to the slide, without an animation, pass noAnimation as true.</p>
+        <p>Moves to the given slide number. The direction, based on the
+orientation (horizontal/vertical), can be set with counterwise. If
+you want to jump directly to the slide, without an animation, pass
+<code>noAnimation</code> as true.</p>
     </div>
 
     
@@ -1426,7 +1557,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 <li class="param">
                     
                         <code class="param-name">slideNumber</code>
-                        <span class="type">Number</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                     
 
                     
@@ -1441,14 +1572,15 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 <li class="param">
                     
                         <code class="param-name optional">[counterwise=false]</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>optional set to true if the animation should go to the opposite direction</p>
+                        <p>optional set to true if the
+  animation should go to the opposite direction</p>
                     </div>
 
                     
@@ -1457,14 +1589,15 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 <li class="param">
                     
                         <code class="param-name optional">[noAnimation=false]</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>optional set to true if slide should be shown instantly without an animation</p>
+                        <p>optional set to true if slide
+  should be shown instantly without an animation</p>
                     </div>
 
                     
@@ -1531,7 +1664,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l472"><code>src&#x2F;js&#x2F;jquery.jqslider.js:472</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l580"><code>src&#x2F;js&#x2F;jquery.jqslider.js:580</code></a>
         
         </p>
 
@@ -1542,7 +1675,8 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
     </div>
 
     <div class="description">
-        <p>Initializes the jqslider plugin and binds the available events to it. Finally it triggers the init event.</p>
+        <p>Initializes the <code>JQSlider</code> plugin and binds the available events to it.
+Finally it triggers the init event.</p>
     </div>
 
     
@@ -1556,7 +1690,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                     
                         <span class="type"><a href="../classes/JQSlider.html" class="crosslink">JQSlider</a></span>:
                     
-                    returns a chainable reference to JQSlider
+                    returns a chainable reference to <code>JQSlider</code>
                 
             </div>
         </div>
@@ -1604,7 +1738,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l178"><code>src&#x2F;js&#x2F;jquery.jqslider.js:178</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l247"><code>src&#x2F;js&#x2F;jquery.jqslider.js:247</code></a>
         
         </p>
 
@@ -1629,7 +1763,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                     
                         <span class="type"><a href="../classes/JQSlider.html" class="crosslink">JQSlider</a></span>:
                     
-                    returns a chainable reference to JQSlider
+                    returns a chainable reference to <code>JQSlider</code>
                 
             </div>
         </div>
@@ -1677,7 +1811,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l194"><code>src&#x2F;js&#x2F;jquery.jqslider.js:194</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l265"><code>src&#x2F;js&#x2F;jquery.jqslider.js:265</code></a>
         
         </p>
 
@@ -1702,7 +1836,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                     
                         <span class="type"><a href="../classes/JQSlider.html" class="crosslink">JQSlider</a></span>:
                     
-                    returns a chainable reference to JQSlider
+                    returns a chainable reference to <code>JQSlider</code>
                 
             </div>
         </div>
@@ -1754,7 +1888,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l358"><code>src&#x2F;js&#x2F;jquery.jqslider.js:358</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l454"><code>src&#x2F;js&#x2F;jquery.jqslider.js:454</code></a>
         
         </p>
 
@@ -1765,7 +1899,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
     </div>
 
     <div class="description">
-        <p>Removes a given slide, defined by the index or ID, or a whole jquery slide set.</p>
+        <p>Removes a given slide, defined by the index or ID, or a whole <code>jQuery</code> slide set.</p>
     </div>
 
     
@@ -1777,13 +1911,14 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 <li class="param">
                     
                         <code class="param-name">slide</code>
-                        <span class="type">Number | String | Object</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>index, ID or jQuery set of the slide to be removed</p>
+                        <p>index, ID or <code>jQuery</code> set of the
+  slide to be removed</p>
                     </div>
 
                     
@@ -1799,7 +1934,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
 </div>
 
                 
-                    <div id="method_switchOrientation" class="method item public">
+                    <div id="method_switchOrientation" class="method item">
     <h3 class="name"><code>switchOrientation</code></h3>
 
     
@@ -1814,8 +1949,6 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
 
     
 
-    
-        <span class="flag public">public</span>
     
 
     
@@ -1839,7 +1972,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l314"><code>src&#x2F;js&#x2F;jquery.jqslider.js:314</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l409"><code>src&#x2F;js&#x2F;jquery.jqslider.js:409</code></a>
         
         </p>
 
@@ -1884,7 +2017,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 
                     <div id="property_$el" class="property item">
     <h3 class="name"><code>$el</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -1905,7 +2038,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l29"><code>src&#x2F;js&#x2F;jquery.jqslider.js:29</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l74"><code>src&#x2F;js&#x2F;jquery.jqslider.js:74</code></a>
         
         </p>
 
@@ -1928,7 +2061,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 
                     <div id="property__av" class="property item private">
     <h3 class="name"><code>_av</code></h3>
-    <span class="type">Array</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
 
     
 
@@ -1953,7 +2086,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l59"><code>src&#x2F;js&#x2F;jquery.jqslider.js:59</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l111"><code>src&#x2F;js&#x2F;jquery.jqslider.js:111</code></a>
         
         </p>
 
@@ -1976,7 +2109,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 
                     <div id="property__block" class="property item private">
     <h3 class="name"><code>_block</code></h3>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -1999,7 +2132,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l51"><code>src&#x2F;js&#x2F;jquery.jqslider.js:51</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l102"><code>src&#x2F;js&#x2F;jquery.jqslider.js:102</code></a>
         
         </p>
 
@@ -2024,7 +2157,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 
                     <div id="property__container" class="property item private">
     <h3 class="name"><code>_container</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -2047,7 +2180,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l78"><code>src&#x2F;js&#x2F;jquery.jqslider.js:78</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l133"><code>src&#x2F;js&#x2F;jquery.jqslider.js:133</code></a>
         
         </p>
 
@@ -2070,7 +2203,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 
                     <div id="property__handlers" class="property item private">
     <h3 class="name"><code>_handlers</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -2093,7 +2226,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l441"><code>src&#x2F;js&#x2F;jquery.jqslider.js:441</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l543"><code>src&#x2F;js&#x2F;jquery.jqslider.js:543</code></a>
         
         </p>
 
@@ -2103,7 +2236,8 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
     </div>
 
     <div class="description">
-        <p>jQuery set with all handlers found inside the jqslider element with the class defined in css.handler.</p>
+        <p><code>jQuery</code> set with all handlers found inside the <code>JQSlider</code> element
+with the class defined in css.handler.</p>
     </div>
 
     
@@ -2116,7 +2250,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 
                     <div id="property__list" class="property item private">
     <h3 class="name"><code>_list</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -2139,7 +2273,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l85"><code>src&#x2F;js&#x2F;jquery.jqslider.js:85</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l141"><code>src&#x2F;js&#x2F;jquery.jqslider.js:141</code></a>
         
         </p>
 
@@ -2162,7 +2296,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 
                     <div id="property__nextHandler" class="property item private">
     <h3 class="name"><code>_nextHandler</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -2185,7 +2319,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l449"><code>src&#x2F;js&#x2F;jquery.jqslider.js:449</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l553"><code>src&#x2F;js&#x2F;jquery.jqslider.js:553</code></a>
         
         </p>
 
@@ -2195,7 +2329,8 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
     </div>
 
     <div class="description">
-        <p>jQuery set with all handlers found inside the jqslider element with the class defined in css.nextHandler.</p>
+        <p><code>jQuery</code> set with all handlers found inside the <code>JQSlider</code> element
+with the class defined in css.nextHandler.</p>
     </div>
 
     
@@ -2208,7 +2343,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
                 
                     <div id="property__o" class="property item private">
     <h3 class="name"><code>_o</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -2231,7 +2366,7 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l35"><code>src&#x2F;js&#x2F;jquery.jqslider.js:35</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l81"><code>src&#x2F;js&#x2F;jquery.jqslider.js:81</code></a>
         
         </p>
 
@@ -2241,8 +2376,10 @@ counterwise. If you want to jump directly to the slide, without an animation, pa
     </div>
 
     <div class="description">
-        <p>Object with the configuration options of the module, the plugin defaults will be extended with options passed
-while initialisation and last by options set in the data-options attribute of the HTML element of the slider</p>
+        <p>Object with the configuration options of the module, the plugin
+defaults will be extended with options passed while initialisation
+and last by options set in the `data-options attribute of the HTML
+element of the slider</p>
     </div>
 
     
@@ -2255,7 +2392,7 @@ while initialisation and last by options set in the data-options attribute of th
                 
                     <div id="property__prevHandler" class="property item private">
     <h3 class="name"><code>_prevHandler</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -2278,7 +2415,7 @@ while initialisation and last by options set in the data-options attribute of th
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l459"><code>src&#x2F;js&#x2F;jquery.jqslider.js:459</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l565"><code>src&#x2F;js&#x2F;jquery.jqslider.js:565</code></a>
         
         </p>
 
@@ -2288,7 +2425,8 @@ while initialisation and last by options set in the data-options attribute of th
     </div>
 
     <div class="description">
-        <p>jQuery set with all handlers found inside the jqslider element with the class defined in css.prevHandler.</p>
+        <p><code>jQuery</code> set with all handlers found inside the <code>JQSlider</code> element
+with the class defined in css.prevHandler.</p>
     </div>
 
     
@@ -2301,7 +2439,7 @@ while initialisation and last by options set in the data-options attribute of th
                 
                     <div id="property__slides" class="property item private">
     <h3 class="name"><code>_slides</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -2324,7 +2462,7 @@ while initialisation and last by options set in the data-options attribute of th
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l92"><code>src&#x2F;js&#x2F;jquery.jqslider.js:92</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l149"><code>src&#x2F;js&#x2F;jquery.jqslider.js:149</code></a>
         
         </p>
 
@@ -2347,7 +2485,7 @@ while initialisation and last by options set in the data-options attribute of th
                 
                     <div id="property__tmpl" class="property item private">
     <h3 class="name"><code>_tmpl</code></h3>
-    <span class="type">String</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
 
     
 
@@ -2370,7 +2508,7 @@ while initialisation and last by options set in the data-options attribute of th
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l70"><code>src&#x2F;js&#x2F;jquery.jqslider.js:70</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l123"><code>src&#x2F;js&#x2F;jquery.jqslider.js:123</code></a>
         
         </p>
 
@@ -2380,7 +2518,8 @@ while initialisation and last by options set in the data-options attribute of th
     </div>
 
     <div class="description">
-        <p>This "template" is used to generate new slides, it is build using the 'slideTag' config value.</p>
+        <p>This "template" is used to generate new slides, it is build using the
+`slideTag config value.</p>
     </div>
 
     
@@ -2393,7 +2532,7 @@ while initialisation and last by options set in the data-options attribute of th
                 
                     <div id="property_activeIndex" class="property item">
     <h3 class="name"><code>activeIndex</code></h3>
-    <span class="type">Number</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
 
     
 
@@ -2414,7 +2553,7 @@ while initialisation and last by options set in the data-options attribute of th
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l422"><code>src&#x2F;js&#x2F;jquery.jqslider.js:422</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l521"><code>src&#x2F;js&#x2F;jquery.jqslider.js:521</code></a>
         
         </p>
 
@@ -2424,7 +2563,8 @@ while initialisation and last by options set in the data-options attribute of th
     </div>
 
     <div class="description">
-        <p>Index of the current active slide. Can be defined by configuration or by adding the class jqs-current to the appropriate slide.</p>
+        <p>Index of the current active slide. Can be defined by configuration
+or by adding the class <code>jqs-current</code> to the appropriate slide.</p>
     </div>
 
     
@@ -2439,7 +2579,7 @@ while initialisation and last by options set in the data-options attribute of th
                 
                     <div id="property_defaults" class="property item">
     <h3 class="name"><code>defaults</code></h3>
-    <span class="type">Object</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
     
 
@@ -2460,7 +2600,7 @@ while initialisation and last by options set in the data-options attribute of th
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l109"><code>src&#x2F;js&#x2F;jquery.jqslider.js:109</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l164"><code>src&#x2F;js&#x2F;jquery.jqslider.js:164</code></a>
         
         </p>
 
@@ -2470,7 +2610,8 @@ while initialisation and last by options set in the data-options attribute of th
     </div>
 
     <div class="description">
-        <p>Stores all configuration settings, this set will be extended with client configuration objects</p>
+        <p>Stores all configuration settings, this set will be extended with
+client configuration objects</p>
     </div>
 
     
@@ -2483,7 +2624,7 @@ while initialisation and last by options set in the data-options attribute of th
                 
                     <div id="property_isVertical" class="property item">
     <h3 class="name"><code>isVertical</code></h3>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -2504,7 +2645,7 @@ while initialisation and last by options set in the data-options attribute of th
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l44"><code>src&#x2F;js&#x2F;jquery.jqslider.js:44</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l93"><code>src&#x2F;js&#x2F;jquery.jqslider.js:93</code></a>
         
         </p>
 
@@ -2514,7 +2655,8 @@ while initialisation and last by options set in the data-options attribute of th
     </div>
 
     <div class="description">
-        <p>Defines if the layout of the slider is vertical or not. Will be defined initially by the css class 'jqs-vertical' of the element.</p>
+        <p>Defines if the layout of the slider is vertical or not. Will be
+defined initially by the css class 'jqs-vertical' of the element.</p>
     </div>
 
     
@@ -2538,7 +2680,7 @@ while initialisation and last by options set in the data-options attribute of th
                     <div id="attr_autoinit" class="attr item">
     <a name="config_autoinit"></a> 
     <h3 class="name"><code>autoinit</code></h3>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -2565,7 +2707,7 @@ while initialisation and last by options set in the data-options attribute of th
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l115"><code>src&#x2F;js&#x2F;jquery.jqslider.js:115</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l172"><code>src&#x2F;js&#x2F;jquery.jqslider.js:172</code></a>
         
         </p>
 
@@ -2575,11 +2717,13 @@ while initialisation and last by options set in the data-options attribute of th
     </div>
 
     <div class="description">
-        <p>You can prevent an automatic initialisation of the slider if you want to run it later on. This is than
-helpful, if you need the instance of the plugin to access its methods, like addSlide, but you don't want
-the slides to be setup. Because JQSlider adds classes to all elements that applies styling to it, like
-hiding not needed slides, so that it can prevent you from determining the correct height and width values
-of its child elements.</p>
+        <p>You can prevent an automatic initialisation of the slider if you
+want to run it later on. This is than helpful, if you need the
+instance of the plugin to access its methods, like addSlide, but
+you don't want the slides to be setup. Because JQSlider adds
+classes to all elements that applies styling to it, like hiding
+not needed slides, so that it can prevent you from determining
+the correct height and width values of its child elements.</p>
     </div>
 
     
@@ -2595,7 +2739,7 @@ of its child elements.</p>
                     <div id="attr_circular" class="attr item">
     <a name="config_circular"></a> 
     <h3 class="name"><code>circular</code></h3>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -2622,7 +2766,7 @@ of its child elements.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l126"><code>src&#x2F;js&#x2F;jquery.jqslider.js:126</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l186"><code>src&#x2F;js&#x2F;jquery.jqslider.js:186</code></a>
         
         </p>
 
@@ -2648,7 +2792,7 @@ of its child elements.</p>
                     <div id="attr_containerSelector" class="attr item">
     <a name="config_containerSelector"></a> 
     <h3 class="name"><code>containerSelector</code></h3>
-    <span class="type">String</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
 
     
 
@@ -2675,7 +2819,7 @@ of its child elements.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l154"><code>src&#x2F;js&#x2F;jquery.jqslider.js:154</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l219"><code>src&#x2F;js&#x2F;jquery.jqslider.js:219</code></a>
         
         </p>
 
@@ -2685,7 +2829,8 @@ of its child elements.</p>
     </div>
 
     <div class="description">
-        <p>Define the jquery selector of the container element for querying. Must be represented in the markup.</p>
+        <p>Define the jquery selector of the container element for querying.
+Must be represented in the markup.</p>
     </div>
 
     
@@ -2701,7 +2846,7 @@ of its child elements.</p>
                     <div id="attr_duration" class="attr item">
     <a name="config_duration"></a> 
     <h3 class="name"><code>duration</code></h3>
-    <span class="type">Number</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
 
     
 
@@ -2728,7 +2873,7 @@ of its child elements.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l140"><code>src&#x2F;js&#x2F;jquery.jqslider.js:140</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l202"><code>src&#x2F;js&#x2F;jquery.jqslider.js:202</code></a>
         
         </p>
 
@@ -2754,7 +2899,7 @@ of its child elements.</p>
                     <div id="attr_easingFunction" class="attr item">
     <a name="config_easingFunction"></a> 
     <h3 class="name"><code>easingFunction</code></h3>
-    <span class="type">String</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
 
     
 
@@ -2781,7 +2926,7 @@ of its child elements.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l147"><code>src&#x2F;js&#x2F;jquery.jqslider.js:147</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l210"><code>src&#x2F;js&#x2F;jquery.jqslider.js:210</code></a>
         
         </p>
 
@@ -2791,7 +2936,8 @@ of its child elements.</p>
     </div>
 
     <div class="description">
-        <p>If you have included the easing plugin, you can define an easing function for the animation.</p>
+        <p>If you have included the easing plugin, you can define an easing
+function for the animation.</p>
     </div>
 
     
@@ -2807,7 +2953,7 @@ of its child elements.</p>
                     <div id="attr_listSelector" class="attr item">
     <a name="config_listSelector"></a> 
     <h3 class="name"><code>listSelector</code></h3>
-    <span class="type">String</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
 
     
 
@@ -2834,7 +2980,7 @@ of its child elements.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l161"><code>src&#x2F;js&#x2F;jquery.jqslider.js:161</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l228"><code>src&#x2F;js&#x2F;jquery.jqslider.js:228</code></a>
         
         </p>
 
@@ -2860,7 +3006,7 @@ of its child elements.</p>
                     <div id="attr_slideTag" class="attr item">
     <a name="config_slideTag"></a> 
     <h3 class="name"><code>slideTag</code></h3>
-    <span class="type">String</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
 
     
 
@@ -2887,7 +3033,7 @@ of its child elements.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l168"><code>src&#x2F;js&#x2F;jquery.jqslider.js:168</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l236"><code>src&#x2F;js&#x2F;jquery.jqslider.js:236</code></a>
         
         </p>
 
@@ -2897,8 +3043,8 @@ of its child elements.</p>
     </div>
 
     <div class="description">
-        <p>Define the tag name of the slide element for querying. It will be used for building the HTML template when
-creating a new slide.</p>
+        <p>Define the tag name of the slide element for querying. It will be
+used for building the HTML template when creating a new slide.</p>
     </div>
 
     
@@ -2914,7 +3060,7 @@ creating a new slide.</p>
                     <div id="attr_startSlide" class="attr item">
     <a name="config_startSlide"></a> 
     <h3 class="name"><code>startSlide</code></h3>
-    <span class="type">Number</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
 
     
 
@@ -2941,7 +3087,7 @@ creating a new slide.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l133"><code>src&#x2F;js&#x2F;jquery.jqslider.js:133</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l194"><code>src&#x2F;js&#x2F;jquery.jqslider.js:194</code></a>
         
         </p>
 
@@ -2995,7 +3141,7 @@ creating a new slide.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l499"><code>src&#x2F;js&#x2F;jquery.jqslider.js:499</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l609"><code>src&#x2F;js&#x2F;jquery.jqslider.js:609</code></a>
         
         </p>
 
@@ -3005,7 +3151,7 @@ creating a new slide.</p>
     </div>
 
     <div class="description">
-        
+        <p>maps the event gotoslide to the API methdo gotoSlide</p>
     </div>
 
     
@@ -3017,7 +3163,7 @@ creating a new slide.</p>
                 <li class="param">
                     
                         <code class="param-name">slideNumber</code>
-                        <span class="type">Number</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                     
 
                     
@@ -3032,14 +3178,15 @@ creating a new slide.</p>
                 <li class="param">
                     
                         <code class="param-name optional">[counterwise=false]</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>optional set to true if the animation should go to the opposite direction</p>
+                        <p>optional set to true if
+  the animation should go to the opposite direction</p>
                     </div>
 
                     
@@ -3048,14 +3195,15 @@ creating a new slide.</p>
                 <li class="param">
                     
                         <code class="param-name optional">[noAnimation=false]</code>
-                        <span class="type">Boolean</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>optional set to true if slide should be shown instantly without an animation</p>
+                        <p>optional set to true if
+  slide should be shown instantly without an animation</p>
                     </div>
 
                     
@@ -3093,7 +3241,7 @@ creating a new slide.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l493"><code>src&#x2F;js&#x2F;jquery.jqslider.js:493</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l602"><code>src&#x2F;js&#x2F;jquery.jqslider.js:602</code></a>
         
         </p>
 
@@ -3103,7 +3251,7 @@ creating a new slide.</p>
     </div>
 
     <div class="description">
-        
+        <p>maps the event next to the API method next</p>
     </div>
 
     
@@ -3136,7 +3284,7 @@ creating a new slide.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l487"><code>src&#x2F;js&#x2F;jquery.jqslider.js:487</code></a>
+        <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l595"><code>src&#x2F;js&#x2F;jquery.jqslider.js:595</code></a>
         
         </p>
 
@@ -3146,7 +3294,7 @@ creating a new slide.</p>
     </div>
 
     <div class="description">
-        
+        <p>maps the event prev to the API method next</p>
     </div>
 
     

@@ -10,7 +10,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "JQSlider",
             "name": "JQSlider",
-            "description": "A responsive and fast content Slider\njQSlider follows a new approach in building a slider. Where most slider-plugins are moving the whole list of slides\nwhen animating, jQSlider animates only the two slides necessary for the animation simultaneously. This is not only an\nway to optimize the performance of the animation, it also allows to realize a 100% css based scaling which leads us to\na full responsive slider."
+            "description": "A responsive and fast content Slider\njQSlider follows a new approach in building a slider. Where most slider-plugins\nare moving the whole list of slides when animating, jQSlider animates only the\ntwo slides necessary for the animation simultaneously. This is not only an way\nto optimize the performance of the animation, it also allows to realize a 100%\ncss based scaling which leads us to a full responsive slider."
         }
     ]
 } };

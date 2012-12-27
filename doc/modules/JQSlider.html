@@ -101,7 +101,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l21"><code>src&#x2F;js&#x2F;jquery.jqslider.js:21</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_js_jquery.jqslider.js.html#l45"><code>src&#x2F;js&#x2F;jquery.jqslider.js:45</code></a>
         </div>
     
 
@@ -112,12 +112,39 @@
 
 <div class="box intro">
     <p>A responsive and fast content Slider
-jQSlider follows a new approach in building a slider. Where most slider-plugins are moving the whole list of slides
-when animating, jQSlider animates only the two slides necessary for the animation simultaneously. This is not only an
-way to optimize the performance of the animation, it also allows to realize a 100% css based scaling which leads us to
-a full responsive slider.</p>
+jQSlider follows a new approach in building a slider. Where most slider-plugins
+are moving the whole list of slides when animating, jQSlider animates only the
+two slides necessary for the animation simultaneously. This is not only an way
+to optimize the performance of the animation, it also allows to realize a 100%
+css based scaling which leads us to a full responsive slider.</p>
 </div>
 
+
+    <div class="example">
+        <h4>Example:</h4>
+        <div class="example-content">
+            <p>Add the following markup to your page</p>
+
+<pre class="code prettyprint"><code> &lt;div class="jqslider"&gt;
+     &lt;div class="jqs-container"&gt;
+         &lt;ul&gt;
+             &lt;li&gt;&lt;/li&gt;
+             &lt;li&gt;&lt;/li&gt;
+         &lt;/ul&gt;
+     &lt;/div&gt;
+     &lt;a href="#" class="jqs-handler-next jqs-handler"&gt;&lt;/a&gt;
+     &lt;a href="#" class="jqs-handler-prev jqs-handler"&gt;&lt;/a&gt;
+ &lt;/div&gt;
+</code></pre>
+
+<p>And initialize the slider with the following script block</p>
+
+<pre class="code prettyprint"><code> $(document).ready(function () {
+     $('.jqslider').jqslider();
+ });
+</code></pre>
+        </div>
+    </div>
 
 
 <div class="yui3-g">

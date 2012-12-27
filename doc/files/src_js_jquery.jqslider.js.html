@@ -90,21 +90,45 @@
     <pre class="code prettyprint linenums">
 &#x2F;**
  * A responsive and fast content Slider
- * jQSlider follows a new approach in building a slider. Where most slider-plugins are moving the whole list of slides
- * when animating, jQSlider animates only the two slides necessary for the animation simultaneously. This is not only an
- * way to optimize the performance of the animation, it also allows to realize a 100% css based scaling which leads us to
- * a full responsive slider.
+ * jQSlider follows a new approach in building a slider. Where most slider-plugins
+ * are moving the whole list of slides when animating, jQSlider animates only the
+ * two slides necessary for the animation simultaneously. This is not only an way
+ * to optimize the performance of the animation, it also allows to realize a 100%
+ * css based scaling which leads us to a full responsive slider.
+ *
  * @module JQSlider
  * @requires jQuery
  * @extends jQuery.fn
+ * @author Marcello di Simone &lt;mdisimone.dev@googlemail.com&gt;
+ * @example Add the following markup to your page
+ *
+ *      &lt;div class=&quot;jqslider&quot;&gt;
+ *          &lt;div class=&quot;jqs-container&quot;&gt;
+ *              &lt;ul&gt;
+ *                  &lt;li&gt;&lt;&#x2F;li&gt;
+ *                  &lt;li&gt;&lt;&#x2F;li&gt;
+ *              &lt;&#x2F;ul&gt;
+ *          &lt;&#x2F;div&gt;
+ *          &lt;a href=&quot;#&quot; class=&quot;jqs-handler-next jqs-handler&quot;&gt;&lt;&#x2F;a&gt;
+ *          &lt;a href=&quot;#&quot; class=&quot;jqs-handler-prev jqs-handler&quot;&gt;&lt;&#x2F;a&gt;
+ *      &lt;&#x2F;div&gt;
+ *
+ * And initialize the slider with the following script block
+ *
+ *      $(document).ready(function () {
+ *          $(&#x27;.jqslider&#x27;).jqslider();
+ *      });
+ *
+ * @Markdown
  *&#x2F;
 
 &#x2F;**
  * @namespace
- * @param {jQuery}       $            Aliased jQuery object or alternatively Zepto.
- * @param {HTMLElement}  windows      Reference to the window object
- * @param {HTMLElement}  document     Reference to the document object
- * @param {undefined}    undefined    this is just a way to assure that undefined has not been overloaded with some other value than undefined
+ * @param {jQuery} $    Aliased &#x60;jQuery&#x60; object or alternatively &#x60;Zepto&#x60;.
+ * @param {HTMLElement} windows Reference to the &#x60;window&#x60; object
+ * @param {HTMLElement} document Reference to the &#x60;document&#x60; object
+ * @param {undefined}   undefined this is just a way to assure that undefined has
+ *      not been overloaded with some other value than undefined
  *&#x2F;
 (function ($, window, document, undefined) {
     &quot;use strict&quot;;
@@ -112,44 +136,73 @@
      * Plugin Constructor
      * @class JQSlider
      * @constructor
-     * @param {HTMLElement} elem    element to be initialized
-     * @param {Object} options      Options for the Plugin Member
+     * @param {HTMLElement} elem element to be initialized
+     * @param {Object} [options] Options for the Plugin Member
+     *   @param {Boolean} [options.circular=false] You can prevent an automatic
+     *     initialisation of the slider if you want to run it later on. This
+     *     is than helpful, if you need the instance of the plugin to access
+     *     its methods, like &#x60;addSlide&#x60;, but you don&#x27;t want the slides to
+     *     be setup. Because &#x60;JQSlider&#x60; adds classes to all elements that
+     *     applies styling to it, like hiding not needed slides, so that it
+     *     can prevent you from determining the correct height and width
+     *     values of its child elements.
+     *   @param {Number} [options.startSlide=0] Defines the slide number to be
+     *     shown initially
+     *   @param {Number} [options.duration=500] Duration of the animation
+     *   @param {String} [options.easingFunction=&#x27;linear&#x27;] If you have included
+     *     the easing plugin, you can define an easing function for the animation.
+     *   @param {String} [options.containerSelector=&#x27;.jqs-container&#x27;] Define
+     *     the jquery selector of the container element for querying. Must
+     *     be represented in the markup.
+     *   @param {String} [options.listSelector=&#x27;ul&#x27;] Define the jquery selector of
+     *     the list element for querying.
+     *   @param {String} [options.slideTag=&#x27;li&#x27;] Define the tag name of the
+     *     slide element for querying. It will be used for building the HTML
+     *     template when
      *&#x2F;
     function JQSlider (elem, options) {
         &#x2F;**
          * Stores a reference to the jQuery object of the module
+         *
          * @property $el
-         * @type Object
+         * @type {Object}
          *&#x2F;
         this.$el = $(elem);
         &#x2F;**
-         * Object with the configuration options of the module, the plugin defaults will be extended with options passed
-         * while initialisation and last by options set in the data-options attribute of the HTML element of the slider
+         * Object with the configuration options of the module, the plugin
+         * defaults will be extended with options passed while initialisation
+         * and last by options set in the &#x60;data-options attribute of the HTML
+         * element of the slider
+         *
          * @property _o
          * @extends JQSlider.defaults
-         * @type Object
+         * @type {Object}
          * @private
          *&#x2F;
         this._o = $.extend(JQSlider.prototype.defaults, options, $.parseJSON(( this.$el.data(&#x27;options&#x27;) || &quot;&quot; ).replace(&#x2F;&#x27;&#x2F;g, &quot;\&quot;&quot;)));
         &#x2F;**
-         * Defines if the layout of the slider is vertical or not. Will be defined initially by the css class &#x27;jqs-vertical&#x27; of the element.
+         * Defines if the layout of the slider is vertical or not. Will be
+         * defined initially by the css class &#x27;jqs-vertical&#x27; of the element.
+         *
          * @property isVertical
-         * @type Boolean
+         * @type {Boolean}
          * @default false
          *&#x2F;
         this.isVertical = this.$el.hasClass(&#x27;jqs-vertical&#x27;);
         &#x2F;**
          * set to true while animating to prevent double clicking
+         *
          * @property _block
-         * @type Boolean
+         * @type {Boolean}
          * @default false
          * @private
          *&#x2F;
         this._block = false;
         &#x2F;**
          * alignment value shortcuts
+         *
          * @property _av
-         * @type Array
+         * @type {Array}
          * @private
          * @final
          *&#x2F;
@@ -158,31 +211,36 @@
             {pos: &#x27;top&#x27;, size: &#x27;height&#x27;}
         ];
         &#x2F;**
-         * This &quot;template&quot; is used to generate new slides, it is build using the &#x27;slideTag&#x27; config value.
+         * This &quot;template&quot; is used to generate new slides, it is build using the
+         * &#x60;slideTag config value.
+         *
          * @property _tmpl
-         * @type String
+         * @type {String}
          * @private
          *&#x2F;
         this._tmpl = &#x27;&lt;&#x27; + this._o.slideTag + &#x27;&#x2F;&gt;&#x27;;
 
         &#x2F;**
          * reference of the slider container
+         *
          * @property _container
-         * @type Object
+         * @type {Object}
          * @private
          *&#x2F;
         this._container = this.$el.children(this._o.containerSelector);
         &#x2F;**
          * reference of the slider list element
+         *
          * @property _list
-         * @type Object
+         * @type {Object}
          * @private
          *&#x2F;
         this._list = this._container.children(this._o.listSelector);
         &#x2F;**
          * jQuery set of all slide elements
+         *
          * @property _slides
-         * @type Object
+         * @type {Object}
          * @private
          *&#x2F;
         this._slides = this._list.children(this._o.slideTag);
@@ -192,74 +250,85 @@
         }
     }
 
-    &#x2F;**
-     * @memberof JQSlider
-     *&#x2F;
     JQSlider.prototype = {
         &#x2F;**
-         * Stores all configuration settings, this set will be extended with client configuration objects
+         * Stores all configuration settings, this set will be extended with
+         * client configuration objects
+         *
          * @property defaults
-         * @type Object
+         * @type {Object}
          *&#x2F;
         defaults: {
             &#x2F;**
-             * You can prevent an automatic initialisation of the slider if you want to run it later on. This is than
-             * helpful, if you need the instance of the plugin to access its methods, like addSlide, but you don&#x27;t want
-             * the slides to be setup. Because JQSlider adds classes to all elements that applies styling to it, like
-             * hiding not needed slides, so that it can prevent you from determining the correct height and width values
-             * of its child elements.
+             * You can prevent an automatic initialisation of the slider if you
+             * want to run it later on. This is than helpful, if you need the
+             * instance of the plugin to access its methods, like addSlide, but
+             * you don&#x27;t want the slides to be setup. Because JQSlider adds
+             * classes to all elements that applies styling to it, like hiding
+             * not needed slides, so that it can prevent you from determining
+             * the correct height and width values of its child elements.
+             *
              * @config autoinit
-             * @type Boolean
+             * @type {Boolean}
              * @default true
              *&#x2F;
             autoinit: true,
             &#x2F;**
              * Set to true, for an endless animation.
+             *
              * @config circular
-             * @type Boolean
+             * @type {Boolean}
              * @default false
              *&#x2F;
             circular: false,
             &#x2F;**
              * Zero based index of the slide to start with
+             *
              * @config startSlide
-             * @type Number
+             * @type {Number}
              * @default 0
              *&#x2F;
             startSlide: 0,
             &#x2F;**
              * Duration of the animation
+             *
              * @config duration
-             * @type Number
+             * @type {Number}
              * @default 500
              *&#x2F;
             duration: 500,
             &#x2F;**
-             * If you have included the easing plugin, you can define an easing function for the animation.
+             * If you have included the easing plugin, you can define an easing
+             * function for the animation.
+             *
              * @config easingFunction
-             * @type String
+             * @type {String}
              * @default &#x27;linear&#x27;
              *&#x2F;
             easingFunction: &#x27;linear&#x27;,
             &#x2F;**
-             * Define the jquery selector of the container element for querying. Must be represented in the markup.
+             * Define the jquery selector of the container element for querying.
+             * Must be represented in the markup.
+             *
              * @config containerSelector
-             * @type String
+             * @type {String}
              * @default &#x27;.jqs-container&#x27;
              *&#x2F;
             containerSelector: &#x27;.jqs-container&#x27;,
             &#x2F;**
              * Define the jquery selector of the list element for querying.
+             *
              * @config listSelector
-             * @type String
+             * @type {String}
              * @default &#x27;ul&#x27;
              *&#x2F;
             listSelector: &#x27;ul&#x27;,
             &#x2F;**
-             * Define the tag name of the slide element for querying. It will be used for building the HTML template when
-             * creating a new slide.
+             * Define the tag name of the slide element for querying. It will be
+             * used for building the HTML template when creating a new slide.
+             *
              * @config slideTag
-             * @type String
+             * @type {String}
              * @default &#x27;li&#x27;
              *&#x2F;
             slideTag: &#x27;li&#x27;
@@ -267,13 +336,15 @@
 
         &#x2F;**
          * Moves to the next slide
+         *
          * @method next
-         * @return {JQSlider} returns a chainable reference to JQSlider
+         * @return {JQSlider} returns a chainable reference to &#x60;JQSlider&#x60;
          * @chainable
          *&#x2F;
         next: function () {
             var next = this._getSibblingIndex();
-            &#x2F;&#x2F; if the slider has no circular animation and the last slide is already present, do nothing
+            &#x2F;&#x2F; if the slider has no circular animation and the last slide is
+            &#x2F;&#x2F; already present, do nothing
             if (next !== false) {
                 this.gotoSlide(next, false);
             }
@@ -283,13 +354,15 @@
 
         &#x2F;**
          * Moves to the previous slide
+         *
          * @method prev
-         * @return {JQSlider} returns a chainable reference to JQSlider
+         * @return {JQSlider} returns a chainable reference to &#x60;JQSlider&#x60;
          * @chainable
          *&#x2F;
         prev: function () {
             var prev = this._getSibblingIndex(true);
-            &#x2F;&#x2F; if the slider has no circular animation and the first slide is already present, do nothing
+            &#x2F;&#x2F; if the slider has no circular animation and the first slide is
+            &#x2F;&#x2F; already present, do nothing
             if (prev !== false) {
                 this.gotoSlide(prev, true);
             }
@@ -298,19 +371,24 @@
         },
 
         &#x2F;**
-         * Moves to the given slide number. The direction, based on the orientation (horizontal&#x2F;vertical), can be set with
-         * counterwise. If you want to jump directly to the slide, without an animation, pass noAnimation as true.
+         * Moves to the given slide number. The direction, based on the
+         * orientation (horizontal&#x2F;vertical), can be set with counterwise. If
+         * you want to jump directly to the slide, without an animation, pass
+         * &#x60;noAnimation&#x60; as true.
+         *
          * @method gotoSlide
-         * @param {Number} slideNumber                  number of slide to go to
-         * @param {Boolean} [counterwise=false]         optional set to true if the animation should go to the opposite direction
-         * @param {Boolean} [noAnimation=false]         optional set to true if slide should be shown instantly without an animation
+         * @param {Number} slideNumber number of slide to go to
+         * @param {Boolean} [counterwise=false] optional set to true if the
+         *   animation should go to the opposite direction
+         * @param {Boolean} [noAnimation=false] optional set to true if slide
+         *   should be shown instantly without an animation
          * @return {JQSlider} returns a chainable reference to JQSlider
          * @chainable
          *&#x2F;
         gotoSlide: function (slideNumber, counterwise, noAnimation) {
             &#x2F;&#x2F; stop if slider is currently animating or slideNumber number is out of bound
             slideNumber = parseInt(slideNumber, 10);
-            if (this._block === false || slideNumber &gt;= 0 || slideNumber &lt; this._slides.length || slideNumber !== this.activeIndex) {
+            if (this._block === false &amp;&amp; slideNumber &gt;= 0 &amp;&amp; slideNumber &lt; this._slides.length &amp;&amp; slideNumber !== this.activeIndex) {
 
                 this._block = true;
 
@@ -319,12 +397,18 @@
                 var self = this,
                     next = this.getSlide(slideNumber),
                     current = this.getSlide(this.activeIndex),
-                    &#x2F;&#x2F; extend currentCSS with the cssDefaults to avoid value pollution after orientation changes, which means
-                    &#x2F;&#x2F; the top ,respectively left value, would be kept in the cssDefault object and cause a diagonal animation
+                    &#x2F;&#x2F; extend &#x60;currentCSS&#x60; with the &#x60;cssDefaults&#x60; to avoid value
+                    &#x2F;&#x2F; pollution after orientation changes, which means the top,
+                    &#x2F;&#x2F; respectively left value, would be kept in the &#x60;cssDefault&#x60;
+                    &#x2F;&#x2F; object and cause a diagonal animation
                     currentCSS = {},
-                    &#x2F;&#x2F; typecast the boolean value this.isVertical to get the first or second index of the array this._av which holds the sting top or left
+                    &#x2F;&#x2F; typecast the boolean value this.isVertical to get the
+                    &#x2F;&#x2F; first or second index of the array this._av which holds
+                    &#x2F;&#x2F; the sting top or left
                     elmPos = this._av[ +this.isVertical ].pos,
-                    &#x2F;&#x2F; typecast the boolean value this.isVertical to get the first or second index of the array this._av which holds the sting width or height
+                    &#x2F;&#x2F; typecast the boolean value &#x60;this.isVertical&#x60; to get the
+                    &#x2F;&#x2F; first or second index of the array this._av which holds
+                    &#x2F;&#x2F; the sting width or height
                     elmSize = this._av[ +this.isVertical ].size,
                     moveSize = this._list[ elmSize ]() &#x2F; 2;
 
@@ -333,7 +417,9 @@
                 if (noAnimation === true) {
                     this._endAnimation(slideNumber, counterwise, noAnimation, current, next);
                 } else {
-                    &#x2F;&#x2F; jQuery has a calculation bug in IE8 when translating negative percent values in pixels, therefor we set it ourself
+                    &#x2F;&#x2F; jQuery has a calculation bug in IE8 when translating
+                    &#x2F;&#x2F; negative percent values in pixels, therefor we set it
+                    &#x2F;&#x2F; ourself
                     this._list.toggleClass(&#x27;jqs-list-before&#x27;, counterwise).css(elmPos, counterwise ? -moveSize : 0);
                     next.addClass(&#x27;jqs-next&#x27;);
                     currentCSS[ elmPos ] = ( counterwise ) ? &#x27;0&#x27; : -moveSize;
@@ -351,15 +437,20 @@
         },
 
         &#x2F;**
-         * This function is called when the animation started. It is excluded from the animation method to help building
-         * a inherited Slider class. In this case it triggers the animation start event.
+         * This function is called when the animation started. It is excluded
+         * from the animation method to help building a inherited Slider class.
+         * In this case it triggers the animation start event.
          *
          * @method _startAnimation
-         * @param {Number} slideNumber          Number of the slide that had been animated in
-         * @param {Boolean} counterwise         if true the animation will move to the left or top if it&#x27;s a vertical animation
-         * @param {Boolean} noAnimation         if true the slide will be shown right away, without animation
-         * @param {jQuery} current              jQuery element of the slide that was animated out
-         * @param {jQuery} next                 jQuery element of the slide that was animated in
+         * @param {Number} slideNumber  Number of the slide that had been animated in
+         * @param {Boolean} counterwise if true the animation will move to the left
+         *   or top if it&#x27;s a vertical animation
+         * @param {Boolean} noAnimation if true the slide will be shown right away,
+         *   without animation
+         * @param {jQuery} current      &#x60;jQuery&#x60; element of the slide that was
+         *   animated out
+         * @param {jQuery} next         &#x60;jQuery&#x60; element of the slide that was
+         *   animated in
          * @private
          *&#x2F;
         _startAnimation: function (slideNumber, counterwise, noAnimation, current, next) {
@@ -369,15 +460,20 @@
         },
 
         &#x2F;**
-         * This function is called when the animation ends. All slides are reset to default with the next slide as current slide.
-         * It is excluded from the animation method to help building a inherited Slider class.
+         * This function is called when the animation ends. All slides are reset
+         * to default with the next slide as current slide. It is excluded from
+         * the animation method to help building a inherited Slider class.
          *
          * @method _endAnimation
-         * @param {Number} slideNumber          Number of the slide that had been animated in
-         * @param {Boolean} counterwise         if true the animation will move to the left or top if it&#x27;s a vertical animation
-         * @param {Boolean} noAnimation         if true the slide will be shown right away, without animation
-         * @param {jQuery} current              jQuery element of the slide that was animated out
-         * @param {jQuery} next                 jQuery element of the slide that was animated in
+         * @param {Number} slideNumber  Number of the slide that had been animated in
+         * @param {Boolean} counterwise if true the animation will move to the left
+         *   or top if it&#x27;s a vertical animation
+         * @param {Boolean} noAnimation if true the slide will be shown right away,
+         *   without animation
+         * @param {jQuery} current      &#x60;jQuery&#x60; element of the slide that was
+         *   animated out
+         * @param {jQuery} next         &#x60;jQuery&#x60; element of the slide that was
+         *   animated in
          * @private
          *&#x2F;
         _endAnimation: function (slideNumber, counterwise, noAnimation, current, next) {
@@ -395,7 +491,6 @@
          *
          * @method getSlideCount
          * @return {Number} returns the number of all slides
-         * @public
          *&#x2F;
         getSlideCount: function () {
             return this._slides.length;
@@ -405,7 +500,6 @@
          * Switches the orientation of the slider between horizontal and vertical.
          *
          * @method switchOrientation
-         * @public
          * @return {JQSlider} returns a chainable reference to JQSlider
          * @chainable
          *&#x2F;
@@ -417,11 +511,12 @@
         },
 
         &#x2F;**
-         * Adds a new slide node into the slide container. Optionally the position of the new slide can be defined with slidePosition.
+         * Adds a new slide node into the slide container. Optionally the position
+         * of the new slide can be defined with &#x60;slidePosition&#x60;.
          *
          * @method addSlide
          * @param {Number} [slidePosition] position of the new slide to be appended to
-         * @return {jQuery} returns the jquery object of the created slide
+         * @return {jQuery} returns the &#x60;jQuery&#x60; object of the created slide
          *&#x2F;
         addSlide: function (slidePosition) {
             var newSlide = $(this._tmpl, {&#x27;class&#x27;: &#x27;jqs-slide&#x27;});
@@ -430,7 +525,7 @@
             } else {
                 this._list.append(newSlide);
             }
-            this._slides = this._list.children(&#x27;.jqs-slide&#x27;);
+            this._slides = this._list.children(this._o.slideTag);
 
             return newSlide;
         },
@@ -439,22 +534,25 @@
          * Returns the slide node at the given index
          *
          * @param {Number} slideIndex
-         * @return {jQuery} returns the jquery object of the slide with the passed index
+         * @return {jQuery} returns the &#x60;jQuery&#x60; object of the slide with the
+         * passed index
          *&#x2F;
         getSlide: function (slideIndex) {
             return this._slides.eq(slideIndex);
         },
 
         &#x2F;**
-         * Removes a given slide, defined by the index or ID, or a whole jquery slide set.
+         * Removes a given slide, defined by the index or ID, or a whole &#x60;jQuery&#x60; slide set.
          *
          * @method removeSlide
-         * @param {Number|String|Object} slide    index, ID or jQuery set of the slide to be removed
+         * @param {Number|String|Object} slide index, ID or &#x60;jQuery&#x60; set of the
+         *   slide to be removed
          *&#x2F;
         removeSlide: function (slide) {
             &#x2F;** TODO: make this more specific *&#x2F;
             var foundSlide = ( typeof slide === &#x27;number&#x27; ) ? this.getSlide(slide) : ( typeof slide === &#x27;string&#x27;) ? this._slides.find(slide) : slide;
-            this._slides.remove(foundSlide);
+            foundSlide.remove();
+            this._slides = this._list.children(this._o.slideTag);
         },
 
         &#x2F;**
@@ -480,8 +578,9 @@
         },
 
         &#x2F;**
-         * Hides the previous handler, respectively next handler, if no circular animation is configured and the first, respectively
-         * last slide is reached.
+         * Hides the previous handler, respectively next handler, if no circular
+         * animation is configured and the first, respectively last slide is
+         * reached.
          *
          * @method _resetControls
          * @private
@@ -498,19 +597,21 @@
         },
 
         &#x2F;**
-         * Initializes the slider and all slides, set class names on all objects and display the first slide
+         * Initializes the slider and all slides, set class names on all objects
+         * and display the first slide
          *
          * @method _initSlider
          * @private
          *&#x2F;
         _initSlider: function () {
-            this._container.addClass(&#x27;jqs-container&#x27;);
             this._list.addClass(&#x27;jqs-list&#x27;);
             this._slides.addClass(&#x27;jqs-slide&#x27;);
 
             var current = this._slides.filter(&#x27;[class*=&quot;jqs-current&quot;]&#x27;).index();
             &#x2F;**
-             * Index of the current active slide. Can be defined by configuration or by adding the class jqs-current to the appropriate slide.
+             * Index of the current active slide. Can be defined by configuration
+             * or by adding the class &#x60;jqs-current&#x60; to the appropriate slide.
+             *
              * @property activeIndex
              * @type Number
              * @default 0
@@ -521,7 +622,8 @@
         },
 
         &#x2F;**
-         * Initialises the Slider controls and binds them to the previous and next methods.
+         * Initialises the Slider controls and binds them to the previous and
+         * next methods.
          *
          * @method _initControls
          * @private
@@ -529,28 +631,34 @@
         _initControls: function () {
             var self = this,
                 &#x2F;**
-                 * jQuery set with all handlers found inside the jqslider element with the class defined in css.handler.
+                 * &#x60;jQuery&#x60; set with all handlers found inside the &#x60;JQSlider&#x60; element
+                 * with the class defined in css.handler.
+                 *
                  * @private
                  * @property _handlers
-                 * @type Object
+                 * @type {Object}
                  *&#x2F;
-                    handlers = this._handlers = this.$el.children(&#x27;.jqs-handler&#x27;);
+                handlers = this._handlers = this.$el.children(&#x27;.jqs-handler&#x27;);
             if (handlers.length) {
                 &#x2F;**
-                 * jQuery set with all handlers found inside the jqslider element with the class defined in css.nextHandler.
+                 * &#x60;jQuery&#x60; set with all handlers found inside the &#x60;JQSlider&#x60; element
+                 * with the class defined in css.nextHandler.
+                 *
                  * @private
                  * @property _nextHandler
-                 * @type Object
+                 * @type {Object}
                  *&#x2F;
                 this._nextHandler = handlers.filter(&#x27;.jqs-handler-next&#x27;).bind(&#x27;click&#x27;, function (e) {
                     e.preventDefault();
                     self.next();
                 });
                 &#x2F;**
-                 * jQuery set with all handlers found inside the jqslider element with the class defined in css.prevHandler.
+                 * &#x60;jQuery&#x60; set with all handlers found inside the &#x60;JQSlider&#x60; element
+                 * with the class defined in css.prevHandler.
+                 *
                  * @private
                  * @property _prevHandler
-                 * @type Object
+                 * @type {Object}
                  *&#x2F;
                 this._prevHandler = handlers.filter(&#x27;.jqs-handler-prev&#x27;).bind(&#x27;click&#x27;, function (e) {
                     e.preventDefault();
@@ -560,10 +668,11 @@
             }
         },
         &#x2F;**
-         * Initializes the jqslider plugin and binds the available events to it. Finally it triggers the init event.
+         * Initializes the &#x60;JQSlider&#x60; plugin and binds the available events to it.
+         * Finally it triggers the init event.
          *
          * @method init
-         * @return {JQSlider} returns a chainable reference to JQSlider
+         * @return {JQSlider} returns a chainable reference to &#x60;JQSlider&#x60;
          * @chainable
          *&#x2F;
         init: function () {
@@ -573,42 +682,54 @@
 
             this._initControls();
 
+            &#x2F;**
+             * maps the event prev to the API method next
+             *
+             * @event prev
+             * @see prev
+             *&#x2F;
+
+            &#x2F;**
+             * maps the event next to the API method next
+             *
+             * @event next
+             * @see next
+             *&#x2F;
+
+            &#x2F;**
+             * maps the event gotoslide to the API methdo gotoSlide
+             *
+             * @event gotoslide
+             * @see gotoSlide
+             * @param {Number} slideNumber number of slide to go to
+             * @param {Boolean} [counterwise=false] optional set to true if
+             *   the animation should go to the opposite direction
+             * @param {Boolean} [noAnimation=false] optional set to true if
+             *   slide should be shown instantly without an animation
+             *&#x2F;
             this.$el.bind({
-                &#x2F;**
-                 * @event prev
-                 *&#x2F;
-                &#x27;prev&#x27;: function () {
+                &#x27;prev&#x27;: function (e) {
                     self.prev();
                 },
-                &#x2F;**
-                 * @event next
-                 *&#x2F;
-                &#x27;next&#x27;: function () {
+                &#x27;next&#x27;: function (e) {
                     self.next();
                 },
-                &#x2F;**
-                 * @event gotoslide
-                 * @param {Number}  slideNumber                 number of slide to go to
-                 * @param {Boolean} [counterwise=false]         optional set to true if the animation should go to the opposite direction
-                 * @param {Boolean} [noAnimation=false]         optional set to true if slide should be shown instantly without an animation
-                 *
-                 *&#x2F;
                 &#x27;gotoslide&#x27;: function (e, slideNumber, counterwise, noAnimation) {
                     self.gotoSlide(slideNumber, counterwise, noAnimation);
                 }
             }).trigger(&#x27;init&#x27;);
-
-            return this;
         }
     };
     JQSlider.defaults = JQSlider.prototype.defaults;
+
     &#x2F;**
-     * Initialize each object of the jQuery set as an instance of JQSlider, sets a reference to the instance
-     * in data-jqslider which is used as a singleton.
+     * Initialize each object of the jQuery set as an instance of JQSlider, sets
+     * a reference to the instance in data-jqslider which is used as a singleton.
+     *
      * @name jqslider
      * @memberOf $.fn
      * @param {Object} options  Object with plugin settings
-     * @return {jQuery} jQuery object
+     * @return {jQuery} &#x60;jQuery&#x60; object
      * @chainable
      *&#x2F;
     $.fn.jqslider = function (options) {
@@ -618,7 +739,8 @@
             }
         });
     };
-    &#x2F;&#x2F; We define a global reference to the plugin to be able to access static method of the plugin or for prototypical inheritance.
+    &#x2F;&#x2F; We define a global reference to the plugin to be able to access static
+    &#x2F;&#x2F; method of the plugin or for prototypical inheritance.
     window.JQSlider = JQSlider;
 
 })(window.jQuery || window.Zepto, window, document);
